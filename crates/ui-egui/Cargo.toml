@@ -3,7 +3,7 @@ name = "wordcraft-ui-egui"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "WordCraft egui front end (Word-style ribbon UI); swappable: nothing below depends on it"
+description = "WordKoja egui front end (Word-style ribbon UI); swappable: nothing below depends on it"
 
 [lints]
 workspace = true

@@ -1,4 +1,4 @@
-//! WordCraft fonts: the font database (bundled OFL families + user/system fonts), vertical
+//! WordKoja fonts: the font database (bundled OFL families + user/system fonts), vertical
 //! metrics, glyph outlines and OpenType shaping.
 //!
 //! Shaping here is style-agnostic: [`shape`] turns a string in one face into glyph ids, clusters
@@ -26,7 +26,7 @@ use skrifa::MetadataProvider;
 use skrifa::instance::Size;
 pub use ui_fallback::{SystemUiFont, is_cjk, system_cjk_ui_font, system_cjk_ui_font_for, ui_needs_system_cjk, ui_uncovered_cjk};
 
-/// A font from the optional craft-fonts build input (https://github.com/storytold/craft-fonts;
+/// A font from the optional craft-fonts build input (https://github.com/Kojalytics/craft-fonts;
 /// empty unless built with `CRAFT_FONTS_DIR`, see `build.rs`).
 pub struct CraftFont {
     pub family: &'static str,

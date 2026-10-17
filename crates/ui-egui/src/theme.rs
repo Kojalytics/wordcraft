@@ -4,7 +4,7 @@ use std::sync::Arc;
 
 use egui::{Align2, Color32, CornerRadius, FontData, FontDefinitions, FontFamily, FontId, Rect, Stroke, Visuals};
 
-/// WordCraft's app colour (and its darker ink for text on light backgrounds).
+/// WordKoja's app colour (and its darker ink for text on light backgrounds).
 pub const APP_COLOR: Color32 = Color32::from_rgb(0x3B, 0x5B, 0xDB);
 pub const APP_INK: Color32 = Color32::from_rgb(0x2B, 0x47, 0xB5);
 
@@ -84,7 +84,7 @@ impl From<Appearance> for String {
 /// setting and never changes with it.
 ///
 /// `Auto` (the default) keeps the display scale the system reports. A chosen size is absolute, as in
-/// PhotoCraft and PdfCraft (#822): "100%" is one screen pixel per point whatever the display reports,
+/// PhotoKoja and PdfKoja (#822): "100%" is one screen pixel per point whatever the display reports,
 /// so a system that guesses 200 % (a bare window manager on X11, where winit falls back to the
 /// monitor's DPI) doesn't make "100%" draw at 200 %. The display's scale is divided back out in
 /// [`InterfaceSize::zoom_factor`].
@@ -97,7 +97,7 @@ impl InterfaceSize {
     pub const MAX: u16 = 300;
     /// Follow the display scale the system reports.
     pub const AUTO: InterfaceSize = InterfaceSize(None);
-    /// The sizes File › Options offers after Auto, in percent (PhotoCraft's and PdfCraft's).
+    /// The sizes File › Options offers after Auto, in percent (PhotoKoja's and PdfKoja's).
     pub const PRESETS: [u16; 12] = [75, 80, 85, 90, 95, 100, 125, 150, 175, 200, 250, 300];
 
     /// A chosen size from any number: rounded and clamped to 50–300 %; `None` for NaN or infinity.

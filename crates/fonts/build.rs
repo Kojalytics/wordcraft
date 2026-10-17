@@ -1,4 +1,4 @@
-//! Optional craft-fonts build input (https://github.com/storytold/craft-fonts, recipe from its
+//! Optional craft-fonts build input (https://github.com/Kojalytics/craft-fonts, recipe from its
 //! `docs/integration.md`). With `CRAFT_FONTS_DIR=<checkout>` the fonts in its
 //! `fonts/manifest.txt` are embedded as `CRAFT_FONTS`; unset, `CRAFT_FONTS` is empty. Web
 //! (wasm32) builds embed only the UI face, BIZ UDPGothic Regular, to stay within the web size

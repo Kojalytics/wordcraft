@@ -11,7 +11,7 @@
 # Bulgarian computing vocabulary. No Microsoft Word (or other product) localisation, string table
 # or translated UI was consulted or copied, and no other catalog in this repository was used;
 # add entries the same way.
-# Product, format and technology names (WordCraft, PDF, Markdown, MCP …) stay in Latin letters.
+# Product, format and technology names (WordKoja, PDF, Markdown, MCP …) stay in Latin letters.
 # Commands and buttons use verbal nouns (Запазване, Вмъкване на таблица); instructions use the
 # polite imperative (Въведете, Изберете). Counts use count-neutral wording (`Думи: 21`), so no
 # plural forms are needed.
@@ -19,9 +19,10 @@
 	(no style)	(без стил)
 	(no suggestions)	(няма предложения)
 	1.5 Line Spacing	Междуредие 1,5
-	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Безплатен текстообработващ редактор с отворен код, написан от нулата на Rust.\nЧаст от Crafting Apps на екипа на ArtCraft.
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
 	About	Относно
-	About WordCraft	За WordCraft
+	About WordKoja	За WordKoja
 	Accept	Приемане
 	Accept All Changes	Приемане на всички промени
 	Accept This Change	Приемане на тази промяна
@@ -446,7 +447,7 @@
 	Inspect Styles at Selection	Проверка на стиловете при селекцията
 	Interface language:	Език на интерфейса:
 	Italic	Курсив
-	Join the ArtCraft community on Discord	Присъединете се към общността на ArtCraft в Discord
+	Join the Kojalytics community on Discord	Присъединете се към общността на Kojalytics в Discord
 	Join us on Discord: discord.gg/artcraft	Присъединете се към нас в Discord: discord.gg/artcraft
 	Justify	Двустранно подравняване
 	Keep Lines Together	Редовете заедно
@@ -459,7 +460,7 @@
 	Landscape	Пейзаж
 	Language	Език
 	{language} (no dictionary)	{language} (няма речник)
-	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Не е инсталиран правописен речник за {language}, затова текстът не се проверява. WordCraft търси речника Hunspell {name} в папката WORDCRAFT_DICTIONARIES и на обичайните места в системата.
+	No spelling dictionary for {language} is installed, so it isn't checked. WordKoja looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Не е инсталиран правописен речник за {language}, затова текстът не се проверява. WordKoja търси речника Hunspell {name} в папката WORDCRAFT_DICTIONARIES и на обичайните места в системата.
 	Lasso	Ласо
 	Last Column	Последна колона
 	Last commit	Последно подаване
@@ -786,7 +787,7 @@
 	Small caps	Малки главни букви
 	SmartArt	SmartArt
 	Sort	Сортиране
-	Source code: github.com/storytold/wordcraft	Изходен код: github.com/storytold/wordcraft
+	Source code: github.com/Kojalytics/wordcraft	Изходен код: github.com/Kojalytics/wordcraft
 	Space	Интервал
 	Space before/after:	Разстояние преди/след:
 	Spacing	Разстояние
@@ -921,7 +922,7 @@
 	Word Right	Дума надясно
 	Word document (*.docx)	Документ на Word (*.docx)
 	WordArt	WordArt
-	WordCraft	WordCraft
+	WordKoja	WordKoja
 	Words	Думи
 	Words only	Само думи
 	Wrap Text	Обтичане на текста
@@ -988,7 +989,7 @@
 	Stopped	Спряно
 	Speed	Скорост
 	Normal speed	Нормална скорост
-	AutoSave documents you have saved in WordCraft	Автоматично запазване на документите, които сте запазили в WordCraft
+	AutoSave documents you have saved in WordKoja	Автоматично запазване на документите, които сте запазили в WordKoja
 	AutoSave failed: {error}. Save the document to turn AutoSave back on.	Автоматичното запазване е неуспешно: {error}. Запазете документа, за да включите отново автоматичното запазване.
 	Couldn't download {name}: {error}	Неуспешно изтегляне на {name}: {error}
 	Do you want to save changes to {name}?	Искате ли да запазите промените в {name}?
@@ -1157,7 +1158,7 @@
 	Insert a new equation (Alt+=)	Вмъкване на ново уравнение (Alt+=)
 	Leave the equation (Esc)	Излизане от уравнението (Esc)
 	Preview	Визуализация
-	getartcraft.com/apps/wordcraft	getartcraft.com/apps/wordcraft
+	kojalytics.com/apps/wordcraft	kojalytics.com/apps/wordcraft
 	Draw Ink	Рисуване с мастило
 	Erase Ink	Изтриване на мастило
 	Hide Ink	Скриване на мастилото
@@ -1293,7 +1294,7 @@
 	The document will be saved with a password. Save it to protect it.	Документът ще бъде запазен с парола. Запазете го, за да го защитите.
 	The password is removed. Save the document to keep the change.	Паролата е премахната. Запазете документа, за да запазите промяната.
 	The passwords don't match.	Паролите не съвпадат.
-	Keep the password somewhere safe: without it nobody, WordCraft included, can open the document. Leave both boxes empty to remove the password.	Съхранявайте паролата на сигурно място: без нея никой, включително WordCraft, не може да отвори документа. Оставете двете полета празни, за да премахнете паролата.
+	Keep the password somewhere safe: without it nobody, WordKoja included, can open the document. Leave both boxes empty to remove the password.	Съхранявайте паролата на сигурно място: без нея никой, включително WordKoja, не може да отвори документа. Оставете двете полета празни, за да премахнете паролата.
 	Align Top Left	Подравняване горе вляво
 	Align Top Center	Подравняване горе в центъра
 	Align Top Right	Подравняване горе вдясно
@@ -2393,7 +2394,7 @@
 	Word document	Документ на Word
 	All files	Всички файлове
 	Recipient lists	Списъци с получатели
-	The system file dialog isn't available, so WordCraft shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Системният диалогов прозорец за файлове не е наличен, затова WordCraft показва своя. За да получите системния, инсталирайте портал за избор на файлове (например xdg-desktop-portal-gtk) или zenity.
+	The system file dialog isn't available, so WordKoja shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Системният диалогов прозорец за файлове не е наличен, затова WordKoja показва своя. За да получите системния, инсталирайте портал за избор на файлове (например xdg-desktop-portal-gtk) или zenity.
 	Up one level	Едно ниво нагоре
 	Home folder	Домашна папка
 	{name} wasn't found.	{name} не е намерен.
@@ -2401,8 +2402,8 @@
 	This folder can't be read: {error}	Тази папка не може да бъде прочетена: {error}
 	Showing the first {count} items.	Показани са първите {count} елемента.
 	File name:	Име на файла:
-	Browse in WordCraft…	Разглеждане в WordCraft…
-	Open a file with WordCraft's own browser when the system file dialog doesn't appear.	Отваряне на файл чрез собствения браузър на WordCraft, когато системният диалогов прозорец за файлове не се появява.
+	Browse in WordKoja…	Разглеждане в WordKoja…
+	Open a file with WordKoja's own browser when the system file dialog doesn't appear.	Отваряне на файл чрез собствения браузър на WordKoja, когато системният диалогов прозорец за файлове не се появява.
 	Resize Table by Dragging	Преоразмеряване на таблица чрез плъзгане
 	Visual effects	Визуални ефекти
 	Animation effects:	Ефекти на анимация:
@@ -2428,23 +2429,23 @@
 	TOC {n}	Съдържание {n}
 	Good afternoon	Добър ден
 	Context	Според контекста
-	Couldn't make WordCraft the default: {error}	WordCraft не можа да стане приложение по подразбиране: {error}
+	Couldn't make WordKoja the default: {error}	WordKoja не можа да стане приложение по подразбиране: {error}
 	Do Not Check Spelling or Grammar	Без проверка на правописа и граматиката
 	Hindi	Хинди
-	In Default apps, choose WordCraft for the document types you want it to open.	В „Приложения по подразбиране“ изберете WordCraft за типовете документи, които искате да отваря.
-	Make WordCraft the default for Word documents…	WordCraft по подразбиране за документи на Word…
+	In Default apps, choose WordKoja for the document types you want it to open.	В „Приложения по подразбиране“ изберете WordKoja за типовете документи, които искате да отваря.
+	Make WordKoja the default for Word documents…	WordKoja по подразбиране за документи на Word…
 	Numerals	Цифри
 	Numerals:	Цифри:
-	Opens .docx, .doc, .rtf and .odt files and Word templates with WordCraft from now on.	Отсега нататък файловете .docx, .doc, .rtf и .odt и шаблоните на Word ще се отварят с WordCraft.
-	Opens Settings › Default apps, where you choose WordCraft for .docx and the other document types.	Отваря „Настройки › Приложения по подразбиране“, където избирате WordCraft за .docx и другите типове документи.
+	Opens .docx, .doc, .rtf and .odt files and Word templates with WordKoja from now on.	Отсега нататък файловете .docx, .doc, .rtf и .odt и шаблоните на Word ще се отварят с WordKoja.
+	Opens Settings › Default apps, where you choose WordKoja for .docx and the other document types.	Отваря „Настройки › Приложения по подразбиране“, където избирате WordKoja за .docx и другите типове документи.
 	Reading	Четене
 	Reading Column Width	Ширина на колоната при четене
 	Reading Line Spacing	Междуредие при четене
 	Reading Text Size	Размер на текста при четене
 	Show KeyTips (Alt or F10)	Показване на клавишните подсказки (Alt или F10)
 	System	Според системата
-	To open Word documents with WordCraft by default: select one in Finder, choose File › Get Info, pick WordCraft under Open with, then click Change All.	За да се отварят документите на Word с WordCraft по подразбиране: изберете документ във Finder, изберете File › Get Info, изберете WordCraft под Open with и щракнете Change All.
-	WordCraft is now the default app for Word documents.	WordCraft вече е приложението по подразбиране за документи на Word.
+	To open Word documents with WordKoja by default: select one in Finder, choose File › Get Info, pick WordKoja under Open with, then click Change All.	За да се отварят документите на Word с WordKoja по подразбиране: изберете документ във Finder, изберете File › Get Info, изберете WordKoja под Open with и щракнете Change All.
+	WordKoja is now the default app for Word documents.	WordKoja вече е приложението по подразбиране за документи на Word.
 	Correct TWo INitial CApitals	Коригиране на ДВе НАчални ГЛавни букви
 	Correct accidental usage of cAPS LOCK key	Коригиране на случайно използване на клавиша cAPS LOCK
 	Picture	Картина
@@ -2500,8 +2501,8 @@
 	Undo History	История на отмяната
 	Undo {n} Actions	Отмяна на {n} действия
 	Start-up	Стартиране
-	Show the Start screen when WordCraft starts	Показване на началния екран при стартиране на WordCraft
-	On: WordCraft opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Вкл.: WordCraft се отваря на Файл › Начало с празен документ, шаблоните и последните документи. Изкл.: отваря се празен документ.
+	Show the Start screen when WordKoja starts	Показване на началния екран при стартиране на WordKoja
+	On: WordKoja opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Вкл.: WordKoja се отваря на Файл › Начало с празен документ, шаблоните и последните документи. Изкл.: отваря се празен документ.
 	Typing	Въвеждане
 	Level 4	Ниво 4
 	Level 5	Ниво 5
@@ -2548,7 +2549,7 @@
 	{name}   {height} × {width} mm	{name}   {height} × {width} мм
 	{width} × {height} mm	{width} × {height} мм
 	{kind}, {columns} × {rows}, {size} ({paper})	{kind}, {columns} × {rows}, {size} ({paper})
-	Researcher needs an online service; WordCraft keeps your documents offline.	Изследователят изисква онлайн услуга, а WordCraft пази документите ви офлайн.
+	Researcher needs an online service; WordKoja keeps your documents offline.	Изследователят изисква онлайн услуга, а WordKoja пази документите ви офлайн.
 	These settings will be used for new documents.	Тези настройки ще се използват за новите документи.
 	can't split at the first row	таблицата не може да се раздели на първия ред
 	select two or more cells to merge	изберете две или повече клетки за обединяване

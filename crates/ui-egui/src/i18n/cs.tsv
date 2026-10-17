@@ -10,7 +10,7 @@
 # Clean room: every entry was written from the plain meaning of the English label in ordinary
 # Czech computing and typography vocabulary. No Microsoft Word (or other product) localisation,
 # string table or translated UI was consulted or copied; add entries the same way.
-# Product, format and technology names (WordCraft, PDF, Markdown, MCP …) stay in Latin letters.
+# Product, format and technology names (WordKoja, PDF, Markdown, MCP …) stay in Latin letters.
 # Counts use count-neutral wording (`Počet slov: 21`), so no plural forms are needed.
 
 	(All)	(Vše)
@@ -24,14 +24,15 @@
 	1/4 Em Space	Čtvrtčtverčíková mezera
 	3-D	3D
 	A file dialog is already open.	Dialogové okno souboru je již otevřené.
-	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Bezplatný textový procesor s otevřeným zdrojovým kódem napsaný od základu v jazyce Rust.\nSoučást sady Crafting Apps od týmu ArtCraft.
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
 	AaBbCcDd	AaÁáBbCc
 	A mail merge field	Pole hromadné korespondence
 	A numbered sequence (figures, tables…)	Číslovaná posloupnost (obrázky, tabulky…)
 	A password is required to open this document.	K otevření tohoto dokumentu je vyžadováno heslo.
 	A table of contents	Obsah
 	About	O aplikaci
-	About WordCraft	O aplikaci WordCraft
+	About WordKoja	O aplikaci WordKoja
 	Accent	Diakritika
 	Accept	Přijmout
 	Accept All Changes	Přijmout všechny změny
@@ -112,7 +113,7 @@
 	Automatic Table 1 (3 levels)	Automatický obsah 1 (3 úrovně)
 	Automatic Table 2 (2 levels)	Automatický obsah 2 (2 úrovně)
 	AutoSave	Automatické ukládání
-	AutoSave documents you have saved in WordCraft	Automaticky ukládat dokumenty uložené ve WordCraftu
+	AutoSave documents you have saved in WordKoja	Automaticky ukládat dokumenty uložené ve WordKojau
 	AutoSave failed: {error}. Save the document to turn AutoSave back on.	Automatické ukládání selhalo: {error}. Uložením dokumentu automatické ukládání znovu zapnete.
 	AutoSave isn't available in the browser: it can't write to your files. Save downloads a copy.	Automatické ukládání není v prohlížeči dostupné, protože nemůže zapisovat do vašich souborů. Příkaz Uložit stáhne kopii.
 	AutoSave only keeps .docx, .odt and .rtf files; {name} can't keep all formatting. Save as .docx to turn on AutoSave.	Automatické ukládání podporuje pouze soubory .docx, .odt a .rtf; formát {name} nedokáže zachovat veškeré formátování. Pro zapnutí automatického ukládání uložte dokument jako .docx.
@@ -489,7 +490,7 @@
 	✓ None	✓ Žádné
 	Function	Funkce
 	General	Obecné
-	getartcraft.com/apps/wordcraft	getartcraft.com/apps/wordcraft
+	kojalytics.com/apps/wordcraft	kojalytics.com/apps/wordcraft
 	Glow	Záře
 	Glow Colors	Barvy záře
 	Go To	Přejít na
@@ -603,7 +604,7 @@
 	Interface theme:	Motiv rozhraní:
 	Interface\nTheme	Motiv\nrozhraní
 	Italic	Kurzíva
-	Join the ArtCraft community on Discord	Připojte se ke komunitě ArtCraft na Discordu
+	Join the Kojalytics community on Discord	Připojte se ke komunitě Kojalytics na Discordu
 	Join us on Discord: discord.gg/artcraft	Připojte se k nám na Discordu: discord.gg/artcraft
 	Justification	Zarovnání
 	Justified	Do bloku
@@ -611,7 +612,7 @@
 	Keep Lines Together	Svázat řádky
 	Keep lines together	Svázat řádky
 	Keep Text Only	Zachovat pouze text
-	Keep the password somewhere safe: without it nobody, WordCraft included, can open the document. Leave both boxes empty to remove the password.	Heslo si bezpečně uložte: bez něj dokument nikdo (včetně aplikace WordCraft) neotevře. Chcete-li heslo odebrat, ponechte obě pole prázdná.
+	Keep the password somewhere safe: without it nobody, WordKoja included, can open the document. Leave both boxes empty to remove the password.	Heslo si bezpečně uložte: bez něj dokument nikdo (včetně aplikace WordKoja) neotevře. Chcete-li heslo odebrat, ponechte obě pole prázdná.
 	Keep with Next	Svázat s následujícím
 	Keep with next	Svázat s následujícím
 	Keywords	Klíčová slova
@@ -620,7 +621,7 @@
 	Landscape	Na šířku
 	Language	Jazyk
 	{language} (no dictionary)	{language} (bez slovníku)
-	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Pro jazyk {language} není nainstalován žádný pravopisný slovník, proto se nekontroluje. WordCraft hledá slovník Hunspell {name} ve složce WORDCRAFT_DICTIONARIES a na obvyklých místech v systému.
+	No spelling dictionary for {language} is installed, so it isn't checked. WordKoja looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Pro jazyk {language} není nainstalován žádný pravopisný slovník, proto se nekontroluje. WordKoja hledá slovník Hunspell {name} ve složce WORDCRAFT_DICTIONARIES a na obvyklých místech v systému.
 	Large\nOperator	Velký\noperátor
 	Lasso	Laso
 	Last Column	Poslední sloupec
@@ -1124,7 +1125,7 @@
 	Soft Edges	Měkké okraje
 	Sort	Seřadit
 	Sort order:	Pořadí řazení:
-	Source code: github.com/storytold/wordcraft	Zdrojový kód: github.com/storytold/wordcraft
+	Source code: github.com/Kojalytics/wordcraft	Zdrojový kód: github.com/Kojalytics/wordcraft
 	Space	Mezera
 	Space after	Mezera za
 	Space after: {pt} pt	Mezera za: {pt} b.
@@ -1328,7 +1329,7 @@
 	Word Left	O slovo vlevo
 	Word Right	O slovo vpravo
 	WordArt	WordArt
-	WordCraft	WordCraft
+	WordKoja	WordKoja
 	Words	Slova
 	Words only	Pouze slova
 	Wrap Text	Obtékání textu
@@ -2306,7 +2307,7 @@ preview	Title	Ukázka
 	Word document	Dokument Word
 	All files	Všechny soubory
 	Recipient lists	Seznamy příjemců
-	The system file dialog isn't available, so WordCraft shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Systémový dialog pro práci se soubory není k dispozici, proto WordCraft zobrazuje vlastní. Chcete-li používat systémový dialog, nainstalujte portál pro výběr souborů (například xdg-desktop-portal-gtk) nebo zenity.
+	The system file dialog isn't available, so WordKoja shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Systémový dialog pro práci se soubory není k dispozici, proto WordKoja zobrazuje vlastní. Chcete-li používat systémový dialog, nainstalujte portál pro výběr souborů (například xdg-desktop-portal-gtk) nebo zenity.
 	Up one level	O úroveň výš
 	Home folder	Domovská složka
 	{name} wasn't found.	Položka {name} nebyla nalezena.
@@ -2314,8 +2315,8 @@ preview	Title	Ukázka
 	This folder can't be read: {error}	Tuto složku nelze přečíst: {error}
 	Showing the first {count} items.	Zobrazuje se prvních {count} položek.
 	File name:	Název souboru:
-	Browse in WordCraft…	Procházet ve WordCraftu…
-	Open a file with WordCraft's own browser when the system file dialog doesn't appear.	Otevřít soubor pomocí vlastního prohlížeče souborů WordCraftu, když se systémový dialog pro práci se soubory nezobrazí.
+	Browse in WordKoja…	Procházet ve WordKojau…
+	Open a file with WordKoja's own browser when the system file dialog doesn't appear.	Otevřít soubor pomocí vlastního prohlížeče souborů WordKojau, když se systémový dialog pro práci se soubory nezobrazí.
 	Hide White Space	Skrýt prázdné místo
 	All pages	Všechny stránky
 	Current page	Aktuální stránka
@@ -2453,15 +2454,15 @@ preview	Title	Ukázka
 	Undo 1 Action	Vrátit 1 akci
 	Undo {n} Actions	Vrátit akce: {n}
 	Start-up	Spuštění
-	Show the Start screen when WordCraft starts	Při spuštění WordCraftu zobrazit úvodní obrazovku
-	On: WordCraft opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Zapnuto: WordCraft se otevře na kartě Soubor › Domů s prázdným dokumentem, šablonami a nedávnými dokumenty. Vypnuto: otevře prázdný dokument.
-	Couldn't make WordCraft the default: {error}	WordCraft se nepodařilo nastavit jako výchozí: {error}
-	In Default apps, choose WordCraft for the document types you want it to open.	Ve Výchozích aplikacích vyberte WordCraft pro typy dokumentů, které má otevírat.
-	Make WordCraft the default for Word documents…	Nastavit WordCraft jako výchozí pro dokumenty Word…
-	Opens .docx, .doc, .rtf and .odt files and Word templates with WordCraft from now on.	Soubory .docx, .doc, .rtf a .odt a šablony Wordu se od teď otevírají ve WordCraftu.
-	Opens Settings › Default apps, where you choose WordCraft for .docx and the other document types.	Otevře Nastavení › Výchozí aplikace, kde zvolíte WordCraft pro .docx a další typy dokumentů.
-	To open Word documents with WordCraft by default: select one in Finder, choose File › Get Info, pick WordCraft under Open with, then click Change All.	Chcete-li dokumenty Word otevírat ve WordCraftu jako výchozí: vyberte jeden ve Finderu, zvolte Soubor › Informace, v části „Otevřít v aplikaci“ vyberte WordCraft a klikněte na „Změnit vše“.
-	WordCraft is now the default app for Word documents.	WordCraft je nyní výchozí aplikací pro dokumenty Word.
+	Show the Start screen when WordKoja starts	Při spuštění WordKojau zobrazit úvodní obrazovku
+	On: WordKoja opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Zapnuto: WordKoja se otevře na kartě Soubor › Domů s prázdným dokumentem, šablonami a nedávnými dokumenty. Vypnuto: otevře prázdný dokument.
+	Couldn't make WordKoja the default: {error}	WordKoja se nepodařilo nastavit jako výchozí: {error}
+	In Default apps, choose WordKoja for the document types you want it to open.	Ve Výchozích aplikacích vyberte WordKoja pro typy dokumentů, které má otevírat.
+	Make WordKoja the default for Word documents…	Nastavit WordKoja jako výchozí pro dokumenty Word…
+	Opens .docx, .doc, .rtf and .odt files and Word templates with WordKoja from now on.	Soubory .docx, .doc, .rtf a .odt a šablony Wordu se od teď otevírají ve WordKojau.
+	Opens Settings › Default apps, where you choose WordKoja for .docx and the other document types.	Otevře Nastavení › Výchozí aplikace, kde zvolíte WordKoja pro .docx a další typy dokumentů.
+	To open Word documents with WordKoja by default: select one in Finder, choose File › Get Info, pick WordKoja under Open with, then click Change All.	Chcete-li dokumenty Word otevírat ve WordKojau jako výchozí: vyberte jeden ve Finderu, zvolte Soubor › Informace, v části „Otevřít v aplikaci“ vyberte WordKoja a klikněte na „Změnit vše“.
+	WordKoja is now the default app for Word documents.	WordKoja je nyní výchozí aplikací pro dokumenty Word.
 	Numerals:	Číslice:
 	Numerals	Číslice
 	Hindi	Hindské
@@ -2551,7 +2552,7 @@ preview	Title	Ukázka
 	{name}   {height} × {width} mm	{name}   {height} × {width} mm
 	{width} × {height} mm	{width} × {height} mm
 	{kind}, {columns} × {rows}, {size} ({paper})	{kind}, {columns} × {rows}, {size} ({paper})
-	Researcher needs an online service; WordCraft keeps your documents offline.	Výzkumník potřebuje online službu; WordCraft vaše dokumenty uchovává offline.
+	Researcher needs an online service; WordKoja keeps your documents offline.	Výzkumník potřebuje online službu; WordKoja vaše dokumenty uchovává offline.
 	These settings will be used for new documents.	Tato nastavení se použijí pro nové dokumenty.
 	can't split at the first row	tabulku nelze rozdělit na prvním řádku
 	select two or more cells to merge	vyberte ke sloučení dvě nebo více buněk

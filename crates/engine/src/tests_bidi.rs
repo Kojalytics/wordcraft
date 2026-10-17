@@ -220,10 +220,10 @@ fn word_moves_follow_reading_order() {
 #[test]
 fn typing_persian_keeps_logical_order() {
     let mut s = session("", true);
-    for w in ["سلام", " ", "WordCraft", " ", "۱۴۰۳"] {
+    for w in ["سلام", " ", "WordKoja", " ", "۱۴۰۳"] {
         run(&mut s, "text.insert", json!({"text": w}));
     }
-    assert_eq!(s.doc.plain_text(StoryRef::Body), "سلام WordCraft ۱۴۰۳");
+    assert_eq!(s.doc.plain_text(StoryRef::Body), "سلام WordKoja ۱۴۰۳");
     // The caret after typing a number at the end sits right after it on the screen.
     let l = s.layout();
     let c = l.caret(&s.sel.focus).unwrap();

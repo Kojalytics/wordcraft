@@ -12,14 +12,15 @@
 # Clean room: every entry was written from the plain meaning of the English label in ordinary
 # computing vocabulary. No Microsoft Word (or other product) localisation, string table or
 # translated UI was consulted or copied; add entries the same way.
-# Product, format and technology names (WordCraft, PDF, Markdown, MCP …) stay as they are.
+# Product, format and technology names (WordKoja, PDF, Markdown, MCP …) stay as they are.
 
 	(no style)	(ingen stil)
 	(no suggestions)	(inga förslag)
 	1.5 Line Spacing	Radavstånd 1,5
-	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	En gratis ordbehandlare med öppen källkod, skriven från grunden i Rust.\nEn del av Crafting Apps från ArtCraft-teamet.
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
 	About	Om
-	About WordCraft	Om WordCraft
+	About WordKoja	Om WordKoja
 	Accept	Acceptera
 	Accept All Changes	Acceptera alla ändringar
 	Accept This Change	Acceptera den här ändringen
@@ -286,7 +287,7 @@
 	Copy	Kopiera
 	Copy Formatting	Kopiera formatering
 	Corrections	Korrigeringar
-	Couldn't make WordCraft the default: {error}	Det gick inte att göra WordCraft till standardprogram: {error}
+	Couldn't make WordKoja the default: {error}	Det gick inte att göra WordKoja till standardprogram: {error}
 	Count words in text boxes and notes	Räkna ord i textrutor, fotnoter och slutnoter
 	Cover Page	Försättsblad
 	Create	Skapa
@@ -462,7 +463,7 @@
 	Immersive	Fördjupning
 	Immersive Reader	Fördjupad läsning
 	Immersive\nReader	Fördjupad\nläsning
-	In Default apps, choose WordCraft for the document types you want it to open.	I Standardappar väljer du WordCraft för de dokumenttyper som den ska öppna.
+	In Default apps, choose WordKoja for the document types you want it to open.	I Standardappar väljer du WordKoja för de dokumenttyper som den ska öppna.
 	Increase Font Size	Öka teckenstorleken
 	Increase Indent	Öka indraget
 	Indent	Indrag
@@ -505,8 +506,8 @@
 	Inspect Styles at Selection	Inspektera stilar vid markeringen
 	Interface language:	Gränssnittsspråk:
 	Italic	Kursiv
-	Join the ArtCraft community on Discord	Gå med i ArtCrafts community på Discord
-	Join us on Discord: discord.gg/artcraft	Gå med i ArtCrafts community på Discord: discord.gg/artcraft
+	Join the Kojalytics community on Discord	Gå med i Kojalyticss community på Discord
+	Join us on Discord: discord.gg/artcraft	Gå med i Kojalyticss community på Discord: discord.gg/artcraft
 	Justify	Marginaljustera
 	Keep Lines Together	Håll ihop raderna
 	Keep Text Only	Behåll bara texten
@@ -550,7 +551,7 @@
 	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft-teamet och WordCrafts bidragsgivare.
 	Macros	Makron
 	Mailings	Utskick
-	Make WordCraft the default for Word documents…	Gör WordCraft till standardprogram för Word-dokument…
+	Make WordKoja the default for Word documents…	Gör WordKoja till standardprogram för Word-dokument…
 	Manage Sources	Hantera källor
 	Many pages	Många sidor
 	Margins	Marginaler
@@ -623,8 +624,8 @@
 	One Page	En sida
 	Open	Öppna
 	OpenDocument Text (*.odt)	OpenDocument-text (*.odt)
-	Opens .docx, .doc, .rtf and .odt files and Word templates with WordCraft from now on.	Öppnar .docx-, .doc-, .rtf- och .odt-filer och Word-mallar med WordCraft från och med nu.
-	Opens Settings › Default apps, where you choose WordCraft for .docx and the other document types.	Öppnar Inställningar › Standardappar, där du väljer WordCraft för .docx och de andra dokumenttyperna.
+	Opens .docx, .doc, .rtf and .odt files and Word templates with WordKoja from now on.	Öppnar .docx-, .doc-, .rtf- och .odt-filer och Word-mallar med WordKoja från och med nu.
+	Opens Settings › Default apps, where you choose WordKoja for .docx and the other document types.	Öppnar Inställningar › Standardappar, där du väljer WordKoja för .docx och de andra dokumenttyperna.
 	Optional Hyphen	Mjukt bindestreck
 	Copyright Sign	Copyrighttecken
 	Ellipsis	Ellips
@@ -853,7 +854,7 @@
 	Small caps	Kapitäler
 	SmartArt	SmartArt
 	Sort	Sortera
-	Source code: github.com/storytold/wordcraft	Källkod: github.com/storytold/wordcraft
+	Source code: github.com/Kojalytics/wordcraft	Källkod: github.com/Kojalytics/wordcraft
 	Space	Blanksteg
 	Space before/after:	Avstånd före/efter:
 	Spacing	Avstånd
@@ -937,7 +938,7 @@
 	Tight	Tät
 	TOC Heading	Innehållsrubrik
 	TOC {n}	Innehåll {n}
-	To open Word documents with WordCraft by default: select one in Finder, choose File › Get Info, pick WordCraft under Open with, then click Change All.	Så här öppnar du Word-dokument med WordCraft som standard: markera ett dokument i Finder, välj Arkiv › Hämta info, välj WordCraft under Öppna med och klicka sedan på Ändra alla.
+	To open Word documents with WordKoja by default: select one in Finder, choose File › Get Info, pick WordKoja under Open with, then click Change All.	Så här öppnar du Word-dokument med WordKoja som standard: markera ett dokument i Finder, välj Arkiv › Hämta info, välj WordKoja under Öppna med och klicka sedan på Ändra alla.
 	Top Border	Övre kantlinje
 	Top Margin	Övre marginal
 	Top of Page	Överst på sidan
@@ -1001,8 +1002,8 @@
 	Word document (*.docx)	Word-dokument (*.docx)
 	Word XML Document (*.xml)	Word XML-dokument (*.xml)
 	WordArt	WordArt
-	WordCraft	WordCraft
-	WordCraft is now the default app for Word documents.	WordCraft är nu standardprogram för Word-dokument.
+	WordKoja	WordKoja
+	WordKoja is now the default app for Word documents.	WordKoja är nu standardprogram för Word-dokument.
 	Words	Ord
 	Words only	Bara ord
 	Wrap Text	Textombrytning
@@ -1071,7 +1072,7 @@
 	Stopped	Stoppad
 	Speed	Hastighet
 	Normal speed	Normal hastighet
-	AutoSave documents you have saved in WordCraft	Autospara dokument som du har sparat i WordCraft
+	AutoSave documents you have saved in WordKoja	Autospara dokument som du har sparat i WordKoja
 	AutoSave failed: {error}. Save the document to turn AutoSave back on.	Autospara misslyckades: {error}. Spara dokumentet för att slå på Autospara igen.
 	Couldn't download {name}: {error}	Det gick inte att ladda ner {name}: {error}
 	Do you want to save changes to {name}?	Vill du spara ändringarna i {name}?
@@ -1241,7 +1242,7 @@
 	Insert a new equation (Alt+=)	Infoga en ny ekvation (Alt+=)
 	Leave the equation (Esc)	Lämna ekvationen (Esc)
 	Preview	Förhandsvisning
-	getartcraft.com/apps/wordcraft	getartcraft.com/apps/wordcraft
+	kojalytics.com/apps/wordcraft	kojalytics.com/apps/wordcraft
 	Draw Ink	Rita med bläck
 	Erase Ink	Sudda bläck
 	Hide Ink	Dölj bläck
@@ -1380,7 +1381,7 @@
 	The document will be saved with a password. Save it to protect it.	Dokumentet sparas med lösenord. Spara det för att skydda det.
 	The password is removed. Save the document to keep the change.	Lösenordet är borttaget. Spara dokumentet för att behålla ändringen.
 	The passwords don't match.	Lösenorden stämmer inte överens.
-	Keep the password somewhere safe: without it nobody, WordCraft included, can open the document. Leave both boxes empty to remove the password.	Förvara lösenordet på ett säkert ställe: utan det kan ingen, inte heller WordCraft, öppna dokumentet. Lämna båda rutorna tomma för att ta bort lösenordet.
+	Keep the password somewhere safe: without it nobody, WordKoja included, can open the document. Leave both boxes empty to remove the password.	Förvara lösenordet på ett säkert ställe: utan det kan ingen, inte heller WordKoja, öppna dokumentet. Lämna båda rutorna tomma för att ta bort lösenordet.
 
 # Interface text routed through translation (#313)
 	Align Top Left	Justera uppe till vänster
@@ -1769,7 +1770,7 @@
 	Word document	Word-dokument
 	All files	Alla filer
 	Recipient lists	Mottagarlistor
-	The system file dialog isn't available, so WordCraft shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Systemets fildialogruta är inte tillgänglig, så WordCraft visar sin egen. Installera en filväljarportal (till exempel xdg-desktop-portal-gtk) eller zenity för att få systemets dialogruta.
+	The system file dialog isn't available, so WordKoja shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Systemets fildialogruta är inte tillgänglig, så WordKoja visar sin egen. Installera en filväljarportal (till exempel xdg-desktop-portal-gtk) eller zenity för att få systemets dialogruta.
 	Up one level	Upp en nivå
 	Home folder	Hemmapp
 	{name} wasn't found.	{name} hittades inte.
@@ -1777,8 +1778,8 @@
 	This folder can't be read: {error}	Den här mappen kan inte läsas: {error}
 	Showing the first {count} items.	Visar de första {count} objekten.
 	File name:	Filnamn:
-	Browse in WordCraft…	Bläddra i WordCraft…
-	Open a file with WordCraft's own browser when the system file dialog doesn't appear.	Öppna en fil med WordCrafts egen filbläddrare när systemets fildialogruta inte visas.
+	Browse in WordKoja…	Bläddra i WordKoja…
+	Open a file with WordKoja's own browser when the system file dialog doesn't appear.	Öppna en fil med WordKojas egen filbläddrare när systemets fildialogruta inte visas.
 	Hide White Space	Dölj tomrum
 	All pages	Alla sidor
 	Current page	Aktuell sida
@@ -2439,8 +2440,8 @@ preview	Title	Titel
 	Region:	Region:
 	Automatic ({region})	Automatisk ({region})
 	Start-up	Start
-	Show the Start screen when WordCraft starts	Visa startskärmen när WordCraft startar
-	On: WordCraft opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	På: WordCraft öppnas på Arkiv › Start, med ett tomt dokument, mallarna och dina senaste dokument. Av: ett tomt dokument öppnas.
+	Show the Start screen when WordKoja starts	Visa startskärmen när WordKoja startar
+	On: WordKoja opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	På: WordKoja öppnas på Arkiv › Start, med ett tomt dokument, mallarna och dina senaste dokument. Av: ett tomt dokument öppnas.
 
 # Strings the Spanish catalog lacks: paper sizes, citation and table styles, list levels and
 # proofing messages.
@@ -2491,7 +2492,7 @@ preview	Title	Titel
 	Edit Document	Redigera dokument
 	Go to what:	Gå till:
 	Reading Mode	Läsläge
-	Researcher needs an online service; WordCraft keeps your documents offline.	Efterforska kräver en onlinetjänst; WordCraft håller dina dokument offline.
+	Researcher needs an online service; WordKoja keeps your documents offline.	Efterforska kräver en onlinetjänst; WordKoja håller dina dokument offline.
 	Suggested	Förslag
 	Text size	Textstorlek
 	These settings will be used for new documents.	De här inställningarna används för nya dokument.
@@ -2535,7 +2536,7 @@ preview	Title	Titel
 	Hidden bookmarks	Dolda bokmärken
 	Sort by:	Sortera efter:
 	{language} (no dictionary)	{language} (ingen ordlista)
-	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Ingen stavningsordlista för {language} är installerad, så språket kontrolleras inte. WordCraft letar efter Hunspell-ordlistan {name} i mappen WORDCRAFT_DICTIONARIES och på systemets vanliga platser.
+	No spelling dictionary for {language} is installed, so it isn't checked. WordKoja looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Ingen stavningsordlista för {language} är installerad, så språket kontrolleras inte. WordKoja letar efter Hunspell-ordlistan {name} i mappen WORDCRAFT_DICTIONARIES och på systemets vanliga platser.
 	Word 2003 XML Document (*.xml)	Word 2003 XML-dokument (*.xml)
 	Type Character Code	Skriv teckenkod
 	Auto ({percent}%)	Automatisk ({percent} %)

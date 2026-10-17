@@ -3,7 +3,7 @@ name = "wordcraft-mcp"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "WordCraft MCP server: every command as a tool, headless or bridged to the running app"
+description = "WordKoja MCP server: every command as a tool, headless or bridged to the running app"
 
 [lints]
 workspace = true

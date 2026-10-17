@@ -462,7 +462,7 @@ pub fn dttm_to_iso(v: u32) -> Option<String> {
 
 /// An ISO 8601 date (`YYYY-MM-DD`, optionally `THH:MM…`; seconds and zone ignored) as an RTF
 /// DTTM; `None` when it isn't one or falls outside DTTM's years (1900–2411). DTTM has no time
-/// zone or seconds: the clock time is written as given (WordCraft keeps UTC, `Z`), and seconds
+/// zone or seconds: the clock time is written as given (WordKoja keeps UTC, `Z`), and seconds
 /// and any offset are dropped.
 pub fn iso_to_dttm(s: &str) -> Option<u32> {
     let num = |a: usize, b: usize| s.get(a..b).filter(|t| t.bytes().all(|c| c.is_ascii_digit())).and_then(|t| t.parse::<u32>().ok());
@@ -505,7 +505,7 @@ fn export_with(m: &Meta, w: &Writer, body: &str, sec: &wordcraft_doc::SectionPro
     for c in &w.t.colors {
         out.push_str(&format!("\\red{}\\green{}\\blue{};", c.0, c.1, c.2));
     }
-    out.push_str("}\n{\\*\\generator WordCraft;}\n{\\stylesheet{\\s0\\snext0 Normal;}");
+    out.push_str("}\n{\\*\\generator WordKoja;}\n{\\stylesheet{\\s0\\snext0 Normal;}");
     for n in 1..=6u32 {
         let sz = HEAD_SIZES.get(n as usize - 1).copied().unwrap_or(12.0);
         out.push_str(&format!("{{\\s{n}\\sbasedon0\\snext0\\outlinelevel{}\\keepn\\b\\fs{} heading {n};}}", n - 1, (sz * 2.0) as i32));

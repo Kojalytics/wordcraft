@@ -7,13 +7,14 @@
 # No Microsoft Word or other product localisation was consulted or copied.
 # Use short commands and plain Estonian. Keep product and format names.
 # Use count-neutral labels. This catalog does not add Estonian spell checking.
-# Author: @henno with Codex; MIT OR Apache-2.0, like WordCraft.
+# Author: @henno with Codex; MIT OR Apache-2.0, like WordKoja.
 
 	(no suggestions)	(soovitused puuduvad)
 	1.5 Line Spacing	Reavahe 1,5
-	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Tasuta avatud lähtekoodiga tekstitöötlusprogramm, mis on kirjutatud Rustis.\nArtCrafti meeskonna Crafting Appsi osa.
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
 	About	Teave
-	About WordCraft	WordCrafti teave
+	About WordKoja	WordKojai teave
 	Accept	Nõustu
 	Accept All Changes	Nõustu kõigi muudatustega
 	Accept This Change	Nõustu selle muudatusega
@@ -387,7 +388,7 @@
 	Interface language	Kasutajaliidese keel
 	Interface language:	Kasutajaliidese keel:
 	Italic	Kaldkiri
-	Join the ArtCraft community on Discord	Liitu ArtCrafti kogukonnaga Discordis
+	Join the Kojalytics community on Discord	Liitu Kojalyticsi kogukonnaga Discordis
 	Join us on Discord: discord.gg/artcraft	Liitu meiega Discordis: discord.gg/artcraft
 	Justify	Rööpjoonda
 	Keep Lines Together	Hoia read koos
@@ -401,7 +402,7 @@
 	Landscape	Rõhtpaigutus
 	Language	Keel
 	{language} (no dictionary)	{language} (sõnastik puudub)
-	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Keele {language} õigekirjasõnastikku pole paigaldatud, seega seda ei kontrollita. WordCraft otsib Hunspelli sõnastikku {name} kaustast WORDCRAFT_DICTIONARIES ja tavalistest süsteemikohtadest.
+	No spelling dictionary for {language} is installed, so it isn't checked. WordKoja looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Keele {language} õigekirjasõnastikku pole paigaldatud, seega seda ei kontrollita. WordKoja otsib Hunspelli sõnastikku {name} kaustast WORDCRAFT_DICTIONARIES ja tavalistest süsteemikohtadest.
 	Lasso	Lasso
 	Last Column	Viimane veerg
 	Last commit	Viimane commit
@@ -740,7 +741,7 @@
 	Small caps	Kapiteelkiri
 	SmartArt	SmartArt
 	Sort	Sordi
-	Source code: github.com/storytold/wordcraft	Lähtekood: github.com/storytold/wordcraft
+	Source code: github.com/Kojalytics/wordcraft	Lähtekood: github.com/Kojalytics/wordcraft
 	Space before/after:	Vahe enne/pärast:
 	Spaces	Tühikud
 	Spacing	Vahe
@@ -889,7 +890,7 @@
 	Word XML Document (*.xml)	Wordi XML-dokument (*.xml)
 	Word 2003 XML Document (*.xml)	Word 2003 XML-dokument (*.xml)
 	WordArt	WordArt
-	WordCraft	WordCraft
+	WordKoja	WordKoja
 	Words	Sõnad
 	Words only	Ainult sõnad
 	Wrap Text	Mähi tekst
@@ -954,7 +955,7 @@
 	Stopped	Lõpetatud
 	Speed	Kiirus
 	Normal speed	Tavaline kiirus
-	AutoSave documents you have saved in WordCraft	Salvesta WordCraftis salvestatud dokumendid automaatselt
+	AutoSave documents you have saved in WordKoja	Salvesta WordKojais salvestatud dokumendid automaatselt
 	AutoSave failed: {error}. Save the document to turn AutoSave back on.	Automaatsalvestus ebaõnnestus: {error}. Selle uuesti sisse lülitamiseks salvesta dokument.
 	Couldn't download {name}: {error}	Faili {name} allalaadimine ebaõnnestus: {error}
 	Do you want to save changes to {name}?	Kas soovid faili {name} muudatused salvestada?
@@ -1124,7 +1125,7 @@
 	Left Margin	Vasak veeris
 	Repeat as header row on each page	Korda päisereana igal lehel
 	Insert a new equation (Alt+=)	Lisa uus võrrand (Alt+=)
-	getartcraft.com/apps/wordcraft	getartcraft.com/apps/wordcraft
+	kojalytics.com/apps/wordcraft	kojalytics.com/apps/wordcraft
 	Bottom Margin	Alumine veeris
 	Cell	Lahter
 	Specify height:	Määra kõrgus:
@@ -1218,7 +1219,7 @@
 	The document will be saved with a password. Save it to protect it.	Dokument salvestatakse parooliga. Kaitsmiseks salvesta see.
 	The password is removed. Save the document to keep the change.	Parool on eemaldatud. Muudatuse säilitamiseks salvesta dokument.
 	The passwords don't match.	Paroolid ei ühti.
-	Keep the password somewhere safe: without it nobody, WordCraft included, can open the document. Leave both boxes empty to remove the password.	Hoia parooli kindlas kohas: ilma selleta ei saa keegi, ka WordCraft, dokumenti avada. Parooli eemaldamiseks jäta mõlemad väljad tühjaks.
+	Keep the password somewhere safe: without it nobody, WordKoja included, can open the document. Leave both boxes empty to remove the password.	Hoia parooli kindlas kohas: ilma selleta ei saa keegi, ka WordKoja, dokumenti avada. Parooli eemaldamiseks jäta mõlemad väljad tühjaks.
 	Align Top Left	Joonda üles vasakule
 	Align Top Center	Joonda üles keskele
 	Align Top Right	Joonda üles paremale
@@ -1639,13 +1640,13 @@
 	Hindi	Hindi
 	Context	Kontekst
 	System	Süsteem
-	Couldn't make WordCraft the default: {error}	WordCrafti ei õnnestunud vaikerakenduseks määrata: {error}
-	In Default apps, choose WordCraft for the document types you want it to open.	Vali jaotises „Vaikerakendused“ WordCraft nende dokumenditüüpide jaoks, mida see peaks avama.
-	Make WordCraft the default for Word documents…	Määra WordCraft Wordi dokumentide vaikerakenduseks…
-	Opens .docx, .doc, .rtf and .odt files and Word templates with WordCraft from now on.	Edaspidi avatakse .docx-, .doc-, .rtf- ja .odt-failid ning Wordi mallid WordCraftiga.
-	Opens Settings › Default apps, where you choose WordCraft for .docx and the other document types.	Avab Sätted › Vaikerakendused, kus saad valida WordCrafti .docx-i ja teiste dokumenditüüpide jaoks.
-	To open Word documents with WordCraft by default: select one in Finder, choose File › Get Info, pick WordCraft under Open with, then click Change All.	Wordi dokumentide vaikimisi avamiseks WordCraftiga vali Finderis üks dokument, vali Fail › Hangi teave, vali jaotises „Ava rakendusega“ WordCraft ja klõpsa „Muuda kõiki“.
-	WordCraft is now the default app for Word documents.	WordCraft on nüüd Wordi dokumentide vaikerakendus.
+	Couldn't make WordKoja the default: {error}	WordKojai ei õnnestunud vaikerakenduseks määrata: {error}
+	In Default apps, choose WordKoja for the document types you want it to open.	Vali jaotises „Vaikerakendused“ WordKoja nende dokumenditüüpide jaoks, mida see peaks avama.
+	Make WordKoja the default for Word documents…	Määra WordKoja Wordi dokumentide vaikerakenduseks…
+	Opens .docx, .doc, .rtf and .odt files and Word templates with WordKoja from now on.	Edaspidi avatakse .docx-, .doc-, .rtf- ja .odt-failid ning Wordi mallid WordKojaiga.
+	Opens Settings › Default apps, where you choose WordKoja for .docx and the other document types.	Avab Sätted › Vaikerakendused, kus saad valida WordKojai .docx-i ja teiste dokumenditüüpide jaoks.
+	To open Word documents with WordKoja by default: select one in Finder, choose File › Get Info, pick WordKoja under Open with, then click Change All.	Wordi dokumentide vaikimisi avamiseks WordKojaiga vali Finderis üks dokument, vali Fail › Hangi teave, vali jaotises „Ava rakendusega“ WordKoja ja klõpsa „Muuda kõiki“.
+	WordKoja is now the default app for Word documents.	WordKoja on nüüd Wordi dokumentide vaikerakendus.
 	Templates	Mallid
 	Templates and Add-ins	Mallid ja lisandmoodulid
 	Attach Template	Manusta mall
@@ -1748,7 +1749,7 @@
 	Word document	Wordi dokument
 	All files	Kõik failid
 	Recipient lists	Adressaatide loendid
-	The system file dialog isn't available, so WordCraft shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Süsteemi failidialoog pole saadaval, seega näitab WordCraft enda oma. Süsteemi dialoogi saamiseks paigalda failivalija portaal (näiteks xdg-desktop-portal-gtk) või zenity.
+	The system file dialog isn't available, so WordKoja shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Süsteemi failidialoog pole saadaval, seega näitab WordKoja enda oma. Süsteemi dialoogi saamiseks paigalda failivalija portaal (näiteks xdg-desktop-portal-gtk) või zenity.
 	Up one level	Taseme võrra üles
 	Home folder	Kodukaust
 	{name} wasn't found.	{name} ei leitud.
@@ -1756,8 +1757,8 @@
 	This folder can't be read: {error}	Seda kausta ei saa lugeda: {error}
 	Showing the first {count} items.	Kuvatud on ainult esimesed kirjed: {count}.
 	File name:	Faili nimi:
-	Browse in WordCraft…	Sirvi WordCraftis…
-	Open a file with WordCraft's own browser when the system file dialog doesn't appear.	Ava fail WordCrafti enda failisirvijaga, kui süsteemi failidialoog ei ilmu.
+	Browse in WordKoja…	Sirvi WordKojais…
+	Open a file with WordKoja's own browser when the system file dialog doesn't appear.	Ava fail WordKojai enda failisirvijaga, kui süsteemi failidialoog ei ilmu.
 	Hide White Space	Peida tühi ala lehtede vahel
 	All pages	Kõik leheküljed
 	Current page	Praegune lehekülg
@@ -2169,8 +2170,8 @@
 	Number only, without the label's words	Ainult number, ilma sildi sõnadeta
 	Add whether it is above or below	Lisa, kas see on üleval või all
 	Start-up	Käivitamine
-	Show the Start screen when WordCraft starts	Näita WordCrafti käivitamisel avakuva
-	On: WordCraft opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Sees: WordCraft avaneb vaates Fail › Avaleht, kus on tühi dokument, mallid ja hiljutised dokumendid. Väljas: avaneb tühi dokument.
+	Show the Start screen when WordKoja starts	Näita WordKojai käivitamisel avakuva
+	On: WordKoja opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Sees: WordKoja avaneb vaates Fail › Avaleht, kus on tühi dokument, mallid ja hiljutised dokumendid. Väljas: avaneb tühi dokument.
 	Copy to	Kopeeri asukohta
 
 # Document naming and account controls.
@@ -2201,7 +2202,7 @@
 	{name}   {height} × {width} mm	{name}   {height} × {width} mm
 	{width} × {height} mm	{width} × {height} mm
 	{kind}, {columns} × {rows}, {size} ({paper})	{kind}, {columns} × {rows}, {size} ({paper})
-	Researcher needs an online service; WordCraft keeps your documents offline.	Uurija vajab võrguteenust; WordCraft hoiab teie dokumendid võrguühenduseta.
+	Researcher needs an online service; WordKoja keeps your documents offline.	Uurija vajab võrguteenust; WordKoja hoiab teie dokumendid võrguühenduseta.
 	These settings will be used for new documents.	Neid sätteid kasutatakse uute dokumentide puhul.
 	can't split at the first row	tabelit ei saa esimese rea kohalt tükeldada
 	select two or more cells to merge	valige ühendamiseks kaks või rohkem lahtrit

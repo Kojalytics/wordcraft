@@ -5,7 +5,7 @@ use wordcraft_doc::Document;
 #[cfg(not(target_arch = "wasm32"))]
 mod safe_save;
 
-/// Formats WordCraft opens.
+/// Formats WordKoja opens.
 pub const OPEN_EXTS: &[&str] = &[
     "docx",
     "docm",
@@ -27,7 +27,7 @@ pub const OPEN_EXTS: &[&str] = &[
     "wcraft.json",
     "json",
 ];
-/// Formats WordCraft saves (Save As).
+/// Formats WordKoja saves (Save As).
 pub const SAVE_EXTS: &[&str] = &["docx", "docm", "dotx", "dotm", "pdf", "txt", "md", "html", "rtf", "odt", "tex", "png", "json", "xml"];
 
 /// Magic number for ZIP package signatures (used by .docx/.docm/.dotx/.dotm).
@@ -270,7 +270,7 @@ fn signature_contradicts(ext: &str, bytes: &[u8]) -> bool {
     held != expected
 }
 
-/// A file whose extension names no format WordCraft knows (`.m3u`, `.log`, `.ini`, none…),
+/// A file whose extension names no format WordKoja knows (`.m3u`, `.log`, `.ini`, none…),
 /// opened by what it holds, as Word does: a Word document or RTF file by its signature, any
 /// other text through the plain-text import with encoding detection (#569). Anything else is
 /// refused with a clear error rather than shown as garbage.
@@ -284,16 +284,16 @@ fn open_by_content(
     let (mut doc, encrypted) = if bytes.starts_with(OLE_SIG) && wordcraft_docx::is_encrypted(bytes) {
         (wordcraft_docx::read_with_password(bytes, password).map_err(|e| e.to_string())?, true)
     } else if bytes.starts_with(ZIP_SIG) {
-        (wordcraft_docx::read(bytes).map_err(|e| format!("{name}: not a document WordCraft can open ({e})"))?, false)
+        (wordcraft_docx::read(bytes).map_err(|e| format!("{name}: not a document WordKoja can open ({e})"))?, false)
     } else if bytes.starts_with(OLE_SIG) {
         open_binary_doc(bytes, password)
-            .map_err(|e| if needs_password(&e) || wrong_password(&e) { e } else { format!("{name}: not a document WordCraft can open ({e})") })?
+            .map_err(|e| if needs_password(&e) || wrong_password(&e) { e } else { format!("{name}: not a document WordKoja can open ({e})") })?
     } else if bytes.starts_with(b"{\\rtf") {
         (wordcraft_formats::rtf::import(bytes)?, false)
     } else if wordcraft_formats::txt::is_text(bytes) {
         (wordcraft_formats::txt::import_on(bytes, page), false)
     } else if ext.is_empty() {
-        return Err(format!("{name}: not a document or text file WordCraft can open"));
+        return Err(format!("{name}: not a document or text file WordKoja can open"));
     } else {
         return Err(format!("{name}: unsupported format `.{ext}` (not a document or text file)"));
     };

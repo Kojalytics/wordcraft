@@ -5456,7 +5456,7 @@ fn hyphenation_and_proofing_follow_each_runs_language() {
     assert_eq!(issues[1].lang, wordcraft_proof::ProofLang::En);
 }
 
-/// Text in a language WordCraft can't proof gets no spelling marks, and "Do not check spelling
+/// Text in a language WordKoja can't proof gets no spelling marks, and "Do not check spelling
 /// or grammar" text none either; the document default language applies to text without its own.
 #[test]
 fn unproofed_languages_and_no_proof_runs_are_not_marked() {
@@ -5756,7 +5756,7 @@ fn a_hidden_cell_mark_takes_no_room() {
 
 /// A text frame in a header, footer or cell (NIH's footers put the page number in one, centred,
 /// with the footer text wrapping around it) is placed apart: it takes no room in the flow, sits
-/// where its alignment says, and the text beside it keeps clear of it. WordCraft laid it out as
+/// where its alignment says, and the text beside it keeps clear of it. WordKoja laid it out as
 /// an ordinary paragraph, a line of its own above the footer text.
 #[test]
 fn a_text_frame_in_a_cell_floats_beside_the_text() {
@@ -5882,7 +5882,7 @@ fn keep_with_next_moves_a_paragraph_only_when_it_would_fit() {
 /// A kept heading goes with the paragraph after it when that paragraph cannot start on its
 /// page (#966): with widow/orphan control on, one line of it at the bottom of the page moves
 /// over with the rest, so only two lines below the heading hold it there. Word and LibreOffice
-/// both move the heading; WordCraft left it alone. With the control off the single line stays,
+/// both move the heading; WordKoja left it alone. With the control off the single line stays,
 /// and the heading keeps it company.
 #[test]
 fn keep_with_next_carries_the_heading_when_widow_control_moves_the_next_paragraph() {
@@ -6103,7 +6103,7 @@ fn paragraph_relative_floats_start_above_the_space_before() {
 }
 
 /// Unequal columns (a narrow label column and a wide text column, as in NIH's SARP form): text
-/// after a column break is broken for the column it lands in. WordCraft broke it for the narrow
+/// after a column break is broken for the column it lands in. WordKoja broke it for the narrow
 /// column it started in, so a paragraph took a dozen lines a word or two wide.
 #[test]
 fn text_after_a_column_break_takes_the_new_column_s_width() {
@@ -6204,7 +6204,7 @@ fn space_before_at_the_top_of_a_page_like_word() {
 }
 
 /// Word kerns a run only when Kerning for fonts (`w:kern`) is set and the font is at least that
-/// size; WordCraft kerned everything, so its lines held more text than Word's (measured in Word for
+/// size; WordKoja kerned everything, so its lines held more text than Word's (measured in Word for
 /// Windows with Calibri at 14 pt: no `w:kern`, `w:kern="0"` and a threshold above the size are
 /// all unkerned).
 #[test]

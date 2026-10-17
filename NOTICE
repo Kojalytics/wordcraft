@@ -1,11 +1,14 @@
-WordCraft
+WordKoja
+Copyright (c) 2026 Kojalytics (modifications).
+Based on WordCraft by the ArtCraft team:
 Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.
 Licensed under the MIT License or the Apache License, Version 2.0, at your option
 (LICENSE-MIT, LICENSE-APACHE).
 
-The ArtCraft name, wordmark and logos in docs/brand/ are trademarks of the ArtCraft Team. They are
-not open source and are not covered by the license above; their terms are in
-docs/brand/LICENSE-brand.txt.
+Changes by Kojalytics: renamed the app to WordKoja, removed the ArtCraft name and marks,
+pointed links and updates at github.com/Kojalytics and kojalytics.com, and removed ArtCraft's
+community links. Kojalytics is not affiliated with, sponsored or endorsed by the ArtCraft Team.
+The Kojalytics name and logo are trademarks of Kojalytics and are not covered by the license above.
 
 Third-party material
 

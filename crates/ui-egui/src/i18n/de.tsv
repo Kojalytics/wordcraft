@@ -1,6 +1,6 @@
 # German (de) interface catalog. Columns, separated by a TAB:
 #   context <TAB> English source <TAB> translation
-#   context    empty (WordCraft uses no contexts yet)
+#   context    empty (WordKoja uses no contexts yet)
 #   source     the English text exactly as in the code (tl!(...), ribbon labels, command labels)
 #   escapes    \n  \t  \\  inside a column. `{name}` placeholders must appear in both columns, and a
 #              trailing "…" in one needs one in the other.
@@ -9,14 +9,15 @@
 # Clean room: every entry was written from the plain meaning of the English label in ordinary
 # computing vocabulary. No Microsoft Word (or other product) localisation, string table or
 # translated UI was consulted or copied; add entries the same way.
-# Product, format and technology names (WordCraft, PDF, Markdown, MCP …) stay in Latin letters.
+# Product, format and technology names (WordKoja, PDF, Markdown, MCP …) stay in Latin letters.
 
 	(no style)	(keine Formatvorlage)
 	(no suggestions)	(keine Vorschläge)
 	1.5 Line Spacing	Zeilenabstand 1,5
-	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Ein kostenloses, quelloffenes Textverarbeitungsprogramm, von Grund auf in Rust geschrieben.\nTeil der Crafting Apps des ArtCraft-Teams.
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	Ein quelloffenes Textverarbeitungsprogramm, in Rust geschrieben, herausgegeben von Kojalytics.\nBasiert auf WordCraft vom ArtCraft-Team.
+	Modifications (c) 2026 Kojalytics.	Änderungen (c) 2026 Kojalytics.
 	About	Info
-	About WordCraft	Über WordCraft
+	About WordKoja	Über WordKoja
 	Accept	Annehmen
 	Accept All Changes	Alle Änderungen annehmen
 	Accept This Change	Diese Änderung annehmen
@@ -71,7 +72,7 @@
 	Automatic Table 1 (3 levels)	Automatisches Inhaltsverzeichnis 1 (3 Ebenen)
 	Automatic Table 2 (2 levels)	Automatisches Inhaltsverzeichnis 2 (2 Ebenen)
 	AutoSave	AutoSpeichern
-	AutoSave documents you have saved in WordCraft	In WordCraft gespeicherte Dokumente automatisch speichern
+	AutoSave documents you have saved in WordKoja	In WordKoja gespeicherte Dokumente automatisch speichern
 	AutoSave failed: {error}. Save the document to turn AutoSave back on.	AutoSpeichern fehlgeschlagen: {error}. Speichern Sie das Dokument, um AutoSpeichern wieder zu aktivieren.
 	Balloons	Sprechblasen
 	Bottom Margin	Unterer Rand
@@ -445,7 +446,7 @@
 	Inspect Document	Dokument prüfen
 	Interface language:	Benutzeroberflächensprache:
 	Italic	Kursiv
-	Join the ArtCraft community on Discord	Treten Sie der ArtCraft-Community auf Discord bei
+	Join the Kojalytics community on Discord	Treten Sie der Kojalytics-Community auf Discord bei
 	Join us on Discord: discord.gg/artcraft	Besuchen Sie uns auf Discord: discord.gg/artcraft
 	Justify	Blocksatz
 	Keep Lines Together	Zeilen nicht trennen
@@ -457,7 +458,7 @@
 	Landscape	Querformat
 	Language	Sprache
 	{language} (no dictionary)	{language} (kein Wörterbuch)
-	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Für {language} ist kein Rechtschreibwörterbuch installiert, daher wird die Sprache nicht geprüft. WordCraft sucht das Hunspell-Wörterbuch {name} im Ordner WORDCRAFT_DICTIONARIES und an den üblichen Systemorten.
+	No spelling dictionary for {language} is installed, so it isn't checked. WordKoja looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Für {language} ist kein Rechtschreibwörterbuch installiert, daher wird die Sprache nicht geprüft. WordKoja sucht das Hunspell-Wörterbuch {name} im Ordner WORDCRAFT_DICTIONARIES und an den üblichen Systemorten.
 	Lasso	Lasso
 	Last Column	Letzte Spalte
 	Last commit	Letzter Commit
@@ -754,7 +755,7 @@
 	Small caps	Kapitälchen
 	SmartArt	SmartArt
 	Sort	Sortieren
-	Source code: github.com/storytold/wordcraft	Quellcode: github.com/storytold/wordcraft
+	Source code: github.com/Kojalytics/wordcraft	Quellcode: github.com/Kojalytics/wordcraft
 	Space	Leerzeichen
 	Space before/after:	Abstand vor/nach:
 	Spacing	Abstand
@@ -891,7 +892,7 @@
 	Word Left	Wort nach links
 	Word Right	Wort nach rechts
 	WordArt	WordArt
-	WordCraft	WordCraft
+	WordKoja	WordKoja
 	Words	Wörter
 	Words only	Nur Wörter
 	Wrap Text	Text umbrechen
@@ -1136,7 +1137,7 @@
 	Insert a new equation (Alt+=)	Eine neue Formel einfügen (Alt+=)
 	Leave the equation (Esc)	Die Formel verlassen (Esc)
 	Preview	Vorschau
-	getartcraft.com/apps/wordcraft	getartcraft.com/apps/wordcraft
+	kojalytics.com/apps/wordcraft	kojalytics.com/apps/wordcraft
 	Draw Ink	Freihand zeichnen
 	Erase Ink	Freihand radieren
 	Hide Ink	Freihand ausblenden
@@ -1274,7 +1275,7 @@
 	The document will be saved with a password. Save it to protect it.	Das Dokument wird mit einem Kennwort gespeichert. Speichern Sie es, um es zu schützen.
 	The password is removed. Save the document to keep the change.	Das Kennwort ist entfernt. Speichern Sie das Dokument, um die Änderung zu behalten.
 	The passwords don't match.	Die Kennwörter stimmen nicht überein.
-	Keep the password somewhere safe: without it nobody, WordCraft included, can open the document. Leave both boxes empty to remove the password.	Bewahren Sie das Kennwort an einem sicheren Ort auf: Ohne es kann niemand das Dokument öffnen, auch WordCraft nicht. Lassen Sie beide Felder leer, um das Kennwort zu entfernen.
+	Keep the password somewhere safe: without it nobody, WordKoja included, can open the document. Leave both boxes empty to remove the password.	Bewahren Sie das Kennwort an einem sicheren Ort auf: Ohne es kann niemand das Dokument öffnen, auch WordKoja nicht. Lassen Sie beide Felder leer, um das Kennwort zu entfernen.
 	Align Top Left	Oben links ausrichten
 	Align Top Center	Oben mittig ausrichten
 	Align Top Right	Oben rechts ausrichten
@@ -1728,7 +1729,7 @@
 	Word document	Word-Dokument
 	All files	Alle Dateien
 	Recipient lists	Empfängerlisten
-	The system file dialog isn't available, so WordCraft shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Das Dateidialogfeld des Systems ist nicht verfügbar, daher zeigt WordCraft ein eigenes an. Für das Systemdialogfeld installieren Sie ein Dateiauswahl-Portal (etwa xdg-desktop-portal-gtk) oder zenity.
+	The system file dialog isn't available, so WordKoja shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Das Dateidialogfeld des Systems ist nicht verfügbar, daher zeigt WordKoja ein eigenes an. Für das Systemdialogfeld installieren Sie ein Dateiauswahl-Portal (etwa xdg-desktop-portal-gtk) oder zenity.
 	Up one level	Eine Ebene höher
 	Home folder	Persönlicher Ordner
 	{name} wasn't found.	{name} wurde nicht gefunden.
@@ -1736,8 +1737,8 @@
 	This folder can't be read: {error}	Dieser Ordner kann nicht gelesen werden: {error}
 	Showing the first {count} items.	Die ersten {count} Elemente werden angezeigt.
 	File name:	Dateiname:
-	Browse in WordCraft…	In WordCraft durchsuchen…
-	Open a file with WordCraft's own browser when the system file dialog doesn't appear.	Öffnet eine Datei mit dem eigenen Browser von WordCraft, wenn das Dateidialogfeld des Systems nicht erscheint.
+	Browse in WordKoja…	In WordKoja durchsuchen…
+	Open a file with WordKoja's own browser when the system file dialog doesn't appear.	Öffnet eine Datei mit dem eigenen Browser von WordKoja, wenn das Dateidialogfeld des Systems nicht erscheint.
 	Hide White Space	Leerraum ausblenden
 	All pages	Alle Seiten
 	Current page	Aktuelle Seite
@@ -2068,15 +2069,15 @@
 	Your system doesn't report an animation setting, so animation effects stay on.	Ihr System meldet keine Animationseinstellung, daher bleiben Animationseffekte aktiviert.
 	Do Not Check Spelling or Grammar	Rechtschreibung und Grammatik nicht prüfen
 	Start-up	Programmstart
-	Show the Start screen when WordCraft starts	Startbildschirm beim Start von WordCraft anzeigen
-	On: WordCraft opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Ein: WordCraft öffnet sich auf Datei › Start mit einem leeren Dokument, den Vorlagen und Ihren zuletzt verwendeten Dokumenten. Aus: Es öffnet ein leeres Dokument.
-	Couldn't make WordCraft the default: {error}	WordCraft konnte nicht als Standard festgelegt werden: {error}
-	In Default apps, choose WordCraft for the document types you want it to open.	Wählen Sie unter „Standard-Apps“ WordCraft für die Dokumenttypen, die es öffnen soll.
-	Make WordCraft the default for Word documents…	WordCraft als Standard für Word-Dokumente festlegen…
-	Opens .docx, .doc, .rtf and .odt files and Word templates with WordCraft from now on.	Öffnet .docx-, .doc-, .rtf- und .odt-Dateien sowie Word-Vorlagen ab jetzt mit WordCraft.
-	Opens Settings › Default apps, where you choose WordCraft for .docx and the other document types.	Öffnet Einstellungen › Standard-Apps, wo Sie WordCraft für .docx und die anderen Dokumenttypen wählen.
-	To open Word documents with WordCraft by default: select one in Finder, choose File › Get Info, pick WordCraft under Open with, then click Change All.	Um Word-Dokumente standardmäßig mit WordCraft zu öffnen: Wählen Sie eines im Finder aus, wählen Sie Ablage › Informationen, wählen Sie WordCraft unter „Öffnen mit“ und klicken Sie auf „Alle ändern“.
-	WordCraft is now the default app for Word documents.	WordCraft ist jetzt die Standard-App für Word-Dokumente.
+	Show the Start screen when WordKoja starts	Startbildschirm beim Start von WordKoja anzeigen
+	On: WordKoja opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Ein: WordKoja öffnet sich auf Datei › Start mit einem leeren Dokument, den Vorlagen und Ihren zuletzt verwendeten Dokumenten. Aus: Es öffnet ein leeres Dokument.
+	Couldn't make WordKoja the default: {error}	WordKoja konnte nicht als Standard festgelegt werden: {error}
+	In Default apps, choose WordKoja for the document types you want it to open.	Wählen Sie unter „Standard-Apps“ WordKoja für die Dokumenttypen, die es öffnen soll.
+	Make WordKoja the default for Word documents…	WordKoja als Standard für Word-Dokumente festlegen…
+	Opens .docx, .doc, .rtf and .odt files and Word templates with WordKoja from now on.	Öffnet .docx-, .doc-, .rtf- und .odt-Dateien sowie Word-Vorlagen ab jetzt mit WordKoja.
+	Opens Settings › Default apps, where you choose WordKoja for .docx and the other document types.	Öffnet Einstellungen › Standard-Apps, wo Sie WordKoja für .docx und die anderen Dokumenttypen wählen.
+	To open Word documents with WordKoja by default: select one in Finder, choose File › Get Info, pick WordKoja under Open with, then click Change All.	Um Word-Dokumente standardmäßig mit WordKoja zu öffnen: Wählen Sie eines im Finder aus, wählen Sie Ablage › Informationen, wählen Sie WordKoja unter „Öffnen mit“ und klicken Sie auf „Alle ändern“.
+	WordKoja is now the default app for Word documents.	WordKoja ist jetzt die Standard-App für Word-Dokumente.
 	Numerals:	Ziffern:
 	Numerals	Ziffern
 	Hindi	Hindi
@@ -2166,7 +2167,7 @@
 	{name}   {height} × {width} mm	{name}   {height} × {width} mm
 	{width} × {height} mm	{width} × {height} mm
 	{kind}, {columns} × {rows}, {size} ({paper})	{kind}, {columns} × {rows}, {size} ({paper})
-	Researcher needs an online service; WordCraft keeps your documents offline.	Der Recherche-Assistent braucht einen Onlinedienst; WordCraft behält Ihre Dokumente offline.
+	Researcher needs an online service; WordKoja keeps your documents offline.	Der Recherche-Assistent braucht einen Onlinedienst; WordKoja behält Ihre Dokumente offline.
 	These settings will be used for new documents.	Diese Einstellungen werden für neue Dokumente verwendet.
 	can't split at the first row	die Tabelle kann nicht an der ersten Zeile geteilt werden
 	select two or more cells to merge	wählen Sie zum Verbinden zwei oder mehr Zellen aus

@@ -3146,7 +3146,7 @@ mod tests {
         assert_eq!(caret_contrast(Rgb(0x33, 0x33, 0x33)), Color32::WHITE, "dark paper");
         assert_eq!(caret_contrast(Rgb(0xC0, 0xC0, 0xC0)), Color32::BLACK, "light grey");
 
-        let doc = wordcraft_doc::Document::from_text("Hello WordCraft");
+        let doc = wordcraft_doc::Document::from_text("Hello WordKoja");
         let mut a = WordApp::new(wordcraft_engine::Session::new(doc), Default::default());
         let at = |a: &mut WordApp, off: usize| {
             let layout = a.session.layout();
@@ -3173,7 +3173,7 @@ mod tests {
     /// there is no caret, so the page's draw list isn't built for it.
     #[test]
     fn caret_colour_is_not_worked_out_while_the_caret_is_hidden() {
-        let mut a = WordApp::new(wordcraft_engine::Session::new(wordcraft_doc::Document::from_text("Hello WordCraft")), Default::default());
+        let mut a = WordApp::new(wordcraft_engine::Session::new(wordcraft_doc::Document::from_text("Hello WordKoja")), Default::default());
         a.run("select.text", json!({"text": "Hello"})).unwrap();
         let mut h = egui_kittest::Harness::builder().with_size(egui::vec2(1440.0, 900.0)).build_ui_state(
             |ui, app: &mut WordApp| {

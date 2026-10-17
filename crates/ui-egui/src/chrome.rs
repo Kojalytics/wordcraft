@@ -304,7 +304,7 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
                             t.on_accent,
                         );
                         ui.painter().text(pos2(r.min.x + 24.0, r.center().y), Align2::LEFT_CENTER, tl!("Discord"), medium(11.5), t.on_accent);
-                        if resp.on_hover_text(tl!("Join the ArtCraft community on Discord")).clicked() {
+                        if resp.on_hover_text(tl!("Join the Kojalytics community on Discord")).clicked() {
                             let _ = app.run("ui.discord", json!({}));
                         }
                         ui.add_space(8.0);
@@ -347,7 +347,7 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
             // Centred title.
             let title = if !app.has_document() {
                 // No document open (#1129): the app's name alone.
-                "WordCraft".to_string()
+                "WordKoja".to_string()
             } else {
                 format!(
                     "{} — {}",
@@ -452,7 +452,7 @@ pub fn status_bar(app: &mut WordApp, ui: &mut Ui) {
                 let shown = if missing.is_some() { crate::i18n::fmt(tl!("{language} (no dictionary)"), &[("language", &lang)]) } else { lang.clone() };
                 let tip = match missing {
                     Some(name) => crate::i18n::fmt(
-                        tl!("No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations."),
+                        tl!("No spelling dictionary for {language} is installed, so it isn't checked. WordKoja looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations."),
                         &[("language", &lang), ("name", name)],
                     ),
                     None => tl!("Language").to_string(),

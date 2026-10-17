@@ -26,7 +26,7 @@ fn sample() -> Document {
     let n = h1.len();
     h1.insert_object(n, InlineObject::BookmarkStart { name: "intro".into() }, &CharProps::default()).unwrap();
     b.push(para_block(h1));
-    let mut p = Paragraph::with_text("Hello WordCraft, ", CharProps::default());
+    let mut p = Paragraph::with_text("Hello WordKoja, ", CharProps::default());
     let n = p.len();
     p.insert_text(n, "bold words", &CharProps { bold: Some(true), ..Default::default() }).unwrap();
     let n = p.len();
@@ -138,7 +138,7 @@ fn exports_pages_text_and_structure() {
     let all = squash(&text.concat());
     for w in [
         "Introduction",
-        "Hello WordCraft,",
+        "Hello WordKoja,",
         "bold words",
         "website",
         "Details",
@@ -151,7 +151,7 @@ fn exports_pages_text_and_structure() {
     ] {
         assert!(all.contains(w), "{w:?} missing from {all:?}");
     }
-    assert!(squash(&text[0]).contains("Hello WordCraft, bold words and a website back to top"), "{:?}", text[0]);
+    assert!(squash(&text[0]).contains("Hello WordKoja, bold words and a website back to top"), "{:?}", text[0]);
 
     let raw = String::from_utf8_lossy(&export(&d, &PdfOptions { compress: false, ..Default::default() }).unwrap()).into_owned();
     assert!(raw.contains("/FontFile2") || raw.contains("/FontFile3"), "embedded fonts");
