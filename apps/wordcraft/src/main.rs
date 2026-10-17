@@ -18,6 +18,7 @@ mod default_apps;
 mod file_dialogs;
 #[cfg(any(target_os = "windows", test))]
 mod graphics;
+mod license;
 mod logging;
 mod print;
 mod region;
@@ -89,7 +90,10 @@ impl eframe::App for App {
         self.0.raw_input_hook(raw);
     }
     fn ui(&mut self, ui: &mut egui::Ui, frame: &mut eframe::Frame) {
-        self.0.ui(ui);
+        // Without an activated Kojalytics license the window shows the lock screen instead.
+        if license::gate(ui) {
+            self.0.ui(ui);
+        }
         self.3.show(frame);
     }
     fn on_exit(&mut self) {
