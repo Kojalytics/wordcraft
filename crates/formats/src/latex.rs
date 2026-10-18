@@ -52,7 +52,7 @@ pub fn export(doc: &Document) -> String {
 
     let meta = &flow.meta;
     let mut o = String::new();
-    o.push_str("% Written by WordKoja (https://kojalytics.com/apps/wordcraft).\n");
+    o.push_str("% Written by WordKoja (https://www.kojalytics.com/koja-apps).\n");
     o.push_str("\\documentclass{article}\n");
     o.push_str("\\usepackage[T1]{fontenc}\n");
     if w.uses.ulem {

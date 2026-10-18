@@ -2387,8 +2387,7 @@ fn body(app: &mut WordApp, ui: &mut Ui, d: &mut Dialog) -> bool {
                         "An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team."
                     ));
                     ui.add_space(6.0);
-                    ui.hyperlink_to(tl!("kojalytics.com/apps/wordcraft"), "https://kojalytics.com/apps/wordcraft");
-                    ui.hyperlink_to(tl!("Source code: github.com/Kojalytics/wordcraft"), "https://github.com/Kojalytics/wordcraft");
+                    ui.hyperlink_to(tl!("kojalytics.com/koja-apps"), "https://www.kojalytics.com/koja-apps");
                     ui.add_space(6.0);
                     ui.label(
                         egui::RichText::new(tl!("MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors."))

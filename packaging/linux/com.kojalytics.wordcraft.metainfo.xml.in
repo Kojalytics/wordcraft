@@ -18,10 +18,10 @@
   <launchable type="desktop-id">com.kojalytics.wordcraft.desktop</launchable>
   <icon type="stock">com.kojalytics.wordcraft</icon>
   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
-  <url type="homepage">https://kojalytics.com/apps/wordcraft</url>
+  <url type="homepage">https://www.kojalytics.com/koja-apps</url>
   <url type="bugtracker">https://github.com/Kojalytics/wordcraft/issues</url>
   <url type="help">https://github.com/Kojalytics/wordcraft</url>
-  <url type="contact">https://discord.gg/artcraft</url>
+  <url type="contact">https://www.kojalytics.com/contact</url>
   <categories>
     <category>Office</category>
     <category>WordProcessor</category>

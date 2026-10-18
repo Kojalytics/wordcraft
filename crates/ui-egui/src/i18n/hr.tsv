@@ -2051,7 +2051,6 @@ template	Letter	Pismo
 	Sort	Sortiraj
 	Sort order:	Redoslijed sortiranja:
 	Source Manager	Upravitelj izvora
-	Source code: github.com/Kojalytics/wordcraft	Izvorni kôd: github.com/Kojalytics/wordcraft
 	Source type:	Vrsta izvora:
 	Sources in this document:	Izvori u ovom dokumentu:
 	South	Jug
@@ -2467,7 +2466,7 @@ preview	Title	Naslov
 	can't split at the first row	nije moguće podijeliti na prvom retku
 	development build	razvojna verzija
 	from Unicode (hex)	iz Unicodea (heksadecimalno)
-	kojalytics.com/apps/wordcraft	kojalytics.com/apps/wordcraft
+	kojalytics.com/koja-apps	kojalytics.com/koja-apps
 	i, ii, iii, …	i, ii, iii, …
 	lowercase	mala slova
 	n×n Identity Matrix	Jedinična matrica n×n

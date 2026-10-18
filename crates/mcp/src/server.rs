@@ -133,9 +133,9 @@ impl Server {
                 Ok(json!({
                     "protocolVersion": version,
                     "capabilities": {"tools": {}, "resources": {}},
-                    "serverInfo": {"name": "wordcraft", "title": "WordKoja", "version": env!("CARGO_PKG_VERSION"), "websiteUrl": "https://kojalytics.com/apps/wordcraft"},
+                    "serverInfo": {"name": "wordcraft", "title": "WordKoja", "version": env!("CARGO_PKG_VERSION"), "websiteUrl": "https://www.kojalytics.com/koja-apps"},
                     "instructions": format!(
-                        "{INSTRUCTIONS} Backend: {}. Links: https://kojalytics.com/apps/wordcraft · https://github.com/Kojalytics/wordcraft",
+                        "{INSTRUCTIONS} Backend: {}. Links: https://www.kojalytics.com/koja-apps · https://github.com/Kojalytics/wordcraft",
                         self.backend.describe()
                     ),
                 }))
