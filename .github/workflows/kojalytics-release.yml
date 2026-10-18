@@ -1,0 +1,62 @@
+name: Kojalytics release (macOS)
+
+# Builds the universal macOS DMG, signs it with Kojalytics' Developer ID, notarizes it with Apple and
+# publishes it as a GitHub release with SHA256SUMS.txt (the Kojalytics Launcher installs from there
+# and checks the checksum). Runs only when started by hand or for a pushed version tag (v1.2.3).
+# Uses only code in this repository plus actions/checkout pinned to a commit.
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kojalytics-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  macos:
+    runs-on: macos-14
+    # A new Apple developer account's first notarizations can take hours.
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Rust toolchain
+        run: |
+          rustup update stable
+          rustup default stable
+          rustup target add aarch64-apple-darwin x86_64-apple-darwin
+
+      - name: Signing certificate
+        env:
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+        run: bash packaging/macos/import-cert.sh
+
+      - name: Build, sign and notarize
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: bash packaging/macos/package.sh --arch universal
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd dist/release
+          shasum -a 256 *.dmg > SHA256SUMS.txt
+          dmg=$(ls *.dmg | head -1)
+          version=$(printf '%s' "$dmg" | sed -E 's/^.*-([0-9][0-9A-Za-z.+-]*)-macos-.*$/\1/')
+          tag="$GITHUB_REF_NAME"
+          case "$tag" in v*) ;; *) tag="v$version" ;; esac
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" ./*.dmg SHA256SUMS.txt --clobber
+          else
+            gh release create "$tag" ./*.dmg SHA256SUMS.txt --target "$GITHUB_SHA" --title "$tag" \
+              --notes "Kojalytics build $tag for macOS (Apple Silicon and Intel)."
+          fi
