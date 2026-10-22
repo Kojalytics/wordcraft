@@ -1,0 +1,91 @@
+name: Kojalytics update from ArtCraft
+
+# Once a week: if ArtCraft released a newer version of this app, merge it, apply the Kojalytics
+# branding again (brand/sync-upstream.sh), check it with the branding guard and the tests, then
+# build, sign and notarize the DMG and put it in a DRAFT release. Customers get nothing until the
+# draft is published by hand; an issue in this repo says when one is waiting.
+# A blocked run (guard, merge or tests) fails, and GitHub emails about the failed run.
+
+on:
+  schedule:
+    - cron: "17 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: koja-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: macos-14
+    timeout-minutes: 300
+    env:
+      APP_ID: ${{ vars.KOJA_APP_ID }}
+      APP_NAME: ${{ vars.KOJA_APP_NAME }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: ${{ vars.KOJA_APP_ID }}
+          fetch-depth: 0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Kojalytics/koja-brand
+          path: brand
+
+      - name: Tools
+        run: |
+          rustup update stable && rustup default stable
+          rustup target add aarch64-apple-darwin x86_64-apple-darwin
+          brew install resvg
+          python3 -m pip install --break-system-packages fonttools
+          git config --global user.name "Kojalytics"
+          git config --global user.email "noreply@kojalytics.com"
+
+      - name: Merge ArtCraft's newest release and rebrand
+        id: sync
+        run: |
+          bash brand/sync-upstream.sh "$APP_ID" "$APP_NAME" | tee sync.log
+          if grep -q '^READY:' sync.log; then echo "ready=1" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Push the update
+        if: steps.sync.outputs.ready == '1'
+        working-directory: ${{ vars.KOJA_APP_ID }}
+        run: git push origin koja-sync:main
+
+      - name: Signing certificate
+        if: steps.sync.outputs.ready == '1'
+        working-directory: ${{ vars.KOJA_APP_ID }}
+        env:
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+        run: bash packaging/macos/import-cert.sh
+
+      - name: Build, sign and notarize
+        if: steps.sync.outputs.ready == '1'
+        working-directory: ${{ vars.KOJA_APP_ID }}
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: bash packaging/macos/package.sh --arch universal
+
+      - name: Draft release and notice
+        if: steps.sync.outputs.ready == '1'
+        working-directory: ${{ vars.KOJA_APP_ID }}/dist/release
+        run: |
+          dmg=$(ls *-macos-universal.dmg | head -1)
+          version=$(printf '%s' "$dmg" | sed -E 's/^.*-([0-9][0-9.]*)-macos-universal\.dmg$/\1/')
+          xcrun stapler validate "$dmg"
+          shasum -a 256 "$dmg" > SHA256SUMS.txt
+          gh release create "v$version" "$dmg" SHA256SUMS.txt --draft --target main \
+            --title "$APP_NAME $version" \
+            --notes "Signed and notarized macOS build (universal: Apple Silicon and Intel). Published by Kojalytics."
+          gh issue create --title "$APP_NAME $version is ready to publish" --body "ArtCraft released a new version. It was merged, rebranded, passed the branding guard and the tests, and was signed and notarized.
+
+          Check it, then publish the draft release: https://github.com/$GITHUB_REPOSITORY/releases
+          Customers get the update through the Kojalytics Launcher as soon as the release is published."
