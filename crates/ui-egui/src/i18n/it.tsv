@@ -17,8 +17,7 @@
 	(no style)	(nessuno stile)
 	(no suggestions)	(nessun suggerimento)
 	1.5 Line Spacing	Interlinea 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Un elaboratore di testi gratuito e open source, scritto da zero in Rust.\nFa parte delle Crafting Apps del team Kojalytics.
 	About	Informazioni
 	About WordKoja	Informazioni su WordKoja
 	Accept	Accetta
@@ -495,7 +494,7 @@
 	Link to Previous	Collega al precedente
 	Links	Collegamenti
 	Location: {path}	Percorso: {path}
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team e i collaboratori di WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team e i collaboratori di WordKoja.
 	Macros	Macro
 	Mailings	Lettere
 	Manage Sources	Gestisci fonti
@@ -782,6 +781,7 @@
 	Small caps	Maiuscoletto
 	SmartArt	SmartArt
 	Sort	Ordina
+	Source code: github.com/Kojalytics/wordcraft	Codice sorgente: github.com/Kojalytics/wordcraft
 	Space	Spazio
 	Space before/after:	Spazio prima/dopo:
 	Spacing	Spaziatura
@@ -2799,3 +2799,5 @@ template	Letter	Lettera
 	More tabs	Altre schede
 # #3013: Insert Table of Figures
 	Include label and number	Includi etichetta e numero
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

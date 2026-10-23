@@ -19,8 +19,7 @@
 	(no style)	(без стил)
 	(no suggestions)	(няма предложения)
 	1.5 Line Spacing	Междуредие 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Безплатен текстообработващ редактор с отворен код, написан от нулата на Rust.\nЧаст от Crafting Apps на екипа на Kojalytics.
 	About	Относно
 	About WordKoja	За WordKoja
 	Accept	Приемане
@@ -499,7 +498,7 @@
 	Link to Previous	Връзка към предишния
 	Links	Връзки
 	Location: {path}	Местоположение: {path}
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Авторско право (c) 2026 ArtCraft Team и сътрудниците на WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Авторско право (c) 2026 ArtCraft Team и сътрудниците на WordKoja.
 	Macros	Макроси
 	Mailings	Кореспонденция
 	Manage Sources	Управление на източниците
@@ -800,6 +799,7 @@
 	Small caps	Малки главни букви
 	SmartArt	SmartArt
 	Sort	Сортиране
+	Source code: github.com/Kojalytics/wordcraft	Изходен код: github.com/Kojalytics/wordcraft
 	Space	Интервал
 	Space before/after:	Разстояние преди/след:
 	Spacing	Разстояние
@@ -2764,3 +2764,5 @@
 	More tabs	Още раздели
 # #3013: Insert Table of Figures
 	Include label and number	Включване на етикета и номера
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

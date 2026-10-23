@@ -3,8 +3,7 @@
 	(no style)	(スタイルなし)
 	(no suggestions)	（候補なし）
 	1.5 Line Spacing	1.5 行
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Rust でゼロから書かれた、無料のオープンソース ワープロです。\nKojalytics チームの Crafting Apps のひとつです。
 	About	情報
 	About WordKoja	WordKoja について
 	Accept	承諾
@@ -79,7 +78,7 @@
 	Color only	色のみ
 	Compress punctuation at the start of a line	行頭の約物を詰める
 	Continue from previous section	前のセクションから続ける
-	Couldn't make WordCraft the default: {error}	WordCraft を既定のアプリにできませんでした: {error}
+	Couldn't make WordKoja the default: {error}	WordKoja を既定のアプリにできませんでした: {error}
 	Custom dictionary	ユーザー辞書
 	Dark page (white text on black)	ダーク ページ (黒地に白い文字)
 	Drag a rectangle to draw a table, or a line across cells to split them. Esc stops.	四角形をドラッグして表を描くか、セルを横切る線を引いて分割します。Esc で終了します。
@@ -571,7 +570,7 @@
 	Merge Formatting	書式を結合
 	Merged PRs	マージ済みの PR
 	Mirrored	見開きページ
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0。Copyright (c) 2026 ArtCraft チームおよび WordCraft の貢献者。
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0。Copyright (c) 2026 Kojalytics チームおよび WordKoja の貢献者。
 	Moderate	やや狭い
 	Modify Style	スタイルの変更
 	Modify…	変更…
@@ -839,6 +838,7 @@
 	Small caps	小型英大文字
 	SmartArt	SmartArt
 	Sort	並べ替え
+	Source code: github.com/Kojalytics/wordcraft	ソース コード: github.com/Kojalytics/wordcraft
 	Space	スペース
 	Space before/after:	段落前/後の間隔:
 	Spacing	間隔
@@ -2367,3 +2367,5 @@
 	More tabs	その他のタブ
 # #3013: Insert Table of Figures
 	Include label and number	ラベルと番号を含める
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

@@ -7,7 +7,7 @@
   <project_license>MIT OR Apache-2.0</project_license>
   <name>WordKoja</name>
   <summary>Write and design documents; open and save Word files</summary>
-  <developer id="ai.storyteller">
+  <developer id="com.kojalytics">
     <name>Learning Machines LLC</name>
   </developer>
   <description>

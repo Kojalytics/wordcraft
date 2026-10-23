@@ -14,8 +14,7 @@
 	(no style)	(sem estilo)
 	(no suggestions)	(sem sugestões)
 	1.5 Line Spacing	Espaçamento de 1,5 linha
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Um processador de texto gratuito e de código aberto, escrito do zero em Rust.\nFaz parte dos Crafting Apps da equipe Kojalytics.
 	About	Sobre
 	About WordKoja	Sobre o WordKoja
 	Accept	Aceitar
@@ -572,7 +571,7 @@
 	Merge Formatting	Mesclar formatação
 	Merged PRs	PRs mesclados
 	Mirrored	Espelhada
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team e os colaboradores do WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team e os colaboradores do WordKoja.
 	Moderate	Moderada
 	Modify Style	Modificar estilo
 	Modify…	Modificar…
@@ -840,6 +839,7 @@
 	Small caps	Versaletes
 	SmartArt	SmartArt
 	Sort	Classificar
+	Source code: github.com/Kojalytics/wordcraft	Código-fonte: github.com/Kojalytics/wordcraft
 	Space	Espaço
 	Space before/after:	Espaço antes/depois:
 	Spacing	Espaçamento
@@ -2379,3 +2379,5 @@
 	More tabs	Mais guias
 # #3013: Insert Table of Figures
 	Include label and number	Incluir rótulo e número
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

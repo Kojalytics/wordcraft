@@ -312,9 +312,9 @@ fn a_latin_link_inserted_into_reopened_hebrew_is_saved_left_to_right() {
     let bytes = crate::io::save_bytes("x.docx", &s.doc).unwrap();
     let mut s = Session::new(crate::io::open_bytes("x.docx", &bytes).unwrap());
     s.sel = crate::Selection::caret(Pos::new(StoryRef::Body, wordcraft_doc::Path::top(0), "לפני ".len()));
-    run(&mut s, "insert.link", json!({"url": "https://example.com", "text": "WordCraft site"}));
+    run(&mut s, "insert.link", json!({"url": "https://example.com", "text": "WordKoja site"}));
     let runs = saved_runs(&s);
-    assert!(runs.contains(&(false, "WordCraft site".to_string())), "{runs:?}");
+    assert!(runs.contains(&(false, "WordKoja site".to_string())), "{runs:?}");
     // The caret's own formatting, as Reveal Formatting shows it, still says right to left.
     s.sel = crate::Selection::caret(Pos::new(StoryRef::Body, wordcraft_doc::Path::top(0), "לפ".len()));
     s.pending = None; // moving the caret by hand doesn't drop the link's pending formatting

@@ -24,8 +24,7 @@
 	1/4 Em Space	Čtvrtčtverčíková mezera
 	3-D	3D
 	A file dialog is already open.	Dialogové okno souboru je již otevřené.
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Bezplatný textový procesor s otevřeným zdrojovým kódem napsaný od základu v jazyce Rust.\nSoučást sady Crafting Apps od týmu Kojalytics.
 	AaBbCcDd	AaÁáBbCc
 	A mail merge field	Pole hromadné korespondence
 	A numbered sequence (figures, tables…)	Číslovaná posloupnost (obrázky, tabulky…)
@@ -706,7 +705,7 @@
 	Merge Record #	Číslo slučovaného záznamu
 	Merged PRs	Sloučené PR
 	Mirrored	Zrcadlové
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team a přispěvatelé projektu WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team a přispěvatelé projektu WordKoja.
 	Moderate	Střední
 	Modify Style	Upravit styl
 	Modify Table Style	Upravit styl tabulky
@@ -1137,6 +1136,7 @@
 	Soft Edges	Měkké okraje
 	Sort	Seřadit
 	Sort order:	Pořadí řazení:
+	Source code: github.com/Kojalytics/wordcraft	Zdrojový kód: github.com/Kojalytics/wordcraft
 	Space	Mezera
 	Space after	Mezera za
 	Space after: {pt} pt	Mezera za: {pt} b.
@@ -2766,3 +2766,5 @@ preview	Title	Ukázka
 	More tabs	Další karty
 # #3013: Insert Table of Figures
 	Include label and number	Zahrnout popisek a číslo
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

@@ -63,7 +63,7 @@ mod tests {
     type H = egui_kittest::Harness<'static, WordApp>;
 
     fn window(drawn: bool, dark: bool) -> H {
-        window_at(drawn, dark, 1.0, 1440.0, "Hello WordCraft")
+        window_at(drawn, dark, 1.0, 1440.0, "Hello WordKoja")
     }
 
     /// A window at `ppp` physical pixels per point showing `text`.
@@ -152,7 +152,7 @@ mod tests {
     #[test]
     fn the_drawn_i_beam_is_whole_pixels_wide_at_125_and_150_percent() {
         for ppp in [1.25f32, 1.5] {
-            let mut h = window_at(true, true, ppp, 1440.0, "Hello WordCraft");
+            let mut h = window_at(true, true, ppp, 1440.0, "Hello WordKoja");
             let at = crate::canvas::page_to_screen(h.state_mut(), 0, 300.0, 400.0).unwrap();
             let strokes = stem_strokes(&mut h, at);
             assert_eq!(strokes.len(), 2, "ppp {ppp}: the stem's edge and fill");

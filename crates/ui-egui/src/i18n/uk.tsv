@@ -14,8 +14,7 @@
 	(no style)	(без стилю)
 	(no suggestions)	(немає пропозицій)
 	1.5 Line Spacing	Міжрядковий інтервал 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Безкоштовний текстовий процесор із відкритим кодом, написаний з нуля мовою Rust.\nЧастина Crafting Apps від команди Kojalytics.
 	About	Про програму
 	About WordKoja	Про WordKoja
 	Accept	Прийняти
@@ -586,7 +585,7 @@
 	Merge Formatting	Об'єднати форматування
 	Merged PRs	Об'єднані PR
 	Mirrored	Дзеркальні
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Авторські права (c) 2026 команди ArtCraft і учасників WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Авторські права (c) 2026 команди Kojalytics і учасників WordKoja.
 	Moderate	Помірні
 	Modify Style	Змінити стиль
 	Modify…	Змінити…
@@ -865,6 +864,7 @@
 	Small caps	Малі великі літери
 	SmartArt	SmartArt
 	Sort	Сортувати
+	Source code: github.com/Kojalytics/wordcraft	Вихідний код: github.com/Kojalytics/wordcraft
 	Space	Пробіл
 	Space before/after:	Інтервал перед/після:
 	Spacing	Інтервал
@@ -2379,3 +2379,5 @@
 	More tabs	Інші вкладки
 # #3013: Insert Table of Figures
 	Include label and number	Додавати мітку й номер
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

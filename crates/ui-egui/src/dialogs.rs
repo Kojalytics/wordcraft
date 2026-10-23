@@ -2697,7 +2697,7 @@ fn body(app: &mut WordApp, ui: &mut Ui, d: &mut Dialog) -> bool {
                     ui.hyperlink_to(tl!("kojalytics.com/koja-apps"), "https://www.kojalytics.com/koja-apps");
                     ui.add_space(6.0);
                     ui.label(
-                        egui::RichText::new(tl!("MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors."))
+                        egui::RichText::new(tl!("MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors."))
                             .small()
                             .weak(),
                     );

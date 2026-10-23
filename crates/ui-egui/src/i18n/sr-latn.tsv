@@ -15,8 +15,7 @@
 	(no suggestions)	(nema predloga)
 	(picture or object)	(slika ili objekat)
 	1.5 Line Spacing	Proređenost 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Besplatan, otvoreni obrađivač teksta napisan od nule u Rust-u.\nDeo Crafting Apps paketa tima Kojalytics.
 	A password is required to open this document.	Za otvaranje ovog dokumenta potrebna je lozinka.
 	About	O programu
 	About WordKoja	O WordKoja-u
@@ -106,7 +105,7 @@
 	Compress punctuation at the start of a line	Sažmi interpunkciju na početku reda
 	Confirm password:	Potvrdite lozinku:
 	Continue from previous section	Nastavi od prethodnog odeljka
-	Couldn't make WordCraft the default: {error}	WordCraft nije mogao da postane podrazumevana aplikacija: {error}
+	Couldn't make WordKoja the default: {error}	WordKoja nije mogao da postane podrazumevana aplikacija: {error}
 	Custom dictionary	Prilagođeni rečnik
 	Dark page (white text on black)	Tamna stranica (beo tekst na crnom)
 	Drag a rectangle to draw a table, or a line across cells to split them. Esc stops.	Prevucite pravougaonik da nacrtate tabelu ili liniju preko ćelija da ih podelite. Esc završava.
@@ -619,7 +618,7 @@
 	Merge Formatting	Spoji formatiranje
 	Merged PRs	Spojeni PR-ovi
 	Mirrored	Zrcaljeno
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Autorska prava (c) 2026 ArtCraft Team i saradnici na WordCraft-u.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Autorska prava (c) 2026 ArtCraft Team i saradnici na WordKoja-u.
 	Moderate	Umereno
 	Modify Style	Izmeni stil
 	Modify…	Izmeni…
@@ -891,6 +890,7 @@
 	Soft Edges	Meke ivice
 	Sort	Sortiraj
 	Sort order:	Redosled sortiranja:
+	Source code: github.com/Kojalytics/wordcraft	Izvorni kod: github.com/Kojalytics/wordcraft
 	Space	Razmak
 	Space after: {pt} pt	Razmak posle: {pt} pt
 	Space before/after:	Razmak pre/posle:
@@ -2377,3 +2377,5 @@
 	More tabs	Još kartica
 # #3013: Insert Table of Figures
 	Include label and number	Uključi oznaku i broj
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

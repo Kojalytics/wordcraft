@@ -9,9 +9,9 @@
 # Clean room: every entry was written from the plain meaning of the English label in ordinary
 # computing vocabulary. No Microsoft Word (or other product) localisation, string table or
 # translated UI was consulted or copied; add entries the same way.
-# Product, format and technology names (WordCraft, PDF, Markdown, MCP …) stay in Latin letters.
+# Product, format and technology names (WordKoja, PDF, Markdown, MCP …) stay in Latin letters.
 # Commands use the noun form usual in Romanian software ("Salvare", "Deschidere…"); messages and
-# hints address the reader formally ("dvs.", "Alegeți"), like the PdfCraft catalog.
+# hints address the reader formally ("dvs.", "Alegeți"), like the PdfKoja catalog.
 # Written by Claude Code for a Romanian-speaking contributor; not yet reviewed line by line by a native speaker.
 
 	% of all commits	% din toate commit-urile
@@ -49,7 +49,7 @@
 	<< Less	<< Mai puțin
 	<< Remove	<< Elimină
 	A file dialog is already open.	O casetă de dialog pentru fișiere este deja deschisă.
-	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Un procesor de text gratuit și open-source, scris de la zero în Rust.\nFace parte din Crafting Apps ale echipei ArtCraft.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Un procesor de text gratuit și open-source, scris de la zero în Rust.\nFace parte din Crafting Apps ale echipei Kojalytics.
 	A mail merge field	Un câmp de îmbinare corespondență
 	A numbered sequence (figures, tables…)	O secvență numerotată (figuri, tabele…)
 	A password is required to open this document.	Pentru a deschide acest document este necesară o parolă.
@@ -61,7 +61,7 @@
 	AaBbCcDd	AaBbCcDd
 	AaBbYyZz	AaBbYyZz
 	About	Despre
-	About WordCraft	Despre WordCraft
+	About WordKoja	Despre WordKoja
 	Above Chart	Deasupra graficului
 	Above the item	Deasupra elementului
 	Absolute value cases	Valoare absolută pe cazuri
@@ -226,7 +226,7 @@
 	AutoFit to window	Potrivire automată la fereastră
 	AutoFormat As You Type	Formatare automată pe măsură ce scrieți
 	AutoSave	Salvare automată
-	AutoSave documents you have saved in WordCraft	Salvează automat documentele pe care le-ați salvat în WordCraft
+	AutoSave documents you have saved in WordKoja	Salvează automat documentele pe care le-ați salvat în WordKoja
 	AutoSave failed: {error}. Save the document to turn AutoSave back on.	Salvarea automată a eșuat: {error}. Salvați documentul pentru a reactiva salvarea automată.
 	AutoSave isn't available in the browser: it can't write to your files. Save downloads a copy.	Salvarea automată nu e disponibilă în browser: nu poate scrie în fișierele dvs.. Salvarea descarcă o copie.
 	AutoSave only keeps .docx, .odt and .rtf files; {name} can't keep all formatting. Save as .docx to turn on AutoSave.	Salvarea automată păstrează doar fișiere .docx, .odt și .rtf; {name} nu poate păstra toată formatarea. Salvați ca .docx pentru a activa salvarea automată.
@@ -317,7 +317,7 @@
 	Breaks	Întreruperi
 	Breve	Breve
 	Bring Forward	Aducere în față
-	Browse in WordCraft…	Răsfoire în WordCraft…
+	Browse in WordKoja…	Răsfoire în WordKoja…
 	Browse…	Răsfoire…
 	Building Block Gallery Content Control	Control de conținut pentru galeria de blocuri de construcție
 	Built-In	Încorporat
@@ -561,7 +561,7 @@
 	Cosine Function	Funcția cosinus
 	Cotangent Function	Funcția cotangentă
 	Couldn't download {name}: {error}	Nu s-a putut descărca {name}: {error}
-	Couldn't make WordCraft the default: {error}	Nu s-a putut seta WordCraft ca implicit: {error}
+	Couldn't make WordKoja the default: {error}	Nu s-a putut seta WordKoja ca implicit: {error}
 	Couldn't open {path}: {error}	Nu s-a putut deschide {path}: {error}
 	Count by:	Numărare după:
 	Count words in text boxes and notes	Numără cuvintele din casetele de text și din note
@@ -1093,7 +1093,7 @@
 	Immersive Reader	Cititor imersiv
 	Immersive\nReader	Cititor\nimersiv
 	Import…	Import…
-	In Default apps, choose WordCraft for the document types you want it to open.	În Aplicații implicite, alegeți WordCraft pentru tipurile de documente pe care doriți să le deschidă.
+	In Default apps, choose WordKoja for the document types you want it to open.	În Aplicații implicite, alegeți WordKoja pentru tipurile de documente pe care doriți să le deschidă.
 	In Front of Text	În fața textului
 	In Line with Text	În linie cu textul
 	In equations, typing a name after a backslash replaces it with its symbol.	În ecuații, dacă scrieți un nume după o bară oblică inversă, acesta este înlocuit cu simbolul său.
@@ -1217,7 +1217,7 @@
 	Italian	Italiană
 	Italic	Cursiv
 	Japanese	Japoneză
-	Join the ArtCraft community on Discord	Alăturați-vă comunității ArtCraft pe Discord
+	Join the Kojalytics community on Discord	Alăturați-vă comunității Kojalytics pe Discord
 	Join us on Discord: discord.gg/artcraft	Alăturați-vă nouă pe Discord: discord.gg/artcraft
 	Journal	Jurnal
 	Justification	Aliniere
@@ -1227,7 +1227,7 @@
 	Keep Lines Together	Păstrare rânduri împreună
 	Keep Text Only	Păstrare doar text
 	Keep lines together	Păstrați rândurile împreună
-	Keep the password somewhere safe: without it nobody, WordCraft included, can open the document. Leave both boxes empty to remove the password.	Păstrați parola într-un loc sigur: fără ea nimeni, nici măcar WordCraft, nu poate deschide documentul. Lăsați ambele casete goale pentru a elimina parola.
+	Keep the password somewhere safe: without it nobody, WordKoja included, can open the document. Leave both boxes empty to remove the password.	Păstrați parola într-un loc sigur: fără ea nimeni, nici măcar WordKoja, nu poate deschide documentul. Lăsați ambele casete goale pentru a elimina parola.
 	Keep with Next	Păstrare cu următorul
 	Keep with next	Păstrați cu următorul
 	Keeps the fonts and formatting of the copied text.	Păstrează fonturile și formatarea textului copiat.
@@ -1368,7 +1368,7 @@
 	Logical OR	SAU logic
 	Logical OR with Limits	SAU logic cu limite
 	Lum:	Lum:
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team și contribuitorii WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team și contribuitorii WordKoja.
 	MLA	MLA
 	Macros	Macrocomenzi
 	Made from the author and year when empty	Se formează din autor și an când e gol
@@ -1376,7 +1376,7 @@
 	Mail Merge	Îmbinare corespondență
 	Mailings	Corespondență
 	Main entry:	Intrare principală:
-	Make WordCraft the default for Word documents…	Setați WordCraft ca implicit pentru documentele Word…
+	Make WordKoja the default for Word documents…	Setați WordKoja ca implicit pentru documentele Word…
 	Makes the ribbon, menus and dialogs larger or smaller. Auto follows your system's display scaling; 100% is one screen pixel per point. Document zoom is separate.	Face panglica, meniurile și dialogurile mai mari sau mai mici. Auto urmează scalarea ecranului din sistem; 100% înseamnă un pixel de ecran pe punct. Zoomul documentului este separat.
 	Manage Sources	Gestionare surse
 	Manage Styles	Gestionare stiluri
@@ -1534,7 +1534,7 @@
 	No model credits were built into this copy.	Această copie nu include mențiuni despre modele.
 	No printers found. Configure a system printer or export a PDF.	Nu s-au găsit imprimante. Configurează o imprimantă de sistem sau exportă un PDF.
 	No sources yet.	Nicio sursă încă.
-	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Nu este instalat niciun dicționar ortografic pentru {language}, așa că nu se verifică. WordCraft caută dicționarul Hunspell {name} în folderul WORDCRAFT_DICTIONARIES și în locurile uzuale ale sistemului.
+	No spelling dictionary for {language} is installed, so it isn't checked. WordKoja looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Nu este instalat niciun dicționar ortografic pentru {language}, așa că nu se verifică. WordKoja caută dicționarul Hunspell {name} în folderul WORDCRAFT_DICTIONARIES și în locurile uzuale ale sistemului.
 	No templates match your search.	Niciun șablon nu se potrivește căutării.
 	No words yet. Add to Dictionary on a misspelled word puts it here.	Niciun cuvânt încă. „Adăugați în dicționar” pe un cuvânt scris greșit îl pune aici.
 	No-Width Non Break	Fără lățime, fără rupere
@@ -1603,7 +1603,7 @@
 	Offset: Top Right	Decalaj: sus dreapta
 	Omit	Omitere
 	On	Activat
-	On: WordCraft opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Activat: WordCraft se deschide la Fișier › Pornire, cu un document gol, șabloanele și documentele dvs. recente. Dezactivat: se deschide un document gol.
+	On: WordKoja opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Activat: WordKoja se deschide la Fișier › Pornire, cu un document gol, șabloanele și documentele dvs. recente. Dezactivat: se deschide un document gol.
 	On: the caret glides to its new place when you type or use the arrow keys, and its blink fades. Off: it jumps and blinks on and off.	Activat: cursorul alunecă în noul loc când scrieți sau folosiți tastele săgeți, iar clipirea lui se estompează. Dezactivat: sare și clipește.
 	One	Unu
 	One Page	O pagină
@@ -1618,11 +1618,11 @@
 	Only the allowed styles can be applied.	Se pot aplica doar stilurile permise.
 	Only web (http, https) and email (mailto) links can be followed	Se pot urma doar linkurile web (http, https) și de e-mail (mailto)
 	Open	Deschidere
-	Open a file with WordCraft's own browser when the system file dialog doesn't appear.	Deschideți un fișier cu propriul browser al WordCraft când dialogul de fișiere al sistemului nu apare.
+	Open a file with WordKoja's own browser when the system file dialog doesn't appear.	Deschideți un fișier cu propriul browser al WordKoja când dialogul de fișiere al sistemului nu apare.
 	OpenDocument Text (*.odt)	Text OpenDocument (*.odt)
 	Opening print dialog…	Se deschide dialogul de imprimare…
-	Opens .docx, .doc, .rtf and .odt files and Word templates with WordCraft from now on.	De acum, deschide fișierele .docx, .doc, .rtf și .odt și șabloanele Word cu WordCraft.
-	Opens Settings › Default apps, where you choose WordCraft for .docx and the other document types.	Deschide Setări › Aplicații implicite, unde alegeți WordCraft pentru .docx și celelalte tipuri de documente.
+	Opens .docx, .doc, .rtf and .odt files and Word templates with WordKoja from now on.	De acum, deschide fișierele .docx, .doc, .rtf și .odt și șabloanele Word cu WordKoja.
+	Opens Settings › Default apps, where you choose WordKoja for .docx and the other document types.	Deschide Setări › Aplicații implicite, unde alegeți WordKoja pentru .docx și celelalte tipuri de documente.
 	Operator	Operator
 	Operator Structures	Structuri de operatori
 	Operators	Operatori
@@ -1917,7 +1917,7 @@
 	Report	Raport
 	Research	Cercetare
 	Researcher	Cercetător
-	Researcher needs an online service; WordCraft keeps your documents offline.	Cercetătorul necesită un serviciu online; WordCraft vă păstrează documentele offline.
+	Researcher needs an online service; WordKoja keeps your documents offline.	Cercetătorul necesită un serviciu online; WordKoja vă păstrează documentele offline.
 	Reset	Resetare
 	Reset All…	Resetare totală…
 	Reset Character Formatting	Resetare formatare caractere
@@ -2125,7 +2125,7 @@
 	Show or Hide Style	Afișare sau ascundere stil
 	Show revisions in balloons	Afișați revizuirile în baloane
 	Show rulers	Afișați riglele
-	Show the Start screen when WordCraft starts	Afișați ecranul de start când pornește WordCraft
+	Show the Start screen when WordKoja starts	Afișați ecranul de start când pornește WordKoja
 	Show the community button in the title bar	Afișați butonul comunității în bara de titlu
 	Show the equation in the line of text	Afișați ecuația în rândul de text
 	Show the equation on a line of its own	Afișați ecuația pe un rând separat
@@ -2194,7 +2194,7 @@
 	Sort by:	Sortează după:
 	Sort order:	Ordinea de sortare:
 	Source Manager	Manager de surse
-	Source code: github.com/storytold/wordcraft	Cod sursă: github.com/storytold/wordcraft
+	Source code: github.com/Kojalytics/wordcraft	Cod sursă: github.com/Kojalytics/wordcraft
 	Source type:	Tipul sursei:
 	Sources in this document:	Surse din acest document:
 	South	Sud
@@ -2392,7 +2392,7 @@
 	The printer, two-sided printing and pages per sheet are chosen in that dialog.	Imprimanta, imprimarea față-verso și numărul de pagini pe foaie se aleg în acel dialog.
 	The recipient-list field that fills each part of an address block and greeting line.	Câmpul din lista de destinatari care completează fiecare parte a unui bloc de adresă și a unui rând de salut.
 	The spelling and grammar check is complete.	Verificarea ortografiei și a gramaticii s-a terminat.
-	The system file dialog isn't available, so WordCraft shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Dialogul de fișiere al sistemului nu este disponibil, așa că WordCraft îl afișează pe al lui. Pentru a obține dialogul sistemului, instalați un portal de selectare a fișierelor (cum ar fi xdg-desktop-portal-gtk) sau zenity.
+	The system file dialog isn't available, so WordKoja shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Dialogul de fișiere al sistemului nu este disponibil, așa că WordKoja îl afișează pe al lui. Pentru a obține dialogul sistemului, instalați un portal de selectare a fișierelor (cum ar fi xdg-desktop-portal-gtk) sau zenity.
 	The time right now	Ora de acum
 	Theme Colors	Culori de temă
 	Theme Fonts	Fonturi de temă
@@ -2424,7 +2424,7 @@
 	Title Bar	Bară de titlu
 	Title from the document properties	Titlu din proprietățile documentului
 	Title:	Titlu:
-	To open Word documents with WordCraft by default: select one in Finder, choose File › Get Info, pick WordCraft under Open with, then click Change All.	Pentru a deschide implicit documentele Word cu WordCraft: selectați unul în Finder, alegeți Fișier › Obține informații, alegeți WordCraft la Deschide cu, apoi faceți clic pe Schimbă tot.
+	To open Word documents with WordKoja by default: select one in Finder, choose File › Get Info, pick WordKoja under Open with, then click Change All.	Pentru a deschide implicit documentele Word cu WordKoja: selectați unul în Finder, alegeți Fișier › Obține informații, alegeți WordKoja la Deschide cu, apoi faceți clic pe Schimbă tot.
 	Today	Azi
 	Toggle Check Box	Comutare casetă de selectare
 	Toggle Field Codes	Comutare coduri de câmp
@@ -2607,8 +2607,8 @@
 	Word level	Nivel cuvânt
 	WordArt	WordArt
 	WordArt Styles	Stiluri WordArt
-	WordCraft	WordCraft
-	WordCraft is now the default app for Word documents.	WordCraft este acum aplicația implicită pentru documentele Word.
+	WordKoja	WordKoja
+	WordKoja is now the default app for Word documents.	WordKoja este acum aplicația implicită pentru documentele Word.
 	Words	Cuvinte
 	Words only	Doar cuvinte
 	Wrap Text	Încadrare text
@@ -2633,7 +2633,7 @@
 	can't split at the first row	nu se poate împărți la primul rând
 	development build	versiune de dezvoltare
 	from Unicode (hex)	din Unicode (hex)
-	getartcraft.com/apps/wordcraft	getartcraft.com/apps/wordcraft
+	kojalytics.com/koja-apps	kojalytics.com/koja-apps
 	i, ii, iii, …	i, ii, iii, …
 	lowercase	minuscule
 	nothing is selected	nimic nu este selectat
@@ -2762,3 +2762,5 @@ template	Letter	Scrisoare
 	cm	cm
 	mm	mm
 	pi	pi
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

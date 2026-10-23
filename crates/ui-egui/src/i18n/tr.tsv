@@ -14,8 +14,7 @@
 
 	(no suggestions)	(öneri yok)
 	1.5 Line Spacing	1,5 Satır Aralığı
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Rust ile sıfırdan yazılmış ücretsiz, açık kaynak bir kelime işlemci.\nKojalytics ekibinin Crafting Apps ailesinin bir parçası.
 	AaBbCcDd	AaBbCcÇç
 	About	Hakkında
 	About WordKoja	WordKoja Hakkında
@@ -444,7 +443,7 @@
 	Merge Formatting	Biçimlendirmeyi Birleştir
 	Merged PRs	Birleştirilen PR'lar
 	Mirrored	Aynalı
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Telif hakkı (c) 2026 ArtCraft ekibi ve WordCraft'a katkıda bulunanlar.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Telif hakkı (c) 2026 Kojalytics ekibi ve WordKoja'a katkıda bulunanlar.
 	Moderate	Orta
 	Modify Style	Stili Değiştir
 	Modify…	Değiştir…
@@ -707,6 +706,7 @@
 	Small caps	Küçük büyük harf
 	SmartArt	SmartArt
 	Sort	Sırala
+	Source code: github.com/Kojalytics/wordcraft	Kaynak kod: github.com/Kojalytics/wordcraft
 	Space before/after:	Önce/sonra boşluk:
 	Spacing	Aralık
 	Spacing (pt):	Aralık (pt):
@@ -2772,3 +2772,5 @@ preview	Title	Örnek
 	More tabs	Diğer sekmeler
 # #3013: Insert Table of Figures
 	Include label and number	Etiketi ve numarayı ekle
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

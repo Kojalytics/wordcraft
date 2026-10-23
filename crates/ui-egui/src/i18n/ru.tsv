@@ -15,8 +15,7 @@
 
 	(no suggestions)	(нет вариантов)
 	1.5 Line Spacing	Полуторный интервал
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Бесплатный текстовый процессор с открытым исходным кодом, написанный с нуля на Rust.\nВходит в Crafting Apps от команды Kojalytics.
 	AaBbCcDd	АаБбВвГг
 	About	О программе
 	About WordKoja	О WordKoja
@@ -446,7 +445,7 @@
 	Merge Formatting	Объединить форматирование
 	Merged PRs	Принятые PR
 	Mirrored	Зеркальные
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team и участники проекта WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team и участники проекта WordKoja.
 	Moderate	Средние
 	Modify Style	Изменить стиль
 	Modify…	Изменить…
@@ -702,6 +701,7 @@
 	Small caps	Малые прописные
 	SmartArt	SmartArt
 	Sort	Сортировка
+	Source code: github.com/Kojalytics/wordcraft	Исходный код: github.com/Kojalytics/wordcraft
 	Space before/after:	Интервал перед/после:
 	Spacing	Интервал
 	Spacing (pt):	Интервал (пт):
@@ -2773,3 +2773,5 @@ preview	Title	Пример
 	More tabs	Другие вкладки
 # #3013: Insert Table of Figures
 	Include label and number	Включить подпись и номер
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

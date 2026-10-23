@@ -17,8 +17,7 @@
 
 	(no suggestions)	(brak propozycji)
 	1.5 Line Spacing	Interlinia 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Darmowy edytor tekstu o otwartym kodzie, napisany od podstaw w języku Rust.\nCzęść rodziny Crafting Apps zespołu Kojalytics.
 	About	Informacje
 	About WordKoja	O programie WordKoja
 	Accept	Zaakceptuj
@@ -415,7 +414,7 @@
 	Link to Previous	Połącz z poprzednim
 	Links	Linki
 	Location: {path}	Lokalizacja: {path}
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT lub Apache-2.0. Copyright (c) 2026 ArtCraft Team i współtwórcy WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT lub Apache-2.0. Copyright (c) 2026 ArtCraft Team i współtwórcy WordKoja.
 	Macros	Makra
 	Mailings	Korespondencja
 	Manage Sources	Zarządzaj źródłami
@@ -701,6 +700,7 @@
 	Small caps	Kapitaliki
 	SmartArt	SmartArt
 	Sort	Sortuj
+	Source code: github.com/Kojalytics/wordcraft	Kod źródłowy: github.com/Kojalytics/wordcraft
 	Space before/after:	Odstęp przed/po:
 	Spacing	Odstępy
 	Spacing (pt):	Odstępy (pt):
@@ -2795,3 +2795,5 @@ preview	Title	Tytuł
 	This document has no bookmarks.	This document has no bookmarks.
 	Type a page number, or +2 / -1.	Type a page number, or +2 / -1.
 	Wait for the print job to finish submitting before closing.	Wait for the print job to finish submitting before closing.
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

@@ -17,8 +17,7 @@
 	(no style)	(ingen stil)
 	(no suggestions)	(inga förslag)
 	1.5 Line Spacing	Radavstånd 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	En gratis ordbehandlare med öppen källkod, skriven från grunden i Rust.\nEn del av Crafting Apps från Kojalytics-teamet.
 	About	Om
 	About WordKoja	Om WordKoja
 	Accept	Acceptera
@@ -557,7 +556,7 @@
 	Link to Previous	Länka till föregående
 	Links	Länkar
 	Location: {path}	Plats: {path}
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft-teamet och WordCrafts bidragsgivare.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 Kojalytics-teamet och WordKojas bidragsgivare.
 	Macros	Makron
 	Mailings	Utskick
 	Make WordKoja the default for Word documents…	Gör WordKoja till standardprogram för Word-dokument…
@@ -867,6 +866,7 @@
 	Small caps	Kapitäler
 	SmartArt	SmartArt
 	Sort	Sortera
+	Source code: github.com/Kojalytics/wordcraft	Källkod: github.com/Kojalytics/wordcraft
 	Space	Blanksteg
 	Space before/after:	Avstånd före/efter:
 	Spacing	Avstånd
@@ -2802,3 +2802,5 @@ template	Letter	Brev
 	More tabs	Fler flikar
 # #3013: Insert Table of Figures
 	Include label and number	Ta med etikett och nummer
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

@@ -19,8 +19,7 @@
 	(no style)	(không có kiểu)
 	(no suggestions)	(không có gợi ý)
 	1.5 Line Spacing	Giãn dòng 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Trình xử lý văn bản miễn phí, mã nguồn mở được viết từ đầu bằng Rust.\nMột phần trong bộ ứng dụng Crafting Apps của đội ngũ Kojalytics.
 	About	Giới thiệu
 	About WordKoja	Giới thiệu về WordKoja
 	Accept	Chấp nhận
@@ -491,7 +490,7 @@
 	Link to Previous	Liên kết với phần trước
 	Links	Liên kết
 	Location: {path}	Vị trí: {path}
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Bản quyền (c) 2026 ArtCraft Team và các cộng tác viên WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Bản quyền (c) 2026 ArtCraft Team và các cộng tác viên WordKoja.
 	Macros	Macro
 	Mailings	Gửi thư
 	Manage Sources	Quản lý nguồn
@@ -792,6 +791,7 @@
 	Small caps	Chữ hoa nhỏ
 	SmartArt	SmartArt
 	Sort	Sắp xếp
+	Source code: github.com/Kojalytics/wordcraft	Mã nguồn: github.com/Kojalytics/wordcraft
 	Space	Dấu cách
 	Space before/after:	Khoảng cách trước/sau:
 	Spacing	Khoảng cách
@@ -2814,3 +2814,5 @@ template	Letter	Thư
 	More tabs	Các tab khác
 # #3013: Insert Table of Figures
 	Include label and number	Bao gồm nhãn và số
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

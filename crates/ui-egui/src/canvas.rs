@@ -6720,7 +6720,7 @@ mod tests {
     /// the preview follows the pointer, and the object shows twice.
     #[test]
     fn the_view_key_changes_when_a_drag_takes_an_object_off_the_page() {
-        let doc = wordcraft_doc::Document::from_text("Hello WordCraft");
+        let doc = wordcraft_doc::Document::from_text("Hello WordKoja");
         let app = WordApp::new(wordcraft_engine::Session::new(doc), Default::default());
         let object = Pos::body(0, 5);
         let hidden = view_key(&app, false, Some(&object));

@@ -17,8 +17,7 @@
 
 	(no suggestions)	(nincs javaslat)
 	1.5 Line Spacing	1,5-es sorköz
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Ingyenes, nyílt forráskódú szövegszerkesztő, az alapoktól Rustban írva.\nA Crafting Apps családba tartozik, az Kojalytics csapatától.
 	AaBbCcDd	AaÁáBbCc
 	About	Névjegy
 	About WordKoja	A WordKoja névjegye
@@ -444,7 +443,7 @@
 	Merge Formatting	Formázás összefésülése
 	Merged PRs	Beolvasztott PR-ek
 	Mirrored	Tükrözött
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT vagy Apache-2.0. Copyright (c) 2026 ArtCraft Team és a WordCraft közreműködői.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT vagy Apache-2.0. Copyright (c) 2026 ArtCraft Team és a WordKoja közreműködői.
 	Moderate	Mérsékelt
 	Modify Style	Stílus módosítása
 	Modify…	Módosítás…
@@ -701,6 +700,7 @@
 	Small caps	Kiskapitális
 	SmartArt	SmartArt
 	Sort	Rendezés
+	Source code: github.com/Kojalytics/wordcraft	Forráskód: github.com/Kojalytics/wordcraft
 	Space before/after:	Térköz előtte/utána:
 	Spacing	Térköz
 	Spacing (pt):	Térköz (pt):
@@ -2770,3 +2770,5 @@
 	More tabs	További lapok
 # #3013: Insert Table of Figures
 	Include label and number	Címkével és számmal
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

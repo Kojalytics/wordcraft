@@ -5342,6 +5342,7 @@ name = "wordcraft"
 version = "0.10.0"
 dependencies = [
  "arboard",
+ "base64",
  "chrono",
  "clipboard-win",
  "craft-print",

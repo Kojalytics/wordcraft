@@ -15,8 +15,7 @@
 	(no style)	（无样式）
 	(no suggestions)	（无建议）
 	1.5 Line Spacing	1.5 倍行距
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	一款用 Rust 从零编写的免费开源文字处理软件。\n属于 Kojalytics 团队的 Crafting Apps 系列。
 	About	关于
 	About WordKoja	关于 WordKoja
 	Accept	接受
@@ -91,7 +90,7 @@
 	Color only	仅颜色
 	Compress punctuation at the start of a line	压缩行首标点
 	Continue from previous section	续前节
-	Couldn't make WordCraft the default: {error}	无法将 WordCraft 设为默认应用：{error}
+	Couldn't make WordKoja the default: {error}	无法将 WordKoja 设为默认应用：{error}
 	Custom dictionary	自定义词典
 	Dark page (white text on black)	深色页面（黑底白字）
 	Drag a rectangle to draw a table, or a line across cells to split them. Esc stops.	拖出矩形以绘制表格，或拖出穿过单元格的线条以拆分单元格。按 Esc 结束。
@@ -583,7 +582,7 @@
 	Merge Formatting	合并格式
 	Merged PRs	已合并的 PR
 	Mirrored	对称
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0。版权所有 (c) 2026 ArtCraft 团队及 WordCraft 贡献者。
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0。版权所有 (c) 2026 Kojalytics 团队及 WordKoja 贡献者。
 	Moderate	适中
 	Modify Style	修改样式
 	Modify…	修改…
@@ -851,6 +850,7 @@
 	Small caps	小型大写字母
 	SmartArt	SmartArt
 	Sort	排序
+	Source code: github.com/Kojalytics/wordcraft	源代码：github.com/Kojalytics/wordcraft
 	Space	空格
 	Space before/after:	段前/段后间距：
 	Spacing	间距
@@ -2379,3 +2379,5 @@
 	More tabs	更多选项卡
 # #3013: Insert Table of Figures
 	Include label and number	包含标签和编号
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

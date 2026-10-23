@@ -13,7 +13,7 @@
 # Ribbon tabs, groups and panes are nouns (Vstavljanje, Pisava, Podokno slogov); commands and
 # buttons use the imperative (Shrani, Vstavi tabelo); messages address the user with the polite
 # plural (Shranite dokument). Only the first word of a label is capitalised. Product, format and
-# technology names stay as they are (WordCraft, PDF, Markdown, MCP …). Counts use count-neutral
+# technology names stay as they are (WordKoja, PDF, Markdown, MCP …). Counts use count-neutral
 # wording (`Besede: 21`), so no plural forms (dvojina, množina) are needed. Quotes are »…«.
 
 	% of all commits	% vseh potrditev
@@ -51,7 +51,7 @@
 	<< Less	<< Manj
 	<< Remove	<< Odstrani
 	A file dialog is already open.	Pogovorno okno za datoteke je že odprto.
-	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Brezplačen odprtokodni urejevalnik besedil, iz nič napisan v jeziku Rust.\nDel zbirke Crafting Apps ekipe ArtCraft.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Brezplačen odprtokodni urejevalnik besedil, iz nič napisan v jeziku Rust.\nDel zbirke Crafting Apps ekipe Kojalytics.
 	A mail merge field	Polje spajanja dokumentov
 	A numbered sequence (figures, tables…)	Oštevilčeno zaporedje (slike, tabele …)
 	A password is required to open this document.	Za odpiranje tega dokumenta je potrebno geslo.
@@ -62,7 +62,7 @@
 	AaBbCcDd	AaBbČčŽž
 	AaBbYyZz	AaBbČčŠšŽž
 	About	O programu
-	About WordCraft	O programu WordCraft
+	About WordKoja	O programu WordKoja
 	Above Chart	Nad grafikonom
 	Above the item	Nad elementom
 	Absolute value cases	Primeri absolutne vrednosti
@@ -232,7 +232,7 @@
 	Automatically Update Document Styles	Samodejno posodobi sloge dokumenta
 	Automatically update document styles	Samodejno posodobi sloge dokumenta
 	AutoSave	Samodejno shranjevanje
-	AutoSave documents you have saved in WordCraft	Samodejno shranjuj dokumente, ki ste jih shranili v programu WordCraft
+	AutoSave documents you have saved in WordKoja	Samodejno shranjuj dokumente, ki ste jih shranili v programu WordKoja
 	AutoSave failed: {error}. Save the document to turn AutoSave back on.	Samodejno shranjevanje ni uspelo: {error}. Shranite dokument, da znova vklopite samodejno shranjevanje.
 	AutoSave isn't available in the browser: it can't write to your files. Save downloads a copy.	Samodejno shranjevanje v brskalniku ni na voljo, ker ne more pisati v vaše datoteke. Ukaz Shrani prenese kopijo.
 	AutoSave only keeps .docx, .odt and .rtf files; {name} can't keep all formatting. Save as .docx to turn on AutoSave.	Samodejno shranjevanje deluje samo za datoteke .docx, .odt in .rtf; {name} ne more ohraniti vsega oblikovanja. Shranite kot .docx, da vklopite samodejno shranjevanje.
@@ -312,7 +312,7 @@
 	Breaks	Prelomi
 	Breve	Breve
 	Bring Forward	Premakni naprej
-	Browse in WordCraft…	Prebrskaj v programu WordCraft …
+	Browse in WordKoja…	Prebrskaj v programu WordKoja …
 	Browse…	Prebrskaj …
 	Building Block Gallery Content Control	Kontrolnik vsebine galerije gradnikov
 	Built-In	Vgrajeno
@@ -555,7 +555,7 @@
 	Cosine Function	Funkcija kosinusa
 	Cotangent Function	Funkcija kotangensa
 	Couldn't download {name}: {error}	Prenos {name} ni uspel: {error}
-	Couldn't make WordCraft the default: {error}	WordCraft ni bilo mogoče nastaviti kot privzeti program: {error}
+	Couldn't make WordKoja the default: {error}	WordKoja ni bilo mogoče nastaviti kot privzeti program: {error}
 	Couldn't open {path}: {error}	Ni mogoče odpreti {path}: {error}
 	Count by:	Štej po:
 	Count words in text boxes and notes	Štej besede v poljih z besedilom in opombah
@@ -966,7 +966,7 @@
 	General	Splošno
 	Geometry	Geometrija
 	German (Germany)	Nemščina (Nemčija)
-	getartcraft.com/apps/wordcraft	getartcraft.com/apps/wordcraft
+	kojalytics.com/koja-apps	kojalytics.com/koja-apps
 	Glow	Sij
 	Glow Colors	Barve sija
 	Go Back	Nazaj
@@ -1082,7 +1082,7 @@
 	Immersive	Poglobljeno
 	Immersive Reader	Poglobljeni bralnik
 	Immersive\nReader	Poglobljeni\nbralnik
-	In Default apps, choose WordCraft for the document types you want it to open.	V privzetih aplikacijah izberite WordCraft za vrste dokumentov, ki naj jih odpira.
+	In Default apps, choose WordKoja for the document types you want it to open.	V privzetih aplikacijah izberite WordKoja za vrste dokumentov, ki naj jih odpira.
 	In equations, typing a name after a backslash replaces it with its symbol.	Ko v enačbi za poševnico nazaj vtipkate ime, ga zamenja ustrezni simbol.
 	In Front of Text	Pred besedilom
 	In Line with Text	V vrstici z besedilom
@@ -1204,7 +1204,7 @@
 	Italian	Italijanščina
 	Italic	Ležeče
 	Japanese	Japonščina
-	Join the ArtCraft community on Discord	Pridružite se skupnosti ArtCraft na Discordu
+	Join the Kojalytics community on Discord	Pridružite se skupnosti Kojalytics na Discordu
 	Join us on Discord: discord.gg/artcraft	Pridružite se nam na Discordu: discord.gg/artcraft
 	Journal	Revija
 	Justification	Poravnava
@@ -1214,7 +1214,7 @@
 	Keep Lines Together	Obdrži vrstice skupaj
 	Keep lines together	Obdrži vrstice skupaj
 	Keep Text Only	Ohrani samo besedilo
-	Keep the password somewhere safe: without it nobody, WordCraft included, can open the document. Leave both boxes empty to remove the password.	Geslo shranite na varno: brez njega dokumenta ne more odpreti nihče, niti WordCraft. Če želite geslo odstraniti, pustite obe polji prazni.
+	Keep the password somewhere safe: without it nobody, WordKoja included, can open the document. Leave both boxes empty to remove the password.	Geslo shranite na varno: brez njega dokumenta ne more odpreti nihče, niti WordKoja. Če želite geslo odstraniti, pustite obe polji prazni.
 	Keep with Next	Obdrži z naslednjim
 	Keep with next	Obdrži z naslednjim
 	Keeps the fonts and formatting of the copied text.	Ohrani pisave in oblikovanje kopiranega besedila.
@@ -1359,7 +1359,7 @@
 	Mail Merge	Spajanje dokumentov
 	Mailings	Pošiljanje
 	Main entry:	Glavni vnos:
-	Make WordCraft the default for Word documents…	Nastavi WordCraft kot privzeti program za dokumente Word …
+	Make WordKoja the default for Word documents…	Nastavi WordKoja kot privzeti program za dokumente Word …
 	Makes the ribbon, menus and dialogs larger or smaller. Auto follows your system's display scaling; 100% is one screen pixel per point. Document zoom is separate.	Poveča ali pomanjša trak, menije in pogovorna okna. Samodejno sledi sistemskemu merilu zaslona; 100 % je ena zaslonska točka na točko. Povečava dokumenta je ločena.
 	Manage Sources	Upravljaj vire
 	Manage Styles	Upravljaj sloge
@@ -1409,7 +1409,7 @@
 	Mirror indents	Zrcalni zamiki
 	Mirror margins	Zrcalni robovi
 	Mirrored	Zrcalno
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team in sodelavci projekta WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team in sodelavci projekta WordKoja.
 	MLA	MLA
 	Model	Model
 	Models	Modeli
@@ -1512,7 +1512,7 @@
 	No Soft Edges	Brez mehkih robov
 	No sources yet.	Virov še ni.
 	No Spacing	Brez razmika
-	No spelling dictionary for {language} is installed, so it isn't checked. WordCraft looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Za jezik {language} ni nameščenega slovarja za črkovanje, zato se ne preverja. WordCraft poišče slovar Hunspell {name} v mapi WORDCRAFT_DICTIONARIES in na običajnih sistemskih mestih.
+	No spelling dictionary for {language} is installed, so it isn't checked. WordKoja looks for the Hunspell dictionary {name} in the WORDCRAFT_DICTIONARIES folder and in the usual system locations.	Za jezik {language} ni nameščenega slovarja za črkovanje, zato se ne preverja. WordKoja poišče slovar Hunspell {name} v mapi WORDCRAFT_DICTIONARIES in na običajnih sistemskih mestih.
 	No templates match your search.	Nobena predloga se ne ujema z iskanjem.
 	No Transform	Brez preoblikovanja
 	No words yet. Add to Dictionary on a misspelled word puts it here.	Besed še ni. Ukaz Dodaj v slovar na napačno črkovani besedi jo doda sem.
@@ -1585,7 +1585,7 @@
 	Omit	Izpusti
 	On	Vklopljeno
 	On: the caret glides to its new place when you type or use the arrow keys, and its blink fades. Off: it jumps and blinks on and off.	Vklopljeno: kazalec med tipkanjem ali uporabo puščičnih tipk zdrsne na novo mesto, utripanje pa pojema. Izklopljeno: kazalec skoči in utripa.
-	On: WordCraft opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Vklopljeno: WordCraft se odpre na Datoteka › Osnovno s praznim dokumentom, predlogami in nedavnimi dokumenti. Izklopljeno: odpre prazen dokument.
+	On: WordKoja opens on File › Home, with a blank document, the templates and your recent documents. Off: it opens a blank document.	Vklopljeno: WordKoja se odpre na Datoteka › Osnovno s praznim dokumentom, predlogami in nedavnimi dokumenti. Izklopljeno: odpre prazen dokument.
 	One	Ena
 	One half	Polovica
 	One label per recipient	Ena nalepka na prejemnika
@@ -1599,11 +1599,11 @@
 	Only the allowed styles can be applied.	Uporabiti je mogoče samo dovoljene sloge.
 	Only web (http, https) and email (mailto) links can be followed	Slediti je mogoče samo spletnim (http, https) in e-poštnim (mailto) povezavam
 	Open	Odpri
-	Open a file with WordCraft's own browser when the system file dialog doesn't appear.	Odpri datoteko z WordCraftovim brskalnikom, kadar se sistemsko pogovorno okno ne prikaže.
+	Open a file with WordKoja's own browser when the system file dialog doesn't appear.	Odpri datoteko z WordKojaovim brskalnikom, kadar se sistemsko pogovorno okno ne prikaže.
 	OpenDocument Text (*.odt)	Besedilo OpenDocument (*.odt)
 	Opening print dialog…	Odpiranje pogovornega okna za tiskanje …
-	Opens .docx, .doc, .rtf and .odt files and Word templates with WordCraft from now on.	Odslej odpira datoteke .docx, .doc, .rtf in .odt ter predloge Word s programom WordCraft.
-	Opens Settings › Default apps, where you choose WordCraft for .docx and the other document types.	Odpre Nastavitve › Privzete aplikacije, kjer izberete WordCraft za .docx in druge vrste dokumentov.
+	Opens .docx, .doc, .rtf and .odt files and Word templates with WordKoja from now on.	Odslej odpira datoteke .docx, .doc, .rtf in .odt ter predloge Word s programom WordKoja.
+	Opens Settings › Default apps, where you choose WordKoja for .docx and the other document types.	Odpre Nastavitve › Privzete aplikacije, kjer izberete WordKoja za .docx in druge vrste dokumentov.
 	Operator	Operator
 	Operator Structures	Strukture operatorjev
 	Operators	Operatorji
@@ -1894,7 +1894,7 @@
 	Report	Poročilo
 	Research	Raziskovanje
 	Researcher	Raziskovalec
-	Researcher needs an online service; WordCraft keeps your documents offline.	Raziskovalec potrebuje spletno storitev; WordCraft dokumente hrani brez povezave.
+	Researcher needs an online service; WordKoja keeps your documents offline.	Raziskovalec potrebuje spletno storitev; WordKoja dokumente hrani brez povezave.
 	Reset	Ponastavi
 	Reset All…	Ponastavi vse …
 	Reset Character Formatting	Ponastavi oblikovanje znakov
@@ -2101,7 +2101,7 @@
 	Show the equation in the line of text	Prikaži enačbo v vrstici besedila
 	Show the equation on a line of its own	Prikaži enačbo v svoji vrstici
 	Show the mini toolbar when text is selected	Ob izbiri besedila prikaži mini orodno vrstico
-	Show the Start screen when WordCraft starts	Ob zagonu programa WordCraft prikaži začetni zaslon
+	Show the Start screen when WordKoja starts	Ob zagonu programa WordKoja prikaži začetni zaslon
 	Show/Hide ¶	Prikaži/skrij ¶
 	Show\nComments	Prikaži\nkomentarje
 	Showing the first {count} items.	Prikazanih je prvih {count} elementov.
@@ -2166,7 +2166,7 @@
 	Sort by:	Razvrsti po:
 	Sort order:	Vrstni red razvrščanja:
 	Sort Recipients	Razvrsti prejemnike
-	Source code: github.com/storytold/wordcraft	Izvorna koda: github.com/storytold/wordcraft
+	Source code: github.com/Kojalytics/wordcraft	Izvorna koda: github.com/Kojalytics/wordcraft
 	Source Manager	Upravitelj virov
 	Source type:	Vrsta vira:
 	Sources in this document:	Viri v tem dokumentu:
@@ -2358,7 +2358,7 @@
 	The printer, two-sided printing and pages per sheet are chosen in that dialog.	Tiskalnik, obojestransko tiskanje in število strani na list izberete v tem pogovornem oknu.
 	The recipient-list field that fills each part of an address block and greeting line.	Polje s seznama prejemnikov, ki izpolni posamezni del bloka z naslovom in pozdravne vrstice.
 	The spelling and grammar check is complete.	Preverjanje črkovanja in slovnice je končano.
-	The system file dialog isn't available, so WordCraft shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Sistemsko pogovorno okno za datoteke ni na voljo, zato WordCraft prikaže svoje. Za sistemsko okno namestite portal za izbiro datotek (npr. xdg-desktop-portal-gtk) ali zenity.
+	The system file dialog isn't available, so WordKoja shows its own. To get the system dialog, install a file chooser portal (such as xdg-desktop-portal-gtk) or zenity.	Sistemsko pogovorno okno za datoteke ni na voljo, zato WordKoja prikaže svoje. Za sistemsko okno namestite portal za izbiro datotek (npr. xdg-desktop-portal-gtk) ali zenity.
 	The time right now	Trenutni čas
 	Theme Colors	Barve teme
 	Theme Fonts	Pisave teme
@@ -2393,7 +2393,7 @@
 	Title Bar	Naslovna vrstica
 	Title from the document properties	Naslov iz lastnosti dokumenta
 	Title:	Naslov:
-	To open Word documents with WordCraft by default: select one in Finder, choose File › Get Info, pick WordCraft under Open with, then click Change All.	Če želite dokumente Word privzeto odpirati s programom WordCraft: enega izberite v Finderju, izberite Datoteka › Informacije, pod Odpri z izberite WordCraft in kliknite Spremeni vse.
+	To open Word documents with WordKoja by default: select one in Finder, choose File › Get Info, pick WordKoja under Open with, then click Change All.	Če želite dokumente Word privzeto odpirati s programom WordKoja: enega izberite v Finderju, izberite Datoteka › Informacije, pod Odpri z izberite WordKoja in kliknite Spremeni vse.
 	TOA Heading	Naslov kazala virov
 	TOC Heading	Naslov kazala vsebine
 	TOC {n}	Kazalo vsebine {n}
@@ -2579,8 +2579,8 @@
 	Word XML Document (*.xml)	Dokument Word XML (*.xml)
 	WordArt	WordArt
 	WordArt Styles	Slogi WordArt
-	WordCraft	WordCraft
-	WordCraft is now the default app for Word documents.	WordCraft je zdaj privzeta aplikacija za dokumente Word.
+	WordKoja	WordKoja
+	WordKoja is now the default app for Word documents.	WordKoja je zdaj privzeta aplikacija za dokumente Word.
 	Words	Besede
 	Words only	Samo besede
 	Wrap Text	Obtekaj besedilo
@@ -2763,3 +2763,5 @@ preview	Title	Naslov
 	{names} and {n} more	{names} and {n} more
 	{name} options	{name} options
 	{width} × {height} pixels	{width} × {height} pixels
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

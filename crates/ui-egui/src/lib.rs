@@ -395,7 +395,7 @@ impl Default for UiState {
             nav_tab: "headings".into(),
             nav_pane: false,
             nav_collapsed: Default::default(),
-            show_discord: true,
+            show_discord: false,
             author: String::new(),
             window: None,
             language: i18n::AUTO.into(),

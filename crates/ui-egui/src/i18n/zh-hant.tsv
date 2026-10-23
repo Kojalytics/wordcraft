@@ -4,8 +4,7 @@
 	(no style)	（無樣式）
 	(no suggestions)	（無建議）
 	1.5 Line Spacing	1.5 倍行距
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	一款以 Rust 從零開始撰寫的免費開源文書處理軟體。\n屬於 Kojalytics 團隊的 Crafting Apps 系列。
 	About	關於
 	About WordKoja	關於 WordKoja
 	Accept	接受
@@ -80,7 +79,7 @@
 	Color only	僅色彩
 	Compress punctuation at the start of a line	壓縮行首標點
 	Continue from previous section	接續前一節
-	Couldn't make WordCraft the default: {error}	無法將 WordCraft 設為預設應用程式：{error}
+	Couldn't make WordKoja the default: {error}	無法將 WordKoja 設為預設應用程式：{error}
 	Custom dictionary	自訂字典
 	Dark page (white text on black)	深色頁面（黑底白字）
 	Drag a rectangle to draw a table, or a line across cells to split them. Esc stops.	拖出矩形以繪製表格，或拖出穿過儲存格的線條以分割儲存格。按 Esc 結束。
@@ -572,7 +571,7 @@
 	Merge Formatting	合併格式設定
 	Merged PRs	已合併的 PR
 	Mirrored	左右對稱
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0。著作權所有 (c) 2026 ArtCraft 團隊及 WordCraft 貢獻者。
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0。著作權所有 (c) 2026 Kojalytics 團隊及 WordKoja 貢獻者。
 	Moderate	中等
 	Modify Style	修改樣式
 	Modify…	修改…
@@ -840,6 +839,7 @@
 	Small caps	小型大寫字
 	SmartArt	SmartArt
 	Sort	排序
+	Source code: github.com/Kojalytics/wordcraft	原始碼：github.com/Kojalytics/wordcraft
 	Space	空格
 	Space before/after:	段落前/後間距：
 	Spacing	間距
@@ -2368,3 +2368,5 @@
 	More tabs	更多索引標籤
 # #3013: Insert Table of Figures
 	Include label and number	包含標籤和編號
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

@@ -16,8 +16,7 @@
 	(no style)	(sin estilo)
 	(no suggestions)	(sin sugerencias)
 	1.5 Line Spacing	Interlineado 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Un procesador de textos gratuito y de código abierto, escrito desde cero en Rust.\nForma parte de las Crafting Apps del equipo de Kojalytics.
 	About	Acerca de
 	About WordKoja	Acerca de WordKoja
 	Accept	Aceptar
@@ -566,7 +565,7 @@
 	Link to Previous	Vincular con el anterior
 	Links	Vínculos
 	Location: {path}	Ubicación: {path}
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT o Apache-2.0. Copyright (c) 2026 ArtCraft Team y los colaboradores de WordCraft.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT o Apache-2.0. Copyright (c) 2026 ArtCraft Team y los colaboradores de WordKoja.
 	Macros	Macros
 	Mailings	Correspondencia
 	Make WordKoja the default for Word documents…	Hacer de WordKoja la aplicación predeterminada para documentos de Word…
@@ -876,6 +875,7 @@
 	Small caps	Versalitas
 	SmartArt	SmartArt
 	Sort	Ordenar
+	Source code: github.com/Kojalytics/wordcraft	Código fuente: github.com/Kojalytics/wordcraft
 	Space	Espacio
 	Space before/after:	Espacio antes y después:
 	Spacing	Espaciado
@@ -2729,3 +2729,5 @@ preview	Title	Título
 	More tabs	Más pestañas
 # #3013: Insert Table of Figures
 	Include label and number	Incluir rótulo y número
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.

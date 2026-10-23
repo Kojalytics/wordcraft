@@ -14,8 +14,7 @@
 	(no style)	(keine Formatvorlage)
 	(no suggestions)	(keine Vorschläge)
 	1.5 Line Spacing	Zeilenabstand 1,5
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	Ein quelloffenes Textverarbeitungsprogramm, in Rust geschrieben, herausgegeben von Kojalytics.\nBasiert auf WordCraft vom ArtCraft-Team.
-	Modifications (c) 2026 Kojalytics.	Änderungen (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Ein kostenloses, quelloffenes Textverarbeitungsprogramm, von Grund auf in Rust geschrieben.\nTeil der Crafting Apps des Kojalytics-Teams.
 	About	Info
 	About WordKoja	Über WordKoja
 	Accept	Annehmen
@@ -514,7 +513,7 @@
 	Merge Formatting	Formatierung zusammenführen
 	Merged PRs	Zusammengeführte PRs
 	Mirrored	Gespiegelt
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.
 	Moderate	Mittel
 	Modify Style	Formatvorlage ändern
 	Modify…	Ändern…
@@ -768,6 +767,7 @@
 	Small caps	Kapitälchen
 	SmartArt	SmartArt
 	Sort	Sortieren
+	Source code: github.com/Kojalytics/wordcraft	Quellcode: github.com/Kojalytics/wordcraft
 	Space	Leerzeichen
 	Space before/after:	Abstand vor/nach:
 	Spacing	Abstand
@@ -2366,3 +2366,5 @@
 	More tabs	Weitere Registerkarten
 # #3013: Insert Table of Figures
 	Include label and number	Bezeichnung und Nummer einbeziehen
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	Open-Source-Software, in Rust geschrieben, herausgegeben von Kojalytics.\nBasiert auf WordCraft vom ArtCraft-Team.
+	Modifications (c) 2026 Kojalytics.	Änderungen (c) 2026 Kojalytics.

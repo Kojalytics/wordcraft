@@ -3,8 +3,7 @@
 	(no style)	(스타일 없음)
 	(no suggestions)	(제안 없음)
 	1.5 Line Spacing	1.5줄 간격
-	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
-	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
+	A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the ArtCraft team.	Rust로 처음부터 새로 만든 무료 오픈 소스 워드 프로세서입니다.\nKojalytics 팀의 Crafting Apps 제품군에 속합니다.
 	About	정보
 	About WordKoja	WordKoja 정보
 	Accept	수락
@@ -565,7 +564,7 @@
 	Merge Formatting	서식 병합
 	Merged PRs	병합된 PR
 	Mirrored	좌우 대칭
-	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors.
+	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.	MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordKoja contributors.
 	Moderate	보통
 	Modify Style	스타일 수정
 	Modify…	수정…
@@ -844,6 +843,7 @@
 	Small caps	작은 대문자
 	SmartArt	SmartArt
 	Sort	정렬
+	Source code: github.com/Kojalytics/wordcraft	소스 코드: github.com/Kojalytics/wordcraft
 	Space	공백
 	Space before/after:	앞/뒤 간격:
 	Spacing	간격
@@ -2617,3 +2617,5 @@ preview	Title	제목
 	More tabs	탭 더 보기
 # #3013: Insert Table of Figures
 	Include label and number	레이블 및 번호 포함
+	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.	An open-source word processor written in Rust, published by Kojalytics.\nBased on WordCraft by the ArtCraft team.
+	Modifications (c) 2026 Kojalytics.	Modifications (c) 2026 Kojalytics.
