@@ -49,6 +49,7 @@ jobs:
       - name: Merge ArtCraft's newest release and rebrand
         id: sync
         run: |
+          set -o pipefail
           bash brand/sync-upstream.sh "$APP_ID" "$APP_NAME" | tee sync.log
           if grep -q '^READY:' sync.log; then echo "ready=1" >> "$GITHUB_OUTPUT"; fi
 
