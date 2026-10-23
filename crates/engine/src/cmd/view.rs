@@ -41,7 +41,22 @@ pub fn specs() -> Vec<CommandSpec> {
         CommandSpec::new("view.hideWhiteSpace", "Hide White Space", "View › Show", |s, v| toggle(s, v, |x| &mut x.hide_white_space))
             .params(r#"{"value"?: bool}"#)
             .pure(),
-        CommandSpec::new("view.focus", "Focus", "View › Immersive", |s, v| toggle(s, v, |x| &mut x.focus_mode)).pure(),
+        // Focus and Full Screen View (#1678) fill the screen; turning one on turns the other off.
+        // Full Screen View has no key of its own: Customize Keyboard binds one.
+        CommandSpec::new("view.focus", "Focus", "View › Immersive", |s, v| {
+            let r = toggle(s, v, |x| &mut x.focus_mode);
+            s.view.full_screen_view &= !s.view.focus_mode;
+            r
+        })
+        .params(r#"{"value"?: bool}"#)
+        .pure(),
+        CommandSpec::new("view.fullScreenView", "Full Screen View", "View › Immersive", |s, v| {
+            let r = toggle(s, v, |x| &mut x.full_screen_view);
+            s.view.focus_mode &= !s.view.full_screen_view;
+            r
+        })
+        .params(r#"{"value"?: bool}"#)
+        .pure(),
         CommandSpec::new("view.ruler", "Ruler", "View › Show", |s, v| toggle(s, v, |x| &mut x.ruler)).pure(),
         // The drawing grid over the page (screen only; never printed or exported).
         CommandSpec::new("view.gridlines", "Gridlines", "View › Show", |s, v| toggle(s, v, |x| &mut x.gridlines))
@@ -70,6 +85,26 @@ pub fn specs() -> Vec<CommandSpec> {
         CommandSpec::new("view.multiplePages", "Multiple Pages", "View › Zoom", |s, _| zoom(s, &json!({"value": "multiplePages"}))).pure(),
         CommandSpec::new("view.pageWidth", "Page Width", "View › Zoom", |s, _| zoom(s, &json!({"value": "pageWidth"}))).pure(),
         CommandSpec::new("view.darkMode", "Switch Modes", "View › Dark Mode", |s, v| toggle(s, v, |x| &mut x.dark_mode)).pure(),
+        // The interface theme itself (light, dark, or follow the OS), next to dark pages (#1861).
+        // The session can't paint: like split and new windows, this queues a request the front
+        // end applies to its theme setting (which persists per user). Without a value it toggles
+        // light and dark, as the manual switch did.
+        CommandSpec::new("view.interfaceTheme", "Interface Theme", "View › Dark Mode", |s, v| match v.get("value") {
+            None => {
+                s.ui_requests.push(json!({"toggle": "interfaceTheme"}));
+                Ok(json!({"value": "toggle"}))
+            }
+            Some(Value::String(name)) => match name.as_str() {
+                "light" | "dark" | "system" => {
+                    s.ui_requests.push(json!({"interfaceTheme": name}));
+                    Ok(json!({"value": name}))
+                }
+                _ => Err(CmdError::Params("interface theme: light|dark|system".into())),
+            },
+            _ => Err(CmdError::Params("interface theme: light|dark|system".into())),
+        })
+        .params(r#"{"value"?: "light" | "dark" | "system"; without it, toggles light and dark}"#)
+        .pure(),
         CommandSpec::new("view.stylesPane", "Styles Pane", "Home › Styles", |s, v| toggle(s, v, |x| &mut x.styles_pane)).pure(),
         CommandSpec::new("view.commentsPane", "Comments Pane", "Review › Comments", |s, v| toggle(s, v, |x| &mut x.comments_pane)).pure(),
         CommandSpec::new("view.accessibilityPane", "Accessibility Pane", "Review › Accessibility", |s, v| {
@@ -80,6 +115,11 @@ pub fn specs() -> Vec<CommandSpec> {
         CommandSpec::new("view.altTextPane", "Alt Text Pane", "Review › Accessibility", |s, v| toggle(s, v, |x| &mut x.alt_text_pane))
             .params(r#"{"value"?: bool}"#)
             .pure(),
+        CommandSpec::new("view.formatShapePane", "Format Shape Pane", "Shape Format › Shape Styles", |s, v| {
+            toggle(s, v, |x| &mut x.format_shape_pane)
+        })
+        .params(r#"{"value"?: bool}"#)
+        .pure(),
         CommandSpec::new("view.newWindow", "New Window", "View › Window", |s, _| {
             s.ui_requests.push(json!({"open": "newWindow"}));
             sel_result(s)

@@ -38,6 +38,13 @@ pub struct ShapeExtra {
     /// 100000ths of the shorter side, at most [`MAX_CORNER`]; `None` draws [`DEFAULT_CORNER`].
     #[serde(skip_serializing_if = "Option::is_none")]
     pub corner: Option<u32>,
+    /// The outline dash pattern; absent in older saved documents means solid.
+    #[serde(skip_serializing_if = "crate::line_dash::LineDash::is_solid")]
+    pub dash: crate::line_dash::LineDash,
+    /// The outline's gradient (`a:ln/a:gradFill`), kept for saving; the outline is drawn in its
+    /// main colour (the shape's `stroke`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub outline_fill: Option<crate::fill::Fill>,
 }
 
 fn is_zero(v: &u32) -> bool {

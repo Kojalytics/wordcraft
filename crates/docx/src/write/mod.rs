@@ -1,12 +1,15 @@
 //! [`Document`] → DOCX.
 
+mod bidi;
 mod embed;
+mod glossary;
 mod settings_merge;
 pub(crate) use settings_merge::has_unowned as settings_has_unowned;
 mod math;
 mod props;
 mod sdt;
 mod story;
+pub(crate) use story::written_toc_span;
 mod watermark;
 mod wordart;
 
@@ -261,6 +264,13 @@ pub(crate) fn write_parts(doc: &Document, flavor: Flavor) -> Result<Vec<(String,
             &format!("{CT_WML}{}+xml", if footer { "footer" } else { "header" }),
             prels,
         );
+    }
+
+    // The glossary: kept verbatim while its entries are as read and its parts were kept, else
+    // written from the model (before the notes: references its entries hold are collected too).
+    if glossary::edited(doc) || (!doc.glossary.is_empty() && !wr.embeds.kept_glossary()) {
+        wr.embeds.drop_glossary = true;
+        wr.glossary(&mut entries, &mut overrides, &mut rels);
     }
 
     // Notes (references were collected from the body and headers).
@@ -786,10 +796,13 @@ fn style_xml(w: &mut W, st: &Style, flagged: &[StyleKind]) {
         w.close("w:rPr");
     }
     if let Some(t) = &st.table {
-        if t.borders.is_some() || t.cell_margins.is_some() || t.band_size.is_some() {
+        if t.borders.is_some() || t.cell_margins.is_some() || t.band_size.is_some() || t.col_band_size.is_some() {
             w.open("w:tblPr", &[]);
             if let Some(n) = t.band_size {
-                w.val("w:tblStyleRowBandSize", &n.clamp(1, 1000).to_string());
+                w.val("w:tblStyleRowBandSize", &n.min(1000).to_string());
+            }
+            if let Some(n) = t.col_band_size {
+                w.val("w:tblStyleColBandSize", &n.min(1000).to_string());
             }
             if let Some(b) = &t.borders {
                 props::borders(w, "w:tblBorders", b, Some("w:insideH"), &[]);
@@ -996,6 +1009,9 @@ fn settings_xml(doc: &Document, footnotes: bool, endnotes: bool, template_rel: O
     }
     if s.track_changes {
         w.empty("w:trackRevisions", &[]);
+    }
+    if !s.track_moves {
+        w.empty("w:doNotTrackMoves", &[]);
     }
     if let Some(p) = &s.protection {
         let mut a: Vec<(&str, &str)> = Vec::new();

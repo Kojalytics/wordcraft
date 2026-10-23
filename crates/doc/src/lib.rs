@@ -11,6 +11,7 @@
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 
 pub mod bidi;
+mod byte_store;
 pub mod chart;
 mod cjk_numbers;
 pub mod cluster;
@@ -22,8 +23,11 @@ pub mod effects;
 pub mod encoding;
 pub mod eq;
 pub mod fields;
+pub mod fill;
 pub mod freeform;
 pub mod graphic;
+pub mod legacy_form;
+pub mod line_dash;
 pub mod link;
 pub mod locale_number;
 pub mod math;
@@ -310,6 +314,11 @@ pub struct TextBody {
     /// Resize shape to fit text (`a:spAutoFit`, VML `mso-fit-shape-to-text`): Word grows the
     /// box to its text, so none of the text is cut.
     pub auto_fit: bool,
+    /// The colour the shape's style gives its text (`wps:style/a:fontRef`): what automatic text
+    /// colour means inside this box, instead of black. Text whose colour comes from its runs,
+    /// styles or the document defaults keeps it (Word, observed with synthetic documents).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_color: Option<props::Rgb>,
 }
 
 /// Word's default text box margins (left, top, right, bottom), EMU: 0.1" and 0.05".
@@ -387,6 +396,40 @@ impl Document {
     }
 }
 
+/// A building block (Insert › Quick Parts, AutoText…) kept in the document's glossary
+/// (ECMA-376 §17.12: `w:docPart`).
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize, Default)]
+#[serde(default, rename_all = "camelCase")]
+pub struct BuildingBlock {
+    /// The entry's name (`w:docPartPr/w:name`).
+    pub name: String,
+    /// Its gallery (`w:category/w:gallery`: `docParts` for Quick Parts, `autoTxt` for AutoText…).
+    pub gallery: String,
+    /// Its category within the gallery (`w:category/w:name`, e.g. "General").
+    pub category: String,
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub description: String,
+    /// The entry's identity (`w:guid`), kept as read.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub guid: String,
+    /// The paragraph style it's associated with (`w:style`), kept as read.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub style: String,
+    /// Its types (`w:types/w:type`: `normal`, `bbPlcHdr` for a content control's placeholder…).
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub types: Vec<String>,
+    /// How it's inserted (`w:behaviors/w:behavior`: `content`, `p`, `pg`).
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub behaviors: Vec<String>,
+    /// The content (`w:docPartBody`).
+    pub blocks: Blocks,
+}
+
+/// The gallery Quick Parts saves to (`w:gallery w:val="docParts"`).
+pub const QUICK_PARTS_GALLERY: &str = "docParts";
+/// The AutoText gallery (`w:gallery w:val="autoTxt"`).
+pub const AUTO_TEXT_GALLERY: &str = "autoTxt";
+
 /// A bibliography source.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize, Default)]
 #[serde(default, rename_all = "camelCase")]
@@ -448,6 +491,10 @@ pub struct CoreProps {
 #[serde(default, rename_all = "camelCase")]
 pub struct Settings {
     pub track_changes: bool,
+    /// Record a tracked cut and paste of a sentence or paragraph as a move (Track moves); off
+    /// when the file has `w:doNotTrackMoves` (ECMA-376 §17.15.1.29), and then it is an
+    /// ordinary deletion and insertion.
+    pub track_moves: bool,
     /// Default tab stop interval, points.
     pub default_tab: f32,
     pub even_odd_headers: bool,
@@ -586,11 +633,40 @@ pub struct Watermark {
     pub color: Rgb,
     pub diagonal: bool,
     pub semitransparent: bool,
+    /// The shape's box (its `style` width and height, points), which the text is stretched to
+    /// fill (`v:textpath fitshape`); `None`: the box Word's Design › Watermark gives
+    /// ([`Watermark::frame`]).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub size: Option<[f32; 2]>,
 }
 
 impl Default for Watermark {
     fn default() -> Self {
-        Watermark { text: "DRAFT".into(), font: styles::BODY_FONT.into(), color: Rgb(0xC0, 0xC0, 0xC0), diagonal: true, semitransparent: true }
+        Watermark {
+            text: "DRAFT".into(),
+            font: styles::BODY_FONT.into(),
+            color: Rgb(0xC0, 0xC0, 0xC0),
+            diagonal: true,
+            semitransparent: true,
+            size: None,
+        }
+    }
+}
+
+impl Watermark {
+    /// The box the text fills on a page `page_w` × `page_h` (points): its own size, else half the
+    /// page diagonal across (half the page width when not diagonal), as high as the text's length
+    /// makes it. Centred on the margins and, when diagonal, turned 45° counterclockwise (Word's
+    /// `rotation:315`).
+    pub fn frame(&self, page_w: f32, page_h: f32) -> [f32; 2] {
+        if let Some([w, h]) = self.size.filter(|[w, h]| w.is_finite() && h.is_finite() && *w > 0.0 && *h > 0.0) {
+            return [w.min(4000.0), h.min(4000.0)];
+        }
+        let (pw, ph) = (wordcraft_geom::finite(page_w).clamp(72.0, 4000.0), wordcraft_geom::finite(page_h).clamp(72.0, 4000.0));
+        let across = if self.diagonal { (pw * pw + ph * ph).sqrt() } else { pw };
+        let width = (across * 0.5).clamp(36.0, 2000.0);
+        let chars = self.text.chars().take(200).count().max(1) as f32;
+        [width, (width / (0.55 * chars)).clamp(12.0, 400.0)]
     }
 }
 
@@ -614,6 +690,7 @@ impl Default for Settings {
     fn default() -> Self {
         Settings {
             track_changes: false,
+            track_moves: true,
             default_tab: 36.0,
             even_odd_headers: false,
             mirror_margins: false,
@@ -676,12 +753,15 @@ pub struct Document {
     /// The document's own endnote separators and continuation notice.
     #[serde(skip_serializing_if = "NoteSeparators::is_empty")]
     pub endnote_separators: NoteSeparators,
-    /// Embedded media (images) by key.
-    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
+    /// Embedded media (images) by key. Native JSON writes each as base64 (`byte_store.rs`).
+    #[serde(skip_serializing_if = "BTreeMap::is_empty", with = "byte_store")]
     pub media: BTreeMap<String, Arc<Vec<u8>>>,
     /// Source-format parts we keep verbatim for round-trip (e.g. custom XML), by part name.
-    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
+    #[serde(skip_serializing_if = "BTreeMap::is_empty", with = "byte_store")]
     pub passthrough: BTreeMap<String, Arc<Vec<u8>>>,
+    /// The document's own building blocks (its glossary document), in file order.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub glossary: Vec<BuildingBlock>,
 }
 
 impl Default for Document {
@@ -709,6 +789,7 @@ impl Document {
             endnote_separators: NoteSeparators::default(),
             media: BTreeMap::new(),
             passthrough: BTreeMap::new(),
+            glossary: Vec::new(),
         }
     }
 
@@ -978,6 +1059,18 @@ impl Document {
         &mut self.last_section
     }
 
+    /// Remove the section break on the mark of top-level body paragraph `block`: its section
+    /// joins the following one ([`SectionProps::absorb`]). False when there is no break there.
+    pub fn remove_section_break(&mut self, block: usize) -> bool {
+        if !matches!(self.body.get(block).map(|b| &**b), Some(Block::Para(p)) if p.section.is_some()) {
+            return false;
+        }
+        let Some(Block::Para(p)) = self.body.get_mut(block).map(Arc::make_mut) else { return false };
+        let Some(before) = p.section.take() else { return false };
+        self.section_mut(block).absorb(&before);
+        true
+    }
+
     /// Allocate a new part id and insert the part. Part ids run out only past `u32::MAX` parts, more
     /// than memory holds; then nothing is added and the id is 0, which [`free_id`] never gives a part.
     pub fn add_part(&mut self, kind: PartKind, blocks: Blocks) -> u32 {
@@ -1017,10 +1110,48 @@ impl Document {
     /// The body, then the text boxes, footnotes and endnotes it shows (nested ones too), in
     /// document order. Headers, footers, comments and stories nothing points at aren't included.
     pub fn counted_stories(&self) -> Vec<StoryRef> {
-        self.reachable(vec![StoryRef::Body], &|o| match o {
-            InlineObject::NoteRef { id, .. } => vec![(*id, &[PartKind::Footnote, PartKind::Endnote][..])],
-            o => o.text_boxes().into_iter().map(|id| (id, &[PartKind::TextBox][..])).collect(),
-        })
+        self.reachable(vec![StoryRef::Body], &notes_and_boxes)
+    }
+
+    /// The stories a reader sees, in reading order: the body, then the headers and footers in
+    /// use, each followed by the notes and text boxes it shows. Hidden stories (a removed header,
+    /// a first-page or even-page header whose option is off, a linked text box's own text) and
+    /// comment text aren't included.
+    pub fn shown_stories(&self) -> Vec<StoryRef> {
+        let followers: std::collections::BTreeSet<u32> = self.text_box_chains().into_iter().flat_map(|c| c.into_iter().skip(1)).collect();
+        let follow = |o: &InlineObject| {
+            let mut v = notes_and_boxes(o);
+            v.retain(|(id, _)| !followers.contains(id));
+            v
+        };
+        let mut out = self.reachable(vec![StoryRef::Body], &follow);
+        let mut seen: std::collections::BTreeSet<StoryRef> = out.iter().copied().collect();
+        let mut roots = Vec::new();
+        let mut root_seen = std::collections::BTreeSet::new();
+        let (mut headers, mut footers) = (section::HeaderSet::default(), section::HeaderSet::default());
+        for (_, sec) in self.sections() {
+            // Unset versions are inherited from the previous section.
+            for (set, own) in [(&mut headers, &sec.headers), (&mut footers, &sec.footers)] {
+                set.default = own.default.or(set.default);
+                set.first = own.first.or(set.first);
+                set.even = own.even.or(set.even);
+                let first = set.first.filter(|_| sec.title_page);
+                let even = set.even.filter(|_| self.settings.even_odd_headers);
+                // By the first page each one shows on: page 1, then page 2 (even), then page 3.
+                let order = if sec.title_page { [first, even, set.default] } else { [set.default, even, None] };
+                for id in order.into_iter().flatten() {
+                    if self.parts.get(&id).is_some_and(|p| matches!(p.kind, PartKind::Header | PartKind::Footer)) && root_seen.insert(id) {
+                        roots.push(StoryRef::Part(id));
+                    }
+                }
+            }
+        }
+        for st in self.reachable(roots, &follow) {
+            if seen.insert(st) {
+                out.push(st);
+            }
+        }
+        out
     }
 
     /// Drop the text box stories no box shows any more (a deleted or cut box's text), nested
@@ -1387,8 +1518,19 @@ pub fn count_words(s: &str) -> usize {
     s.split(|c: char| c.is_whitespace() || c == para::OBJ).filter(|w| w.chars().any(char::is_alphanumeric)).count()
 }
 
+/// How deep in nested tables [`Document::para_paths`] goes: cells below this are skipped.
+pub(crate) const PARA_WALK_DEPTH: usize = 16;
+
+/// The note and text box stories an object shows, for `Document::reachable`.
+fn notes_and_boxes(o: &InlineObject) -> Vec<(u32, &'static [PartKind])> {
+    match o {
+        InlineObject::NoteRef { id, .. } => vec![(*id, &[PartKind::Footnote, PartKind::Endnote][..])],
+        o => o.text_boxes().into_iter().map(|id| (id, &[PartKind::TextBox][..])).collect(),
+    }
+}
+
 fn walk(bl: &Blocks, prefix: &mut Vec<u32>, out: &mut Vec<Path>, depth: usize) {
-    if depth > 16 {
+    if depth > PARA_WALK_DEPTH {
         return;
     }
     for (i, b) in bl.iter().enumerate() {
@@ -1403,6 +1545,49 @@ fn walk(bl: &Blocks, prefix: &mut Vec<u32>, out: &mut Vec<Path>, depth: usize) {
                         walk(&cell.blocks, prefix, out, depth + 1);
                         prefix.pop();
                         prefix.pop();
+                    }
+                }
+            }
+        }
+        prefix.pop();
+    }
+}
+
+/// [`walk`] for the paragraphs from path `a` to `b` inclusive, skipping the blocks outside.
+pub(crate) fn walk_between(bl: &Blocks, prefix: &mut Vec<u32>, out: &mut Vec<Path>, depth: usize, (a, b): (&[u32], &[u32])) {
+    use std::cmp::Ordering::{Greater, Less};
+    if depth > PARA_WALK_DEPTH {
+        return;
+    }
+    // Where the paths starting with `q` lie against `x`: all before, all after, or either.
+    let side = |q: &[u32], x: &[u32]| {
+        let m = q.len().min(x.len());
+        q[..m].cmp(&x[..m])
+    };
+    for (i, blk) in bl.iter().enumerate() {
+        prefix.push(i as u32);
+        if side(prefix, b) == Greater {
+            prefix.pop();
+            break;
+        }
+        if side(prefix, a) != Less {
+            match &**blk {
+                Block::Para(_) => {
+                    if prefix.as_slice() >= a && prefix.as_slice() <= b {
+                        out.push(Path(prefix.clone()));
+                    }
+                }
+                Block::Table(t) => {
+                    for (r, row) in t.rows.iter().enumerate() {
+                        for (c, cell) in row.cells.iter().enumerate() {
+                            prefix.push(r as u32);
+                            prefix.push(c as u32);
+                            if side(prefix, a) != Less && side(prefix, b) != Greater {
+                                walk_between(&cell.blocks, prefix, out, depth + 1, (a, b));
+                            }
+                            prefix.pop();
+                            prefix.pop();
+                        }
                     }
                 }
             }

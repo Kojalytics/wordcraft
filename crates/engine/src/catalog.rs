@@ -30,6 +30,7 @@ File|Backstage|Version History|file.versions
 File|Backstage|Recover Unsaved|file.recover
 File|Backstage|New from Template|file.newFromTemplate
 File|Backstage|Save as Template|file.saveTemplate
+File|Backstage|Personal Templates|file.listTemplates
 Quick Access|Toolbar|Undo|edit.undo
 Quick Access|Toolbar|Undo List|edit.undoTo
 Quick Access|Toolbar|Redo|edit.redo
@@ -56,6 +57,7 @@ Home|Font|Bold|format.bold
 Home|Font|Italic|format.italic
 Home|Font|Underline|format.underline
 Home|Font|Double Underline|format.doubleUnderline
+Home|Font|Underline Color|format.underlineColor
 Home|Font|Strikethrough|format.strikethrough
 Home|Font|Subscript|format.subscript
 Home|Font|Superscript|format.superscript
@@ -82,6 +84,7 @@ Home|Paragraph|Bullets|para.bullets
 Home|Paragraph|Numbering|para.numbering
 Home|Paragraph|Multilevel List|para.multilevel
 Home|Paragraph|Define New Multilevel List|list.define
+Home|Paragraph|Multilevel List Library|list.multilevelPreset
 Home|Paragraph|Change List Level|para.listLevel
 Home|Paragraph|Restart Numbering|para.restartNumbering
 Home|Paragraph|Define New Bullet|para.defineBullet
@@ -454,6 +457,8 @@ Chart Design|Chart Layouts|Chart Title|chart.title
 Chart Design|Chart Layouts|Legend|chart.legend
 Chart Design|Chart Layouts|Data Labels|chart.dataLabels
 Shape Format|Shape Styles|Shape Fill|shape.fill
+Shape Format|Shape Styles|Shape Fill Gradient|shape.fill
+Shape Format|Shape Styles|Format Shape Pane|view.formatShapePane
 Shape Format|Shape Styles|Shape Outline|shape.outline
 Shape Format|Shape Styles|Shape Effects|shape.effects
 Shape Format|WordArt Styles|WordArt Quick Styles|wordArt.style
@@ -473,6 +478,7 @@ Editing|Keyboard|New Paragraph|text.newParagraph
 Editing|Keyboard|Line Break|text.lineBreak
 Editing|Keyboard|Column Break|text.columnBreak
 Editing|Keyboard|Tab|text.tab
+Editing|Keyboard|Tab Character|text.insertTab
 Editing|Keyboard|Backspace|text.backspace
 Editing|Keyboard|Delete|text.delete
 Editing|Keyboard|Delete Previous Word|text.deleteWordBack
@@ -482,6 +488,8 @@ Editing|Keyboard|Move Paragraph Down|para.moveDown
 Editing|Keyboard|Promote|para.promote
 Editing|Keyboard|Demote|para.demote
 Editing|Keyboard|Toggle Unicode Character|text.toggleUnicode
+Editing|Keyboard|Spike|edit.spike
+Editing|Keyboard|Insert Spike|edit.insertSpike
 Editing|Navigation|Word Left|caret.wordLeft
 Editing|Navigation|Word Right|caret.wordRight
 Editing|Navigation|Line Start|caret.home
@@ -512,6 +520,7 @@ Tools|Customize|Customize Ribbon|tools.customizeRibbon
 Tools|Customize|Customize Keyboard|tools.customizeKeyboard
 Tools|Protection|Encrypt with Password|file.encrypt
 Tools|Templates|Templates and Add-ins|tools.templates
+Tools|Views|Full Screen View|view.fullScreenView
 ";
 
 /// Catalog entries: (tab, group, feature, id).

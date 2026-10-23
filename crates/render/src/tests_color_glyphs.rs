@@ -1,6 +1,7 @@
 //! Colour glyphs (#1269): emoji from colour fonts (bitmap strikes, COLR) are drawn in colour.
 
 use super::*;
+use wordcraft_layout::display::page_display;
 use wordcraft_layout::{LayoutCache, LayoutOptions, layout};
 
 /// Colour emoji families the system fallback may pick.
@@ -18,6 +19,19 @@ fn colourful(p: [u8; 4]) -> bool {
 #[test]
 fn emoji_are_drawn_in_colour() {
     let Some((img, boxes)) = emoji_page(&RenderOptions::default()) else { return };
+    for (x0, y0, x1, y1) in boxes {
+        let n = (x0..x1).flat_map(|x| (y0..y1).map(move |y| (x, y))).filter(|(x, y)| colourful(img.pixel(*x, *y))).count();
+        assert!(n > 20, "only {n} coloured pixels in emoji box {x0},{y0}..{x1},{y1}");
+    }
+}
+
+/// #2534: text effects (drawn from outlines) leave colour emoji, which have none, drawn in colour.
+/// Skips like [`emoji_are_drawn_in_colour`].
+#[cfg(not(target_arch = "wasm32"))]
+#[test]
+fn emoji_with_text_effects_stay_drawn() {
+    let cp = wordcraft_doc::CharProps { outline: Some(true), shadow: Some(true), ..Default::default() };
+    let Some((img, boxes)) = emoji_page_with(&RenderOptions::default(), cp) else { return };
     for (x0, y0, x1, y1) in boxes {
         let n = (x0..x1).flat_map(|x| (y0..y1).map(move |y| (x, y))).filter(|(x, y)| colourful(img.pixel(*x, *y))).count();
         assert!(n > 20, "only {n} coloured pixels in emoji box {x0},{y0}..{x1},{y1}");
@@ -51,12 +65,19 @@ fn emoji_keep_their_colours_on_a_dark_page() {
 /// pixels; None (the test skips) when no colour emoji font is installed.
 #[cfg(not(target_arch = "wasm32"))]
 fn emoji_page(opts: &RenderOptions) -> Option<(Rendered, Vec<(u32, u32, u32, u32)>)> {
+    emoji_page_with(opts, wordcraft_doc::CharProps::default())
+}
+
+/// [`emoji_page`] with the text formatted `cp`.
+#[cfg(not(target_arch = "wasm32"))]
+fn emoji_page_with(opts: &RenderOptions, cp: wordcraft_doc::CharProps) -> Option<(Rendered, Vec<(u32, u32, u32, u32)>)> {
     let has_colour_font = FontDb::global().fallback_for('🧠', u32::MAX).is_some_and(|f| COLOR_EMOJI.contains(&f.family.as_str()));
     if !has_colour_font {
         eprintln!("skipped: no colour emoji font installed");
         return None;
     }
-    let d = Document::from_text("Emoji test: 🧠 brain, ✅ check.");
+    let mut d = Document::from_text("x");
+    d.body = vec![wordcraft_doc::para_block(wordcraft_doc::Paragraph::with_text("Emoji test: 🧠 brain, ✅ check.", cp))];
     let l = layout(&d, &mut LayoutCache::new(), &LayoutOptions::default());
     let page = &l.pages[0];
     let scale = 2.0;
