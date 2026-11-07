@@ -10,6 +10,11 @@ on:
   schedule:
     - cron: "17 4 * * 1"
   workflow_dispatch:
+    inputs:
+      build_only:
+        description: "Only build and draft the current version (no merge from ArtCraft)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -48,9 +53,12 @@ jobs:
 
       - name: Merge ArtCraft's newest release and rebrand
         id: sync
+        env:
+          BUILD_ONLY: ${{ inputs.build_only }}
         run: |
           set -o pipefail
-          bash brand/sync-upstream.sh "$APP_ID" "$APP_NAME" | tee sync.log
+          if [ "$BUILD_ONLY" = "true" ]; then echo "build only: no merge" > sync.log
+          else bash brand/sync-upstream.sh "$APP_ID" "$APP_NAME" | tee sync.log; fi
           if grep -q '^READY:' sync.log; then echo "ready=1" >> "$GITHUB_OUTPUT"; fi
           # Build when this version has no release yet (also after a run that stopped before it).
           cd "$APP_ID"
@@ -90,7 +98,7 @@ jobs:
           gh release create "v$version" "$dmg" SHA256SUMS.txt -R "$GITHUB_REPOSITORY" --draft --target main \
             --title "$APP_NAME $version" \
             --notes "Signed and notarized macOS build (universal: Apple Silicon and Intel). Published by Kojalytics."
-          gh issue create -R "$GITHUB_REPOSITORY" --title "$APP_NAME $version is ready to publish" --body "ArtCraft released a new version. It was merged, rebranded, passed the branding guard and the tests, and was signed and notarized.
+          gh issue create -R "$GITHUB_REPOSITORY" --title "$APP_NAME $version is ready to publish" --body "A new $APP_NAME build passed the branding guard and was signed and notarized.
 
           Check it, then publish the draft release: https://github.com/$GITHUB_REPOSITORY/releases
           Customers get the update through the Kojalytics Launcher as soon as the release is published."
