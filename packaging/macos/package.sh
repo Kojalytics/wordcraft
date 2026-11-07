@@ -12,6 +12,9 @@
 #   MACOS_KEYCHAIN        keychain holding the identity (optional)
 # Notarization (env; all three needed, and a real identity):
 #   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+
+# Retries a command (Apple's stapler drops connections now and then).
+koja_retry() { local i; for i in 1 2 3 4 5 6; do "$@" && return 0; echo "retry $i/6: $*" >&2; sleep $((i * 20)); done; return 1; }
 set -euo pipefail
 # shellcheck source=../env.sh
 . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
@@ -126,8 +129,8 @@ codesign --verify --strict --deep --verbose=2 "$APP"
 if [ "$NOTARIZE" = 1 ]; then
   ditto -c -k --keepParent "$APP" "$WORK/WordKoja-notarize.zip"
   notarize "$WORK/WordKoja-notarize.zip"
-  xcrun stapler staple "$APP"
-  xcrun stapler validate "$APP"
+  koja_retry xcrun stapler staple "$APP"
+  koja_retry xcrun stapler validate "$APP"
   spctl --assess --type execute -vvv "$APP"
 fi
 
@@ -198,8 +201,8 @@ verify_dmg_app() {
 verify_dmg_app "$DMG"
 if [ "$NOTARIZE" = 1 ]; then
   notarize "$DMG"
-  xcrun stapler staple "$DMG"
-  xcrun stapler validate "$DMG"
+  koja_retry xcrun stapler staple "$DMG"
+  koja_retry xcrun stapler validate "$DMG"
   spctl --assess --type open --context context:primary-signature -vvv "$DMG"
 fi
 
