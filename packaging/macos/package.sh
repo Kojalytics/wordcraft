@@ -175,7 +175,9 @@ codesign --verify --strict --verbose=2 "$DMG"
 # same strict check as the app before packaging, so a container signature can't hide a damaged app
 # signature (#525). Returns non-zero (set -e then stops the build) after detaching the image.
 verify_dmg_app() {
-  local dmg="$1" mount="$WORK/dmg-check" copy="$WORK/dmg-check-copy" rc=0
+  local dmg="$1" mount copy rc=0
+  # On the internal disk: macOS refuses mount points on external drives without ownership.
+  mount="$(mktemp -d)/dmg-check"; copy="$(mktemp -d)/dmg-check-copy"
   mkdir -p "$mount" "$copy"
   hdiutil_retry attach -readonly -nobrowse -noautoopen -mountpoint "$mount" "$dmg" >/dev/null
   echo "==> strict signature check of WordKoja.app inside $(basename "$dmg")"
