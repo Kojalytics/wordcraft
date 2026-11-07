@@ -42,7 +42,7 @@ jobs:
           rustup update stable && rustup default stable
           rustup target add aarch64-apple-darwin x86_64-apple-darwin
           brew install resvg
-          python3 -m pip install --break-system-packages fonttools
+          python3 -m pip install --break-system-packages fonttools pillow
           git config --global user.name "Kojalytics"
           git config --global user.email "noreply@kojalytics.com"
 
