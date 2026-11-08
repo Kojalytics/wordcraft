@@ -1,10 +1,10 @@
 name: Kojalytics release (Windows)
 
-# Builds the Windows installer (MSI) and the portable zip for x64 with packaging/windows/package.ps1,
+# Builds the Windows installer (MSI) for x64 with packaging/windows/package.ps1,
 # signs them when signing secrets are set (packaging/windows/sign.ps1; without them they stay
 # unsigned), installs the MSI on the runner and checks what Windows registered (name, publisher
 # Kojalytics, exe), then removes it again.
-# With `release` (by hand, or called after the macOS build) it attaches both files to the release
+# With `release` (by hand, or called after the macOS build) it attaches the MSI to the release
 # v<version> of this repo, draft or published, and rewrites SHA256SUMS.txt over all its files.
 # Pull requests only build and test. Uses code in this repository, actions pinned to commits and
 # WiX from NuGet.
@@ -87,8 +87,12 @@ jobs:
           $p = Start-Process msiexec.exe -ArgumentList '/i', "`"$($msi.FullName)`"", '/qn', '/norestart', '/l*v', 'msi-install.log' -Wait -PassThru
           if ($p.ExitCode -ne 0) { Get-Content msi-install.log -Tail 80; throw "msiexec /i failed with $($p.ExitCode)" }
           $roots = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall', 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall', 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall'
-          $entry = $roots | ForEach-Object { Get-ChildItem $_ -ErrorAction SilentlyContinue } | Get-ItemProperty | Where-Object { $_.Publisher -eq 'Kojalytics' } | Select-Object -First 1
-          if (-not $entry) { throw 'no uninstall entry with Publisher "Kojalytics"' }
+          $ours = @($roots | ForEach-Object { Get-ChildItem $_ -ErrorAction SilentlyContinue } | Get-ItemProperty | Where-Object { $_.Publisher -eq 'Kojalytics' })
+          # Every entry Windows Settings may show carries the plain Koja name.
+          foreach ($e in $ours) { Write-Output "entry $($e.PSChildName): $($e.DisplayName)"; if ($env:KOJA_APP_NAME -and $e.DisplayName -ne $env:KOJA_APP_NAME) { throw "entry $($e.PSChildName) is named '$($e.DisplayName)', not '$env:KOJA_APP_NAME'" } }
+          # The package itself: the Windows Installer entry under its product code.
+          $entry = $ours | Where-Object { $_.PSChildName -like '{*}' } | Select-Object -First 1
+          if (-not $entry) { throw 'no Windows Installer entry ({product code}) with Publisher "Kojalytics"' }
           Write-Output "registered: $($entry.DisplayName) $($entry.DisplayVersion), publisher $($entry.Publisher), product $($entry.PSChildName)"
           if ($env:KOJA_APP_NAME -and $entry.DisplayName -ne $env:KOJA_APP_NAME) { throw "DisplayName '$($entry.DisplayName)' is not '$env:KOJA_APP_NAME'" }
           $dirs = @($entry.InstallLocation, (Join-Path $env:ProgramFiles $entry.DisplayName), (Join-Path $env:LOCALAPPDATA "Programs\$($entry.DisplayName)")) | Where-Object { $_ }
@@ -123,7 +127,8 @@ jobs:
           version=$(printf '%s' "$msi" | sed -E 's/^.*-([0-9][0-9A-Za-z.+-]*)-windows-x64\.msi$/\1/')
           tag="v$version"
           gh release view "$tag" -R "$GITHUB_REPOSITORY" >/dev/null || { echo "::error::no release $tag (draft or published) to attach the Windows build to"; exit 1; }
-          files=(*-windows-x64.msi *-windows-x64-portable.zip)
+          # Only the MSI: the launcher installs it, and the portable zip is not offered.
+          files=(*-windows-x64.msi)
           [ -f Kojalytics-Launcher.msi ] && files+=(Kojalytics-Launcher.msi)
           gh release upload "$tag" "${files[@]}" -R "$GITHUB_REPOSITORY" --clobber
           # SHA256SUMS.txt over every file of the release: ours hashed here, the others from GitHub's
