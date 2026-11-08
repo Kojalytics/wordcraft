@@ -1,9 +1,10 @@
-name: Kojalytics release (macOS)
+name: Kojalytics release
 
 # Builds the universal macOS DMG, signs it with Kojalytics' Developer ID, notarizes it with Apple and
 # publishes it as a GitHub release with SHA256SUMS.txt (the Kojalytics Launcher installs from there
-# and checks the checksum). Runs only when started by hand or for a pushed version tag (v1.2.3).
-# Uses only code in this repository plus actions/checkout pinned to a commit.
+# and checks the checksum). Then kojalytics-windows.yml adds the Windows MSI to the same release and
+# rewrites SHA256SUMS.txt. Runs only when started by hand or for a pushed version tag (v1.2.3).
+# Uses only code in this repository plus actions pinned to commits.
 
 on:
   workflow_dispatch:
@@ -60,3 +61,11 @@ jobs:
             gh release create "$tag" ./*.dmg SHA256SUMS.txt --target "$GITHUB_SHA" --title "$tag" \
               --notes "Kojalytics build $tag for macOS (Apple Silicon and Intel)."
           fi
+
+  windows:
+    needs: macos
+    uses: ./.github/workflows/kojalytics-windows.yml
+    with:
+      ref: ${{ github.sha }}
+      release: true
+    secrets: inherit

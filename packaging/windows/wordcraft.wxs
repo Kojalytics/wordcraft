@@ -18,13 +18,13 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
   <Package
       Name="WordKoja"
-      Manufacturer="Learning Machines LLC"
+      Manufacturer="Kojalytics"
       Version="$(var.Version)"
-      UpgradeCode="075497F9-E861-45D0-9C7F-A74F8C34E6BA"
+      UpgradeCode="A6B24695-C3D1-5F05-A322-265929F1A0A1"
       Scope="perMachine"
       Compressed="yes"
       Language="1033">
-    <SummaryInformation Description="WordKoja word processor" Manufacturer="Learning Machines LLC" />
+    <SummaryInformation Description="WordKoja word processor" Manufacturer="Kojalytics" />
     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
     <MajorUpgrade AllowSameVersionUpgrades="yes"
@@ -66,7 +66,7 @@
 
   <Fragment>
     <ComponentGroup Id="WordcraftFiles" Directory="INSTALLFOLDER">
-      <Component Id="WordcraftApp" Guid="855DCEC6-9285-444F-9382-9654B83B34F6">
+      <Component Id="WordcraftApp" Guid="7C47EC59-8457-5ECD-941D-E120ECE84ED4">
         <File Id="WordcraftExe" Source="$(var.BinDir)\wordcraft.exe" KeyPath="yes">
           <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="WordKoja"
               Description="WordKoja word processor" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
@@ -83,7 +83,7 @@
            makes it the default (File › Options › General opens that page). Nothing here sets an
            extension's default: the installer never takes over .docx from another app. Markdown and
            plain text are only "Open with" candidates. Removed again on uninstall. -->
-      <Component Id="WordcraftFileTypes" Guid="EFF89E6A-F9B8-49F9-B3AE-E243347484B4">
+      <Component Id="WordcraftFileTypes" Guid="877975DA-DDFC-5CF9-BDF2-3D292432AB3B">
         <RegistryValue Root="HKLM" Key="Software\RegisteredApplications" Name="WordKoja" Value="Software\WordKoja\Capabilities" Type="string" KeyPath="yes" />
         <RegistryValue Root="HKLM" Key="Software\WordKoja\Capabilities" Name="ApplicationName" Value="WordKoja" Type="string" />
         <RegistryValue Root="HKLM" Key="Software\WordKoja\Capabilities" Name="ApplicationDescription" Value="Write and design documents; open and save Word files." Type="string" />

@@ -5,7 +5,7 @@
 //!
 //! Shared verbatim by WordKoja, GridKoja and DeckKoja (`apps/<app>/src/license.rs`).
 
-use std::sync::{Mutex, PoisonError};
+use std::sync::{Mutex, OnceLock, PoisonError};
 use std::time::{Duration, Instant};
 
 use base64::Engine;
@@ -87,9 +87,36 @@ fn open_launcher(ctx: &egui::Context) {
     if std::process::Command::new("/usr/bin/open").args(["-b", LAUNCHER_BUNDLE_ID]).status().is_ok_and(|s| s.success()) {
         return;
     }
+    #[cfg(target_os = "windows")]
+    if let Some(exe) = launcher_exe() {
+        if std::process::Command::new(exe).spawn().is_ok() {
+            return;
+        }
+    }
     let _ = LAUNCHER_BUNDLE_ID;
-    // No launcher installed (or not on macOS): the shop page has the download.
+    // No launcher installed (or on Linux): the shop page has the download.
     ctx.open_url(egui::OpenUrl::new_tab(SHOP_URL));
+}
+
+/// The Kojalytics Launcher's exe on Windows: in the folder its installer recorded, or its default.
+#[cfg(target_os = "windows")]
+fn launcher_exe() -> Option<std::path::PathBuf> {
+    let recorded = reg_value(r"HKCU\Software\Kojalytics\Kojalytics Launcher", "InstallDir").map(std::path::PathBuf::from);
+    let default = std::env::var_os("LOCALAPPDATA").map(|d| std::path::PathBuf::from(d).join("Programs").join("Kojalytics Launcher"));
+    [recorded, default].into_iter().flatten().map(|d| d.join("artcraft-launcher.exe")).find(|p| p.is_file())
+}
+
+/// One registry value, read with reg.exe (`    Name    REG_SZ    value`).
+#[cfg(target_os = "windows")]
+fn reg_value(key: &str, name: &str) -> Option<String> {
+    use std::os::windows::process::CommandExt;
+    // reg.exe is a console program: without CREATE_NO_WINDOW a console window flashes up.
+    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+    let out = std::process::Command::new("reg").args(["query", key, "/v", name]).creation_flags(CREATE_NO_WINDOW).output().ok()?;
+    let text = String::from_utf8_lossy(&out.stdout);
+    let line = text.lines().find(|l| l.trim_start().starts_with(name))?;
+    let value = line.split_once("REG_")?.1.split_once(char::is_whitespace)?.1.trim();
+    (!value.is_empty()).then(|| value.to_string())
 }
 
 fn check() -> Result<(), String> {
@@ -112,10 +139,16 @@ fn certificate_path() -> Option<std::path::PathBuf> {
     Some(data.join("license.txt"))
 }
 
-/// SHA-256 of the machine id, as the launcher computes it.
+/// SHA-256 of the machine id, as the launcher computes it. Read once: the lock screen checks again
+/// every few seconds.
 fn device_hash() -> Option<String> {
-    let id = machine_id()?;
-    Some(Sha256::digest(format!("kojalytics-device:{id}").as_bytes()).iter().map(|b| format!("{b:02x}")).collect())
+    static DEVICE: OnceLock<Option<String>> = OnceLock::new();
+    DEVICE
+        .get_or_init(|| {
+            let id = machine_id()?;
+            Some(Sha256::digest(format!("kojalytics-device:{id}").as_bytes()).iter().map(|b| format!("{b:02x}")).collect())
+        })
+        .clone()
 }
 
 #[cfg(target_os = "macos")]
@@ -129,10 +162,7 @@ fn machine_id() -> Option<String> {
 
 #[cfg(target_os = "windows")]
 fn machine_id() -> Option<String> {
-    let out = std::process::Command::new("reg").args(["query", r"HKLM\SOFTWARE\Microsoft\Cryptography", "/v", "MachineGuid"]).output().ok()?;
-    let text = String::from_utf8_lossy(&out.stdout);
-    let id = text.lines().find(|l| l.contains("MachineGuid"))?.split_whitespace().last()?.to_string();
-    (!id.is_empty()).then_some(id)
+    reg_value(r"HKLM\SOFTWARE\Microsoft\Cryptography", "MachineGuid")
 }
 
 #[cfg(not(any(target_os = "macos", target_os = "windows")))]
