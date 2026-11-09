@@ -80,6 +80,10 @@ jobs:
           AZURE_SIGNING_ENDPOINT: ${{ inputs.sign && secrets.AZURE_SIGNING_ENDPOINT || '' }}
           AZURE_SIGNING_ACCOUNT: ${{ inputs.sign && secrets.AZURE_SIGNING_ACCOUNT || '' }}
           AZURE_CERT_PROFILE: ${{ inputs.sign && secrets.AZURE_CERT_PROFILE || '' }}
+          ES_USERNAME: ${{ inputs.sign && secrets.ES_USERNAME || '' }}
+          ES_PASSWORD: ${{ inputs.sign && secrets.ES_PASSWORD || '' }}
+          CREDENTIAL_ID: ${{ inputs.sign && secrets.CREDENTIAL_ID || '' }}
+          ES_TOTP_SECRET: ${{ inputs.sign && secrets.ES_TOTP_SECRET || '' }}
         run: ./packaging/windows/package.ps1 -Arch x64
 
       # What the Kojalytics Launcher relies on: an uninstall entry with the Koja name and publisher
@@ -88,6 +92,8 @@ jobs:
         shell: pwsh
         env:
           KOJA_APP_NAME: ${{ vars.KOJA_APP_NAME }}
+          # A build for publishing with the eSigner secrets set must come out signed.
+          EXPECT_SIGNED: ${{ inputs.sign && secrets.ES_USERNAME != '' && '1' || '' }}
         run: |
           $msi = Get-ChildItem dist/release -Filter '*-windows-x64.msi' | Select-Object -First 1
           if (-not $msi) { throw 'no *-windows-x64.msi in dist/release' }
@@ -109,8 +115,11 @@ jobs:
           $info = (Get-Item $exe).VersionInfo
           Write-Output "exe: $exe, company $($info.CompanyName), product $($info.ProductName) $($info.ProductVersion)"
           if ($info.CompanyName -ne 'Kojalytics') { throw "exe CompanyName is '$($info.CompanyName)', not Kojalytics" }
-          $sig = Get-AuthenticodeSignature $msi.FullName
-          Write-Output "MSI signature: $($sig.Status) $($sig.SignerCertificate.Subject)"
+          foreach ($f in @($msi.FullName, $exe)) {
+            $sig = Get-AuthenticodeSignature $f
+            Write-Output "signature of $(Split-Path -Leaf $f): $($sig.Status) $($sig.SignerCertificate.Subject)"
+            if ($env:EXPECT_SIGNED -eq '1' -and $sig.Status -ne 'Valid') { throw "$(Split-Path -Leaf $f) is not validly signed ($($sig.Status))" }
+          }
           $p = Start-Process msiexec.exe -ArgumentList '/x', $entry.PSChildName, '/qn', '/norestart' -Wait -PassThru
           if ($p.ExitCode -ne 0) { throw "msiexec /x failed with $($p.ExitCode)" }
           Write-Output 'install, detect and uninstall: ok'
