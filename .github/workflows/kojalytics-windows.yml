@@ -1,0 +1,166 @@
+name: Kojalytics release (Windows)
+
+# Builds the Windows installer (MSI) for x64 with packaging/windows/package.ps1,
+# signs exe and MSI only with `sign` (kojalytics-publish.yml; signatures are paid per signature, so
+# drafts and pull requests stay unsigned; without signing secrets it stays unsigned too), installs the MSI on the runner and checks what Windows registered (name, publisher
+# Kojalytics, exe), then removes it again.
+# With `release` (by hand, or called after the macOS build) it attaches the MSI to the release
+# v<version> of this repo, draft or published, and rewrites SHA256SUMS.txt over all its files.
+# Pull requests only build and test. Uses code in this repository, actions pinned to commits and
+# WiX from NuGet.
+
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: "Attach to the release v<version> (draft or published)"
+        type: boolean
+        default: false
+      sign:
+        description: "Sign exe and MSI (costs one paid signature each)"
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+        required: true
+      release:
+        type: boolean
+        default: true
+      sign:
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kojalytics-windows-${{ inputs.ref || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  windows:
+    runs-on: windows-2025
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.ref || '' }}
+
+      - name: Rust toolchain
+        shell: bash
+        run: |
+          rustup update stable
+          rustup default stable
+          rustup target add x86_64-pc-windows-msvc
+
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+        with:
+          key: kojalytics-windows-x64
+
+      - name: WiX
+        shell: pwsh
+        run: |
+          dotnet tool install --global wix --version 5.0.2
+          "$env:USERPROFILE\.dotnet\tools" | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
+          & "$env:USERPROFILE\.dotnet\tools\wix.exe" extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2
+          if ($LASTEXITCODE -ne 0) { throw "wix extension add failed" }
+
+      - name: Build, sign, package
+        shell: pwsh
+        env:
+          # The signing material reaches sign.ps1 only for a signed build; otherwise it signs nothing.
+          WINDOWS_CERTIFICATE: ${{ inputs.sign && secrets.WINDOWS_CERTIFICATE || '' }}
+          WINDOWS_CERTIFICATE_PASSWORD: ${{ inputs.sign && secrets.WINDOWS_CERTIFICATE_PASSWORD || '' }}
+          AZURE_TENANT_ID: ${{ inputs.sign && secrets.AZURE_TENANT_ID || '' }}
+          AZURE_CLIENT_ID: ${{ inputs.sign && secrets.AZURE_CLIENT_ID || '' }}
+          AZURE_CLIENT_SECRET: ${{ inputs.sign && secrets.AZURE_CLIENT_SECRET || '' }}
+          AZURE_SIGNING_ENDPOINT: ${{ inputs.sign && secrets.AZURE_SIGNING_ENDPOINT || '' }}
+          AZURE_SIGNING_ACCOUNT: ${{ inputs.sign && secrets.AZURE_SIGNING_ACCOUNT || '' }}
+          AZURE_CERT_PROFILE: ${{ inputs.sign && secrets.AZURE_CERT_PROFILE || '' }}
+          ES_USERNAME: ${{ inputs.sign && secrets.ES_USERNAME || '' }}
+          ES_PASSWORD: ${{ inputs.sign && secrets.ES_PASSWORD || '' }}
+          CREDENTIAL_ID: ${{ inputs.sign && secrets.CREDENTIAL_ID || '' }}
+          ES_TOTP_SECRET: ${{ inputs.sign && secrets.ES_TOTP_SECRET || '' }}
+        run: ./packaging/windows/package.ps1 -Arch x64
+
+      # What the Kojalytics Launcher relies on: an uninstall entry with the Koja name and publisher
+      # Kojalytics (crates/native/src/detect.rs), and the exe in the install folder.
+      - name: Install test
+        shell: pwsh
+        env:
+          KOJA_APP_NAME: ${{ vars.KOJA_APP_NAME }}
+          # A build for publishing with the eSigner secrets set must come out signed.
+          EXPECT_SIGNED: ${{ inputs.sign && secrets.ES_USERNAME != '' && '1' || '' }}
+        run: |
+          $msi = Get-ChildItem dist/release -Filter '*-windows-x64.msi' | Select-Object -First 1
+          if (-not $msi) { throw 'no *-windows-x64.msi in dist/release' }
+          $stem = $msi.Name -replace '-\d[0-9A-Za-z.+-]*-windows-x64\.msi$', ''
+          $p = Start-Process msiexec.exe -ArgumentList '/i', "`"$($msi.FullName)`"", '/qn', '/norestart', '/l*v', 'msi-install.log' -Wait -PassThru
+          if ($p.ExitCode -ne 0) { Get-Content msi-install.log -Tail 80; throw "msiexec /i failed with $($p.ExitCode)" }
+          $roots = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall', 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall', 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall'
+          $ours = @($roots | ForEach-Object { Get-ChildItem $_ -ErrorAction SilentlyContinue } | Get-ItemProperty | Where-Object { $_.Publisher -eq 'Kojalytics' })
+          # Every entry Windows Settings may show carries the plain Koja name.
+          foreach ($e in $ours) { Write-Output "entry $($e.PSChildName): $($e.DisplayName)"; if ($env:KOJA_APP_NAME -and $e.DisplayName -ne $env:KOJA_APP_NAME) { throw "entry $($e.PSChildName) is named '$($e.DisplayName)', not '$env:KOJA_APP_NAME'" } }
+          # The package itself: the Windows Installer entry under its product code.
+          $entry = $ours | Where-Object { $_.PSChildName -like '{*}' } | Select-Object -First 1
+          if (-not $entry) { throw 'no Windows Installer entry ({product code}) with Publisher "Kojalytics"' }
+          Write-Output "registered: $($entry.DisplayName) $($entry.DisplayVersion), publisher $($entry.Publisher), product $($entry.PSChildName)"
+          if ($env:KOJA_APP_NAME -and $entry.DisplayName -ne $env:KOJA_APP_NAME) { throw "DisplayName '$($entry.DisplayName)' is not '$env:KOJA_APP_NAME'" }
+          $dirs = @($entry.InstallLocation, (Join-Path $env:ProgramFiles $entry.DisplayName), (Join-Path $env:LOCALAPPDATA "Programs\$($entry.DisplayName)")) | Where-Object { $_ }
+          $exe = $dirs | ForEach-Object { Join-Path $_ "$stem.exe" } | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $exe) { throw "$stem.exe not found in $($dirs -join ', ')" }
+          $info = (Get-Item $exe).VersionInfo
+          Write-Output "exe: $exe, company $($info.CompanyName), product $($info.ProductName) $($info.ProductVersion)"
+          if ($info.CompanyName -ne 'Kojalytics') { throw "exe CompanyName is '$($info.CompanyName)', not Kojalytics" }
+          foreach ($f in @($msi.FullName, $exe)) {
+            $sig = Get-AuthenticodeSignature $f
+            Write-Output "signature of $(Split-Path -Leaf $f): $($sig.Status) $($sig.SignerCertificate.Subject)"
+            if ($env:EXPECT_SIGNED -eq '1' -and $sig.Status -ne 'Valid') { throw "$(Split-Path -Leaf $f) is not validly signed ($($sig.Status))" }
+          }
+          $p = Start-Process msiexec.exe -ArgumentList '/x', $entry.PSChildName, '/qn', '/norestart' -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "msiexec /x failed with $($p.ExitCode)" }
+          Write-Output 'install, detect and uninstall: ok'
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: windows-x64
+          path: |
+            dist/release/*.msi
+            dist/release/*.zip
+          retention-days: 14
+
+      - name: Attach to the release
+        if: inputs.release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd dist/release
+          msi=$(ls *-windows-x64.msi | head -1)
+          version=$(printf '%s' "$msi" | sed -E 's/^.*-([0-9][0-9A-Za-z.+-]*)-windows-x64\.msi$/\1/')
+          tag="v$version"
+          gh release view "$tag" -R "$GITHUB_REPOSITORY" >/dev/null || { echo "::error::no release $tag (draft or published) to attach the Windows build to"; exit 1; }
+          # Only the MSI: the launcher installs it, and the portable zip is not offered.
+          files=(*-windows-x64.msi)
+          [ -f Kojalytics-Launcher.msi ] && files+=(Kojalytics-Launcher.msi)
+          gh release upload "$tag" "${files[@]}" -R "$GITHUB_REPOSITORY" --clobber
+          # SHA256SUMS.txt over every file of the release: ours hashed here, the others from GitHub's
+          # digest (or downloaded and hashed when it has none).
+          : > sums.txt
+          for f in "${files[@]}"; do printf '%s  %s\n' "$(sha256sum "$f" | cut -d' ' -f1)" "$f" >> sums.txt; done
+          gh api "repos/$GITHUB_REPOSITORY/releases?per_page=50" \
+            --jq ".[] | select(.tag_name == \"$tag\") | .assets[] | [.name, (.digest // \"\")] | @tsv" > assets.tsv
+          mkdir -p other
+          while IFS=$'\t' read -r name digest; do
+            case " ${files[*]} SHA256SUMS.txt " in *" $name "*) continue ;; esac
+            if [ -n "$digest" ]; then hash="${digest#sha256:}"
+            else gh release download "$tag" -R "$GITHUB_REPOSITORY" -p "$name" -D other --clobber; hash=$(sha256sum "other/$name" | cut -d' ' -f1); fi
+            printf '%s  %s\n' "$hash" "$name" >> sums.txt
+          done < assets.tsv
+          sort -k2 sums.txt > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          gh release upload "$tag" SHA256SUMS.txt -R "$GITHUB_REPOSITORY" --clobber

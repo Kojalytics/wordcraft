@@ -1,0 +1,73 @@
+name: Kojalytics publish
+
+# Publishes a DRAFT release to customers, started by hand (Actions › Kojalytics publish › Run
+# workflow). It builds the Windows MSI again from the draft's commit, this time signed
+# (kojalytics-windows.yml with `sign`; without signing secrets it stays unsigned), puts it in the
+# draft with a new SHA256SUMS.txt, and then publishes the draft. Windows signatures are paid per
+# signature, so this is the only place that signs: drafts and pull requests stay unsigned.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Draft to publish, e.g. v1.2.3 (empty: the newest draft)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kojalytics-publish
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.find.outputs.tag }}
+      sha: ${{ steps.find.outputs.sha }}
+    steps:
+      - id: find
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          releases=$(gh api "repos/$GITHUB_REPOSITORY/releases?per_page=50")
+          [ -n "$TAG" ] || TAG=$(printf '%s' "$releases" | jq -r '[.[] | select(.draft)][0].tag_name // empty')
+          [ -n "$TAG" ] || { echo "::error::There is no draft release to publish."; exit 1; }
+          release=$(printf '%s' "$releases" | jq -c --arg t "$TAG" '[.[] | select(.tag_name == $t)][0] // empty')
+          [ -n "$release" ] || { echo "::error::There is no release $TAG."; exit 1; }
+          [ "$(printf '%s' "$release" | jq -r .draft)" = true ] || { echo "::error::$TAG is already published."; exit 1; }
+          sha=$(gh api "repos/$GITHUB_REPOSITORY/commits/$(printf '%s' "$release" | jq -r .target_commitish)" -q .sha)
+          version=$(gh api "repos/$GITHUB_REPOSITORY/contents/Cargo.toml?ref=$sha" -q .content | base64 -d | grep -m1 -E '^version = "' | cut -d'"' -f2)
+          [ "v$version" = "$TAG" ] || { echo "::error::The draft $TAG points at $sha, which is version $version."; exit 1; }
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "publishing $TAG from $sha"
+
+  windows:
+    needs: draft
+    uses: ./.github/workflows/kojalytics-windows.yml
+    with:
+      ref: ${{ needs.draft.outputs.sha }}
+      release: true
+      sign: true
+    secrets: inherit
+
+  publish:
+    needs: [draft, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.draft.outputs.tag }}
+        run: |
+          set -euo pipefail
+          assets=$(gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets -q '.assets[].name')
+          for kind in -macos-universal.dmg -windows-x64.msi; do
+            printf '%s\n' "$assets" | grep -q -- "$kind\$" || { echo "::error::$TAG has no *$kind"; exit 1; }
+          done
+          gh release edit "$TAG" -R "$GITHUB_REPOSITORY" --draft=false --latest
+          echo "published $TAG: https://github.com/$GITHUB_REPOSITORY/releases/tag/$TAG"

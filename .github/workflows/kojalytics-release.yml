@@ -1,9 +1,11 @@
-name: Kojalytics release (macOS)
+name: Kojalytics release
 
 # Builds the universal macOS DMG, signs it with Kojalytics' Developer ID, notarizes it with Apple and
-# publishes it as a GitHub release with SHA256SUMS.txt (the Kojalytics Launcher installs from there
-# and checks the checksum). Runs only when started by hand or for a pushed version tag (v1.2.3).
-# Uses only code in this repository plus actions/checkout pinned to a commit.
+# puts it in a DRAFT release with SHA256SUMS.txt (the Kojalytics Launcher installs from there and
+# checks the checksum). Then kojalytics-windows.yml adds the (unsigned) Windows MSI to the same draft
+# and rewrites SHA256SUMS.txt. kojalytics-publish.yml signs the Windows build and publishes the draft.
+# Runs only when started by hand or for a pushed version tag (v1.2.3).
+# Uses only code in this repository plus actions pinned to commits.
 
 on:
   workflow_dispatch:
@@ -44,7 +46,7 @@ jobs:
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: bash packaging/macos/package.sh --arch universal
 
-      - name: Publish release
+      - name: Draft release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -57,6 +59,14 @@ jobs:
           if gh release view "$tag" >/dev/null 2>&1; then
             gh release upload "$tag" ./*.dmg SHA256SUMS.txt --clobber
           else
-            gh release create "$tag" ./*.dmg SHA256SUMS.txt --target "$GITHUB_SHA" --title "$tag" \
-              --notes "Kojalytics build $tag for macOS (Apple Silicon and Intel)."
+            gh release create "$tag" ./*.dmg SHA256SUMS.txt --draft --target "$GITHUB_SHA" --title "$tag" \
+              --notes "Kojalytics build $tag for macOS (Apple Silicon and Intel) and Windows."
           fi
+
+  windows:
+    needs: macos
+    uses: ./.github/workflows/kojalytics-windows.yml
+    with:
+      ref: ${{ github.sha }}
+      release: true
+    secrets: inherit
