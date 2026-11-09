@@ -1,8 +1,8 @@
 name: Kojalytics release (Windows)
 
 # Builds the Windows installer (MSI) for x64 with packaging/windows/package.ps1,
-# signs them when signing secrets are set (packaging/windows/sign.ps1; without them they stay
-# unsigned), installs the MSI on the runner and checks what Windows registered (name, publisher
+# signs exe and MSI only with `sign` (kojalytics-publish.yml; signatures are paid per signature, so
+# drafts and pull requests stay unsigned; without signing secrets it stays unsigned too), installs the MSI on the runner and checks what Windows registered (name, publisher
 # Kojalytics, exe), then removes it again.
 # With `release` (by hand, or called after the macOS build) it attaches the MSI to the release
 # v<version> of this repo, draft or published, and rewrites SHA256SUMS.txt over all its files.
@@ -17,6 +17,10 @@ on:
         description: "Attach to the release v<version> (draft or published)"
         type: boolean
         default: false
+      sign:
+        description: "Sign exe and MSI (costs one paid signature each)"
+        type: boolean
+        default: false
   workflow_call:
     inputs:
       ref:
@@ -25,6 +29,9 @@ on:
       release:
         type: boolean
         default: true
+      sign:
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -64,14 +71,15 @@ jobs:
       - name: Build, sign, package
         shell: pwsh
         env:
-          WINDOWS_CERTIFICATE: ${{ secrets.WINDOWS_CERTIFICATE }}
-          WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-          AZURE_SIGNING_ENDPOINT: ${{ secrets.AZURE_SIGNING_ENDPOINT }}
-          AZURE_SIGNING_ACCOUNT: ${{ secrets.AZURE_SIGNING_ACCOUNT }}
-          AZURE_CERT_PROFILE: ${{ secrets.AZURE_CERT_PROFILE }}
+          # The signing material reaches sign.ps1 only for a signed build; otherwise it signs nothing.
+          WINDOWS_CERTIFICATE: ${{ inputs.sign && secrets.WINDOWS_CERTIFICATE || '' }}
+          WINDOWS_CERTIFICATE_PASSWORD: ${{ inputs.sign && secrets.WINDOWS_CERTIFICATE_PASSWORD || '' }}
+          AZURE_TENANT_ID: ${{ inputs.sign && secrets.AZURE_TENANT_ID || '' }}
+          AZURE_CLIENT_ID: ${{ inputs.sign && secrets.AZURE_CLIENT_ID || '' }}
+          AZURE_CLIENT_SECRET: ${{ inputs.sign && secrets.AZURE_CLIENT_SECRET || '' }}
+          AZURE_SIGNING_ENDPOINT: ${{ inputs.sign && secrets.AZURE_SIGNING_ENDPOINT || '' }}
+          AZURE_SIGNING_ACCOUNT: ${{ inputs.sign && secrets.AZURE_SIGNING_ACCOUNT || '' }}
+          AZURE_CERT_PROFILE: ${{ inputs.sign && secrets.AZURE_CERT_PROFILE || '' }}
         run: ./packaging/windows/package.ps1 -Arch x64
 
       # What the Kojalytics Launcher relies on: an uninstall entry with the Koja name and publisher

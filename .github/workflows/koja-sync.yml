@@ -1,10 +1,12 @@
 name: Kojalytics update from ArtCraft
 
-# Once a week: if ArtCraft released a newer version of this app, merge it, apply the Kojalytics
-# branding again (brand/sync-upstream.sh), check it with the branding guard and the tests, then
-# build, sign and notarize the DMG and put it in a DRAFT release; kojalytics-windows.yml then adds the
-# Windows MSI to that draft. Customers get nothing until the draft is published by hand; an issue in
-# this repo says when one is waiting.
+# Once a month (the first Monday): if ArtCraft released a newer version of this app, merge it, apply
+# the Kojalytics branding again (brand/sync-upstream.sh), check it with the branding guard and the
+# tests, then build, sign and notarize the DMG and put it in a DRAFT release; kojalytics-windows.yml
+# then adds the (unsigned) Windows MSI to that draft. Customers get nothing until the draft is
+# published with kojalytics-publish.yml, which signs the Windows build; an issue in this repo says
+# when one is waiting. ArtCraft releases every few days, so monthly keeps the number of Windows
+# signatures (paid per signature) and updates down.
 # A blocked run (guard, merge or tests) fails, and GitHub emails about the failed run.
 
 on:
@@ -26,7 +28,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # GitHub's cron can't say "first Monday of the month": it starts every Monday, and only the first
+  # one in a month goes on. Started by hand, it always goes on.
+  when:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.day.outputs.go }}
+    steps:
+      - id: day
+        run: |
+          if [ "$GITHUB_EVENT_NAME" != schedule ] || [ "$(date -u +%-d)" -le 7 ]; then echo "go=1" >> "$GITHUB_OUTPUT"
+          else echo "not the first Monday of the month: nothing to do"; fi
+
   sync:
+    needs: when
+    if: needs.when.outputs.go == '1'
     runs-on: macos-15
     timeout-minutes: 300
     outputs:
@@ -100,13 +116,13 @@ jobs:
           version=$(printf '%s' "$dmg" | sed -E 's/^.*-([0-9][0-9.]*)-macos-universal\.dmg$/\1/')
           for i in 1 2 3 4 5 6; do xcrun stapler validate "$dmg" && break; [ $i = 6 ] && echo "::warning::stapler validate kept failing (Apple network); package.sh already stapled"; sleep $((i * 20)); done
           shasum -a 256 "$dmg" > SHA256SUMS.txt
-          gh release create "v$version" "$dmg" SHA256SUMS.txt -R "$GITHUB_REPOSITORY" --draft --target main \
+          gh release create "v$version" "$dmg" SHA256SUMS.txt -R "$GITHUB_REPOSITORY" --draft --target "$(git rev-parse HEAD)" \
             --title "$APP_NAME $version" \
             --notes "Signed and notarized macOS build (universal: Apple Silicon and Intel). Published by Kojalytics."
           gh issue create -R "$GITHUB_REPOSITORY" --title "$APP_NAME $version is ready to publish" --body "A new $APP_NAME build passed the branding guard and was signed and notarized.
 
-          Wait for the Windows build (workflow \"Kojalytics release (Windows)\") to add its MSI, check it, then publish the draft release: https://github.com/$GITHUB_REPOSITORY/releases
-          Customers get the update through the Kojalytics Launcher as soon as the release is published."
+          Wait for the Windows build (workflow \"Kojalytics release (Windows)\") to add its MSI and check the draft: https://github.com/$GITHUB_REPOSITORY/releases
+          Then publish it with Actions › Kojalytics publish › Run workflow. That signs the Windows build and publishes the draft; customers get the update through the Kojalytics Launcher right after."
 
   windows:
     needs: sync
