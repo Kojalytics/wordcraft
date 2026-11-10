@@ -41,7 +41,9 @@ jobs:
           [ -n "$release" ] || { echo "::error::There is no release $TAG."; exit 1; }
           [ "$(printf '%s' "$release" | jq -r .draft)" = true ] || { echo "::error::$TAG is already published."; exit 1; }
           sha=$(gh api "repos/$GITHUB_REPOSITORY/commits/$(printf '%s' "$release" | jq -r .target_commitish)" -q .sha)
-          version=$(gh api "repos/$GITHUB_REPOSITORY/contents/Cargo.toml?ref=$sha" -q .content | base64 -d | grep -m1 -E '^version = "' | cut -d'"' -f2)
+          # Read the whole file first: `grep -m1` in a pipe can close it early, and pipefail then fails the step.
+          cargo=$(gh api "repos/$GITHUB_REPOSITORY/contents/Cargo.toml?ref=$sha" -q .content | base64 -d)
+          version=$(awk -F'"' '/^version = "/ { print $2; exit }' <<<"$cargo")
           [ "v$version" = "$TAG" ] || { echo "::error::The draft $TAG points at $sha, which is version $version."; exit 1; }
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
