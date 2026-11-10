@@ -9,6 +9,11 @@ name: Kojalytics release
 
 on:
   workflow_dispatch:
+    inputs:
+      runner:
+        description: "macOS runner: macos-15 (Apple silicon), or macos-15-intel when GitHub has no Apple-silicon runners free"
+        type: string
+        default: macos-15
   push:
     tags: ["v*"]
 
@@ -21,7 +26,8 @@ concurrency:
 
 jobs:
   macos:
-    runs-on: macos-15
+    # A universal build works on either: both targets are built and joined with lipo.
+    runs-on: ${{ inputs.runner || 'macos-15' }}
     # A new Apple developer account's first notarizations can take hours.
     timeout-minutes: 360
     steps:
