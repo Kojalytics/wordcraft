@@ -18,29 +18,43 @@ const PUBLIC_KEY: [u8; 32] = [
     0x7a, 0x55, 0x81, 0x5a, 0xb1, 0xae, 0xda, 0xdc, 0xd7, 0x34, 0x0d, 0xcd, 0x52, 0xf4, 0x3a, 0x6c, 0xf9, 0x8d, 0x74, 0xcb, 0x7f, 0x7f,
     0x64, 0xab, 0x0b, 0x1b, 0x16, 0x22, 0x00, 0xc2, 0xdc, 0x14,
 ];
-const SHOP_URL: &str = "https://www.kojalytics.com/koja-apps";
+const SHOP_URL: &str = "https://www.kojalytics.com/software#preise";
+const TRIAL_ENDED: &str = "Dein kostenloser 3-Tage-Test ist abgelaufen.";
 const LAUNCHER_BUNDLE_ID: &str = "com.kojalytics.artcraft-launcher";
 const RECHECK: Duration = Duration::from_secs(3);
 
 struct State {
     licensed: bool,
+    /// When a free trial ends (Unix seconds); `None` for a license.
+    until: Option<u64>,
     reason: String,
     checked: Option<Instant>,
 }
 
-static STATE: Mutex<State> = Mutex::new(State { licensed: false, reason: String::new(), checked: None });
+static STATE: Mutex<State> = Mutex::new(State { licensed: false, until: None, reason: String::new(), checked: None });
 
 /// `true` when the app may show its documents; otherwise draws the lock screen into `ui`.
 pub fn gate(ui: &mut egui::Ui) -> bool {
     let mut state = STATE.lock().unwrap_or_else(PoisonError::into_inner);
+    // A trial ends while the app is open, too.
+    if state.licensed && state.until.is_some_and(|until| unix_now() >= until) {
+        state.licensed = false;
+        state.checked = None;
+    }
     if !state.licensed && state.checked.is_none_or(|t| t.elapsed() >= RECHECK) {
         match check() {
-            Ok(()) => state.licensed = true,
+            Ok(until) => {
+                state.licensed = true;
+                state.until = until;
+            }
             Err(e) => state.reason = e,
         }
         state.checked = Some(Instant::now());
     }
     if state.licensed {
+        if state.until.is_some() {
+            ui.ctx().request_repaint_after(Duration::from_secs(60));
+        }
         return true;
     }
     let reason = state.reason.clone();
@@ -58,14 +72,18 @@ fn lock_screen(ui: &mut egui::Ui, reason: &str) {
             ui.add_space((rect.height() / 2.0 - 140.0).max(24.0));
             ui.label(egui::RichText::new("🔒").size(40.0));
             ui.add_space(12.0);
-            ui.label(egui::RichText::new("Lizenz erforderlich").size(28.0).strong().color(egui::Color32::WHITE));
+            let ended = reason == TRIAL_ENDED;
+            let title = if ended { "Test abgelaufen" } else { "Lizenz erforderlich" };
+            ui.label(egui::RichText::new(title).size(28.0).strong().color(egui::Color32::WHITE));
             ui.add_space(8.0);
             ui.label(egui::RichText::new(reason).color(egui::Color32::from_rgb(0xa5, 0xb4, 0xfc)));
             ui.add_space(14.0);
             ui.label(
-                egui::RichText::new(
-                    "Aktiviere deinen Kojalytics-Lizenzschlüssel im Kojalytics Launcher unter Einstellungen › Lizenz.\nDiese App entsperrt sich danach automatisch.",
-                )
+                egui::RichText::new(if ended {
+                    "Kaufe eine Lizenz auf kojalytics.com und aktiviere sie im Kojalytics Launcher unter Einstellungen › Lizenz.\nDiese App entsperrt sich danach automatisch."
+                } else {
+                    "Starte im Kojalytics Launcher unter Einstellungen › Lizenz den kostenlosen 3-Tage-Test\noder aktiviere deinen Lizenzschlüssel. Diese App entsperrt sich danach automatisch."
+                })
                 .color(egui::Color32::from_rgb(0xb4, 0xb4, 0xc4)),
             );
             ui.add_space(22.0);
@@ -119,11 +137,26 @@ fn reg_value(key: &str, name: &str) -> Option<String> {
     (!value.is_empty()).then(|| value.to_string())
 }
 
-fn check() -> Result<(), String> {
+/// `Ok(None)` with a license, `Ok(Some(end))` during a free trial, otherwise why not.
+fn check() -> Result<Option<u64>, String> {
     let device = device_hash().ok_or("Die Geräte-ID dieses Computers ist nicht lesbar.")?;
     let path = certificate_path().ok_or("Der Ordner des Kojalytics Launchers wurde nicht gefunden.")?;
-    let cert = std::fs::read_to_string(path).map_err(|_| "Auf diesem Computer ist noch keine Lizenz aktiviert.".to_string())?;
-    verify(&cert, &device, &PUBLIC_KEY)
+    let license = std::fs::read_to_string(&path).ok().map(|cert| verify(&cert, &device, &PUBLIC_KEY));
+    if let Some(Ok(())) = license {
+        return Ok(None);
+    }
+    // The launcher saves a free trial's certificate next to the license.
+    if let Ok(cert) = std::fs::read_to_string(path.with_file_name("trial.txt")) {
+        return verify_trial(&cert, &device, &PUBLIC_KEY, unix_now()).map(Some);
+    }
+    match license {
+        Some(Err(e)) => Err(e),
+        _ => Err("Auf diesem Computer ist noch keine Lizenz aktiviert.".into()),
+    }
+}
+
+fn unix_now() -> u64 {
+    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |d| d.as_secs())
 }
 
 /// Where the Kojalytics Launcher keeps the certificate (its `Paths::data` / `license.txt`).
@@ -173,17 +206,38 @@ fn machine_id() -> Option<String> {
 }
 
 fn verify(certificate: &str, device: &str, public_key: &[u8; 32]) -> Result<(), String> {
-    let invalid = || "Die gespeicherte Lizenz ist ungültig. Bitte aktiviere sie im Kojalytics Launcher neu.".to_string();
-    let (payload, signature) = certificate.trim().split_once('.').ok_or_else(invalid)?;
-    let signature = URL_SAFE_NO_PAD.decode(signature).map_err(|_| invalid())?;
-    let signature = Signature::from_slice(&signature).map_err(|_| invalid())?;
-    let key = VerifyingKey::from_bytes(public_key).map_err(|_| invalid())?;
-    key.verify_strict(payload.as_bytes(), &signature).map_err(|_| invalid())?;
-    let json: serde_json::Value = serde_json::from_slice(&URL_SAFE_NO_PAD.decode(payload).map_err(|_| invalid())?).map_err(|_| invalid())?;
+    let json = signed_json(certificate, public_key).ok_or("Die gespeicherte Lizenz ist ungültig. Bitte aktiviere sie im Kojalytics Launcher neu.")?;
     if json["device"].as_str() != Some(device) {
         return Err("Die Lizenz wurde auf einem anderen Computer aktiviert.".into());
     }
     Ok(())
+}
+
+/// A free trial's certificate: the end of the trial while it runs. Trial certificates name the
+/// machine `trial_device`, so [`verify`] (and apps from before trials) never accept one as a license.
+fn verify_trial(certificate: &str, device: &str, public_key: &[u8; 32], now: u64) -> Result<u64, String> {
+    let invalid = "Der gespeicherte Test ist ungültig. Bitte starte ihn im Kojalytics Launcher neu.";
+    let json = signed_json(certificate, public_key).ok_or(invalid)?;
+    if json["trial_device"].as_str() != Some(device) {
+        return Err("Der Test wurde auf einem anderen Computer gestartet.".into());
+    }
+    let (Some(starts), Some(expires)) = (json["starts"].as_u64(), json["expires"].as_u64()) else { return Err(invalid.into()) };
+    // A clock set back by more than a day before the trial began doesn't stretch it.
+    if now + 86_400 < starts {
+        return Err("Datum und Uhrzeit dieses Computers stimmen nicht. Bitte stelle sie richtig ein.".into());
+    }
+    if now >= expires {
+        return Err(TRIAL_ENDED.into());
+    }
+    Ok(expires)
+}
+
+/// The JSON payload of a certificate signed by Kojalytics (`payload.signature`, both base64url).
+fn signed_json(certificate: &str, public_key: &[u8; 32]) -> Option<serde_json::Value> {
+    let (payload, signature) = certificate.trim().split_once('.')?;
+    let signature = Signature::from_slice(&URL_SAFE_NO_PAD.decode(signature).ok()?).ok()?;
+    VerifyingKey::from_bytes(public_key).ok()?.verify_strict(payload.as_bytes(), &signature).ok()?;
+    serde_json::from_slice(&URL_SAFE_NO_PAD.decode(payload).ok()?).ok()
 }
 
 #[cfg(test)]
@@ -206,10 +260,29 @@ mod tests {
         assert!(verify("garbage", "dev1", &public).is_err());
     }
 
+    fn signed(signer: &SigningKey, json: &str) -> String {
+        let payload = URL_SAFE_NO_PAD.encode(json);
+        format!("{payload}.{}", URL_SAFE_NO_PAD.encode(signer.sign(payload.as_bytes()).to_bytes()))
+    }
+
+    #[test]
+    fn a_trial_unlocks_this_device_until_it_ends_and_never_passes_as_a_license() {
+        let signer = SigningKey::from_bytes(&[7; 32]);
+        let public = signer.verifying_key().to_bytes();
+        let trial = signed(&signer, r#"{"v":1,"trial":true,"trial_device":"dev1","starts":1000000,"expires":1259200,"issued":1000000}"#);
+        assert_eq!(verify_trial(&trial, "dev1", &public, 1000100), Ok(1259200));
+        assert_eq!(verify_trial(&trial, "dev1", &public, 1259200), Err(TRIAL_ENDED.to_string()));
+        assert!(verify_trial(&trial, "dev2", &public, 1000100).is_err());
+        assert!(verify_trial(&trial, "dev1", &public, 1000000 - 2 * 86_400).is_err());
+        assert!(verify_trial(&signed(&SigningKey::from_bytes(&[8; 32]), r#"{"trial_device":"dev1","starts":1,"expires":9999999999}"#), "dev1", &public, 2).is_err());
+        assert!(verify(&trial, "dev1", &public).is_err());
+        assert!(verify_trial(&certificate(&signer, "dev1"), "dev1", &public, 1000100).is_err());
+    }
+
     #[test]
     #[ignore = "needs a license activated by the Kojalytics Launcher on this machine"]
     fn this_machine_is_licensed() {
-        assert_eq!(check(), Ok(()));
+        assert_eq!(check(), Ok(None));
     }
 
     #[test]
